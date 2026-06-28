@@ -225,6 +225,16 @@
     transform: translateY(-1px);
   }
 
+  .btn-gold {
+    background: var(--gold);
+    color: var(--navy);
+  }
+
+  .btn-gold:hover {
+    background: #d98c2a;
+    transform: translateY(-1px);
+  }
+
   .btn-outline {
     background: transparent;
     color: var(--white);
@@ -247,10 +257,10 @@
 
   .photo-frame {
     width: 240px;
-    height: 273px;
+    height: 240px;
     border-radius: 50%;
-    border: 5px solid rgba(0,201,167,0.4);
-    padding: 3px;
+    border: 3px solid rgba(0,201,167,0.4);
+    padding: 5px;
     position: relative;
     flex-shrink: 0;
   }
@@ -281,8 +291,9 @@
 
   .photo-initials img {
     width: 100%;
-    height: 260px;
-    border-radius: 70%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
   }
 
   .hero-contact-chips {
@@ -851,7 +862,7 @@
     }
     .photo-frame {
       width: 180px;
-      height: 230px;
+      height: 180px;
     }
     .photo-initials {
       font-size: 2.5rem;
@@ -872,9 +883,9 @@
 
 <!-- NAV -->
 <nav>
-  <span class="nav-logo">Hepzibha</span>
+  <span class="nav-logo">HS</span>
   <ul class="nav-links">
-    <li><a href="#jd-match">Job Roles</a></li>
+    <li><a href="#jd-match">JD Match</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#projects">Projects</a></li>
@@ -889,9 +900,9 @@
     <div class="hero-content">
       <div class="hero-badge">Available for opportunities</div>
       <h1>Hepzibha<br>Sundararaj</h1>
-      <p class="hero-subtitle">Next.js 16+ &nbsp;·&nbsp; React 19+ &nbsp;·&nbsp;  Angular 19 &nbsp;·&nbsp; FastAPI &nbsp;·&nbsp;  Python Flask &nbsp;·&nbsp;  Java &nbsp;·&nbsp; LangGraph &nbsp;·&nbsp;  Lang Chain &nbsp;·&nbsp; Gen AI &nbsp;·&nbsp; Agentic AI &nbsp;·&nbsp; AWS Bedrock</p>
+      <p class="hero-subtitle">Next.js 16+ &nbsp;·&nbsp; React 19+ &nbsp;·&nbsp; FastAPI &nbsp;·&nbsp; LangGraph &nbsp;·&nbsp; Agentic AI Lead</p>
       <p class="hero-desc">
-        15+ years experience and expertise in UI/UX design, Front-end, Backend, Fullstack developer, AI-GenAI, Agentic AI, AI Agent etc, building enterprise SaaS at Fortune 500 companies — Freddie Mac, State Street Bank, Johnson & Johnson, Alliance Insurance, Commerce Benefit Group, Mepline Technical Services LLC. Deep expertise in Next.js App Router, React 19, TypeScript, Tailwind CSS, FastAPI, and production-grade agentic AI with LangGraph, LangChain, @ag-ui/client, and A2A SDK and more.
+        15+ years building enterprise SaaS at Fortune 500 companies — Freddie Mac, State Street Bank, Johnson & Johnson. Deep expertise in Next.js App Router, React 19, TypeScript, Tailwind CSS, FastAPI, and production-grade agentic AI with LangGraph, LangChain, @ag-ui/client, and A2A SDK.
       </p>
       <div class="hero-stats">
         <div class="stat">
@@ -909,17 +920,15 @@
       </div>
       <div class="hero-ctas">
         <a href="mailto:hepzibha.sundar@gmail.com" class="btn btn-primary">Get in touch</a>
-        <a href="Hepzibha_Sundararaj_AI_Resume.docx" class="btn btn-primary">⬇ Download Resume (.docx)</a>
-        <a href="https://hepzibha-portfolio.vercel.app/" target="_blank" class="btn btn-primary">View portfolio ↗</a>
+        <a href="Hepzibha_Sundararaj_Resume.docx" class="btn btn-primary">⬇ Download Resume (.docx)</a>
+        <a href="https://portfolio-murex-five-n1w17m6x6v.vercel.app/" target="_blank" class="btn btn-outline">View portfolio ↗</a>
       </div>
     </div>
 
     <!-- PHOTO -->
     <div class="hero-photo-wrap">
       <div class="photo-frame">
-        <div class="photo-initials">
-        <img src="profile.jpg" alt="Description of the image">
-        </div>
+        <div class="photo-initials">HS</div>
       </div>
       <div class="hero-contact-chips">
         <a href="mailto:hepzibha.sundar@gmail.com" class="contact-chip">
@@ -932,25 +941,21 @@
         </a>
         <a href="https://github.com/Hepzibha2026" target="_blank" class="contact-chip">
           <span class="contact-chip-icon">⌥</span>
-          <span class="contact-chip-text">github.com/Hepzibha</span>
-        </a>
-        <a href="https://partyrock.aws/u/Hepzibha" target="_blank" class="contact-chip">
-          <span class="contact-chip-icon">⌥</span>
-          <span class="contact-chip-text">AWS-Bedrock/Partyrock/Hepzibha</span>
+          <span class="contact-chip-text">github.com/Hepzibha2026</span>
         </a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Job Roles and Responsibilities -->
+<!-- JD MATCH -->
 <section id="jd-match">
   <div class="section-inner">
-    <p class="section-label">Role and Technical alignment</p>
-    <h2 class="section-title">Job Roles and Responsibilities</h2>
+    <p class="section-label">Role alignment</p>
+    <h2 class="section-title">JD requirements match</h2>
     <div class="section-divider"></div>
     <p class="jd-intro">
-      Every role maps directly to production experience. Below is a point-by-point Hepzibha's verified hands-on work.
+      Every must-have requirement from this role maps directly to production experience. Below is a point-by-point match of the job description against Hepzibha's verified hands-on work.
     </p>
     <div class="jd-match-grid">
 
@@ -960,10 +965,10 @@
           <strong>Next.js (App Router v16+)</strong>
           <span>Built full-stack AI Agent UI on Next.js 16 App Router at Freddie Mac</span>
         </div>
-        <!-- <div class="jd-row-years">
+        <div class="jd-row-years">
           <span class="has">6+ yrs</span>
           <span class="req">req: 5+</span>
-        </div> -->
+        </div>
       </div>
 
       <div class="jd-row">
@@ -972,10 +977,10 @@
           <strong>React v19+ + TypeScript</strong>
           <span>React 19 with full TypeScript type-safety across distributed AI systems</span>
         </div>
-        <!-- <div class="jd-row-years">
+        <div class="jd-row-years">
           <span class="has">8+ yrs</span>
           <span class="req">req: 6+</span>
-        </div> -->
+        </div>
       </div>
 
       <div class="jd-row">
@@ -984,10 +989,10 @@
           <strong>Tailwind CSS 4.x + DaisyUI</strong>
           <span>Engineered type-safe UI in Tailwind CSS 4.x with DaisyUI components at Freddie Mac</span>
         </div>
-        <!-- <div class="jd-row-years">
+        <div class="jd-row-years">
           <span class="has">5+ yrs</span>
           <span class="req">req: 4+</span>
-        </div> -->
+        </div>
       </div>
 
       <div class="jd-row">
@@ -996,10 +1001,10 @@
           <strong>FastAPI (Python 3.10–3.12) + Uvicorn</strong>
           <span>Developed Python FastAPI backend with LangChain/LangGraph for multi-step AI orchestration</span>
         </div>
-        <!-- <div class="jd-row-years">
+        <div class="jd-row-years">
           <span class="has">5+ yrs</span>
           <span class="req">req: 4+</span>
-        </div> -->
+        </div>
       </div>
 
       <div class="jd-row">
@@ -1008,10 +1013,10 @@
           <strong>LangGraph + LangChain + OpenAI/Horizon</strong>
           <span>Architected multi-agent LangGraph pipelines with OpenAI/Horizon token-based auth</span>
         </div>
-        <!-- <div class="jd-row-years">
+        <div class="jd-row-years">
           <span class="has">3+ yrs</span>
           <span class="req">req: 3+</span>
-        </div> -->
+        </div>
       </div>
 
       <div class="jd-row">
@@ -1020,10 +1025,10 @@
           <strong>@ag-ui/client Agent Integration</strong>
           <span>Integrated @ag-ui/client for real-time bidirectional frontend–LangGraph agent communication</span>
         </div>
-        <!-- <div class="jd-row-years">
+        <div class="jd-row-years">
           <span class="has">2+ yrs</span>
           <span class="req">req: 2+</span>
-        </div> -->
+        </div>
       </div>
 
       <div class="jd-row">
@@ -1032,10 +1037,10 @@
           <strong>React Markdown + remark-gfm</strong>
           <span>Implemented markdown rendering via React Markdown with remark-gfm for rich agent responses</span>
         </div>
-        <!-- <div class="jd-row-years">
+        <div class="jd-row-years">
           <span class="has">3+ yrs</span>
           <span class="req">req: 2+</span>
-        </div> -->
+        </div>
       </div>
 
       <div class="jd-row">
@@ -1044,10 +1049,10 @@
           <strong>A2A SDK — External Agent Communication</strong>
           <span>Implemented A2A SDK agent communication with token-based authentication in FastAPI backend</span>
         </div>
-        <!-- <div class="jd-row-years">
+        <div class="jd-row-years">
           <span class="has">2+ yrs</span>
           <span class="req">req: 2+</span>
-        </div> -->
+        </div>
       </div>
 
       <div class="jd-row">
@@ -1056,22 +1061,22 @@
           <strong>Geist Fonts (Sans + Mono) Typography</strong>
           <span>Applied Geist font system for professional AI-focused UI typography</span>
         </div>
-        <!-- <div class="jd-row-years">
+        <div class="jd-row-years">
           <span class="has">2+ yrs</span>
           <span class="req">req: 1+</span>
-        </div> -->
+        </div>
       </div>
 
       <div class="jd-row">
         <div class="jd-check">✓</div>
         <div class="jd-row-content">
           <strong>Proven AI-focused UI project experience</strong>
-          <span>50K+ user AI agent platform at Freddie Mac</span>
+          <span>50K+ user AI agent platform at Freddie Mac — mandatory requirement met</span>
         </div>
-        <!-- <div class="jd-row-years">
+        <div class="jd-row-years">
           <span class="has">✔ Met</span>
           <span class="req">mandatory</span>
-        </div> -->
+        </div>
       </div>
 
       <div class="jd-row">
@@ -1080,16 +1085,16 @@
           <strong>Agile / Scrum environment</strong>
           <span>Led Agile delivery across Fortune 500 clients — Freddie Mac, State Street, J&J</span>
         </div>
-        <!-- <div class="jd-row-years">
+        <div class="jd-row-years">
           <span class="has">10+ yrs</span>
           <span class="req">req: 4+</span>
-        </div> -->
+        </div>
       </div>
 
     </div>
 
     <div>
-      <p style="font-size:0.8rem; color:rgba(255,255,255,0.4); margin-bottom:0.8rem; text-transform:uppercase; letter-spacing:1px; font-weight:600;">Exact tech stacks from Projects</p>
+      <p style="font-size:0.8rem; color:rgba(255,255,255,0.4); margin-bottom:0.8rem; text-transform:uppercase; letter-spacing:1px; font-weight:600;">Exact tech stack from JD</p>
       <div class="jd-stack-pills">
         <span class="jd-pill">Next.js 16.1.6 App Router</span>
         <span class="jd-pill">React 19.2.3</span>
@@ -1100,11 +1105,8 @@
         <span class="jd-pill">React Markdown + remark-gfm</span>
         <span class="jd-pill gold">FastAPI + Uvicorn</span>
         <span class="jd-pill gold">Python 3.10–3.12</span>
-        <span class="jd-pill gold">Java-JAva Microservices</span>
         <span class="jd-pill gold">LangGraph</span>
         <span class="jd-pill gold">LangChain</span>
-        <span class="jd-pill gold">GenAI / Agentic AI</span>
-        <span class="jd-pill gold">AI Agent / MVC server</span>
         <span class="jd-pill gold">A2A SDK</span>
         <span class="jd-pill gold">OpenAI / Horizon</span>
         <span class="jd-pill gold">Token-based Auth</span>
@@ -1132,7 +1134,6 @@
           <span class="skill-tag highlight">Tailwind CSS 4.x</span>
           <span class="skill-tag highlight">DaisyUI</span>
           <span class="skill-tag highlight">@ag-ui/client</span>
-          <span class="skill-tag highlight">Angular 19</span>
           <span class="skill-tag">React Markdown + remark-gfm</span>
           <span class="skill-tag">Geist Fonts</span>
           <span class="skill-tag">Redux</span>
@@ -1147,7 +1148,6 @@
         <div class="skill-tags">
           <span class="skill-tag highlight">FastAPI + Uvicorn</span>
           <span class="skill-tag highlight">Python 3.10–3.12</span>
-          <span class="skill-tag highlight">Python Flask</span>
           <span class="skill-tag highlight">Java Spring Boot</span>
           <span class="skill-tag">Node.js</span>
           <span class="skill-tag">Express</span>
@@ -1183,7 +1183,6 @@
           <span class="skill-tag">Docker</span>
           <span class="skill-tag">Jenkins</span>
           <span class="skill-tag">GitLab CI/CD</span>
-          <span class="skill-tag">SageMaker</span>
           <span class="skill-tag">Lambda</span>
           <span class="skill-tag">Bedrock</span>
         </div>
@@ -1207,7 +1206,6 @@
           <span class="skill-tag">Figma</span>
           <span class="skill-tag">Adobe XD</span>
           <span class="skill-tag">Jest</span>
-          <span class="skill-tag">React Testing Library</span>
           <span class="skill-tag">Cypress</span>
           <span class="skill-tag">Playwright</span>
           <span class="skill-tag">WCAG 2.1</span>
@@ -1320,7 +1318,7 @@
           <span class="project-tag">Next.js</span>
           <span class="project-tag">Vercel</span>
         </div>
-        <a href="https://hepzibha-portfolio.vercel.app/" target="_blank" class="project-link">Live site →</a>
+        <a href="https://portfolio-murex-five-n1w17m6x6v.vercel.app/" target="_blank" class="project-link">Live site →</a>
       </div>
 
       <div class="project-card">
@@ -1337,17 +1335,14 @@
 
       <div class="project-card">
         <span class="project-icon">🤖</span>
-        <p class="project-title">AWS Bedrock Projects</p>
-        <a href="https://partyrock.aws/u/Hepzibha/XJvrO_36i/Study-Session-Planner" target="_blank" class="project-link">* Study Planner →</a>
-        <a href="https://partyrock.aws/u/Hepzibha/POFtEqPAi/Personal-Trip-Planner-and-Guide" target="_blank" class="project-link">* Personal Trip planner →</a>
-        <!-- <p>*Srudy Planner, *Text Rewriter, *Language Translator, *T-Shirt Designer, *Certification Planner, *Proofwriting Assistant</p> -->
-        <p class="project-desc">An AI-powered study session planner, Personal Trip planner and guide, Meeting Agenda Generator app  built on AWS PartyRock with Amazon Bedrock — generates personalised study plans using GenAI.</p>
+        <p class="project-title">AWS Bedrock Study Planner</p>
+        <p class="project-desc">An AI-powered study session planner built on AWS PartyRock with Amazon Bedrock — generates personalised study plans using GenAI.</p>
         <div class="project-tags">
           <span class="project-tag">AWS Bedrock</span>
           <span class="project-tag">GenAI</span>
           <span class="project-tag">PartyRock</span>
         </div>
-        <a href="https://partyrock.aws/u/Hepzibha" target="_blank" class="project-link">Try it →</a>
+        <a href="https://partyrock.aws/u/Hepzibha/XJvrO_36i/Study-Session-Planner" target="_blank" class="project-link">Try it →</a>
       </div>
 
       <div class="project-card">
@@ -1370,15 +1365,6 @@
           <span class="project-tag">React</span>
           <span class="project-tag">Python</span>
           <span class="project-tag">LangChain</span>
-          <span class="project-tag">Java</span>
-          <span class="project-tag">LangGraph</span>
-          <span class="project-tag">AI Agent</span>
-          <span class="project-tag">MVC Server</span>
-          <span class="project-tag">Agentic AI</span>
-          <span class="project-tag">GenAI</span>
-          <span class="project-tag">HTML</span>
-          <span class="project-tag">CSS</span>
-          <span class="project-tag">JavaScript</span>
         </div>
         <a href="https://github.com/Hepzibha2026" target="_blank" class="project-link">Browse repos →</a>
       </div>
@@ -1398,17 +1384,11 @@
         <h3>Education</h3>
         <div class="edu-item">
           <p class="edu-degree">MS in Information Technology</p>
-          <p class="edu-institution">University of the Cumberlands, Kentucky, USA</p>
+          <p class="edu-institution">University of the Cumberlands, Kentucky, USA · 2014–2015</p>
         </div>
-
-         <div class="edu-item">
-          <p class="edu-degree">MPhil — Computer Science</p>
-          <p class="edu-institution">Madurai Kamaraj University, India</p>
-        </div>
-
         <div class="edu-item">
           <p class="edu-degree">MCA — Computer Science</p>
-          <p class="edu-institution">Madurai Kamaraj University, India</p>
+          <p class="edu-institution">Madurai Kamaraj University, India · 2006–2008</p>
         </div>
         <div class="edu-item">
           <p class="edu-degree">Web Developer Associate Degree</p>
@@ -1416,7 +1396,7 @@
         </div>
         <div class="edu-item">
           <p class="edu-degree">BSc Physics</p>
-          <p class="edu-institution">M S University, Tirunelveli, India</p>
+          <p class="edu-institution">M S University, Tirunelveli, India · 2002–2006</p>
         </div>
       </div>
 
@@ -1446,7 +1426,15 @@
     <h2 class="section-title">Find me online</h2>
     <div class="section-divider"></div>
     <div class="links-grid">
-      <a href="https://hepzibha-portfolio.vercel.app/" target="_blank" class="link-card">
+      <a href="Hepzibha_Sundararaj_Resume.docx" download class="link-card" style="border-color: var(--gold);">
+        <span class="link-card-icon">📄</span>
+        <div class="link-card-info">
+          <strong>Resume (.docx)</strong>
+          <span>Download Word format</span>
+        </div>
+        <span class="arrow" style="opacity:1; color:var(--gold);">⬇</span>
+      </a>
+      <a href="https://portfolio-murex-five-n1w17m6x6v.vercel.app/" target="_blank" class="link-card">
         <span class="link-card-icon">🌐</span>
         <div class="link-card-info">
           <strong>Portfolio</strong>
@@ -1486,11 +1474,11 @@
         </div>
         <span class="arrow">→</span>
       </a>
-      <a href="https://partyrock.aws/u/Hepzibha" target="_blank" class="link-card">
+      <a href="https://partyrock.aws/u/Hepzibha/XJvrO_36i/Study-Session-Planner" target="_blank" class="link-card">
         <span class="link-card-icon">🤖</span>
         <div class="link-card-info">
           <strong>AWS PartyRock</strong>
-          <span>GenAI Projects</span>
+          <span>GenAI study planner</span>
         </div>
         <span class="arrow">→</span>
       </a>
