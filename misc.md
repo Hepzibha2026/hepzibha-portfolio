@@ -1,0 +1,1 @@
+Experience React Native/React JS,UI/UX Designer/Developer/ AI /Full-stack/React Native,(AI Engineer-Oracle and SQL/NoSQL Database/Data Warehouse/Data Analysis, ML/AI, Gen AI, LLM, NLP, RAG, Open AI, Long Chain, AI Agent)
