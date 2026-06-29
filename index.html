@@ -77,10 +77,10 @@
   /* ── HERO ─────────────────────────────────── */
   .hero {
     background: var(--navy);
-    min-height: 100vh;
+    min-height: 70vh;
     display: flex;
     align-items: center;
-    padding: 80px 2rem 60px;
+    padding: 40px 2rem 40px;
     position: relative;
     overflow: hidden;
   }
@@ -146,15 +146,22 @@
 
   .hero h1 {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(2.4rem, 5vw, 3.6rem);
+    font-size: clamp(2rem, 3vw, 3rem);
     color: var(--white);
-    line-height: 1.15;
+    line-height: 1.05;
     margin-bottom: 0.4rem;
   }
 
   .hero-subtitle {
     font-size: 1.05rem;
     color: var(--teal);
+    font-weight: 500;
+    margin-bottom: 1.4rem;
+    letter-spacing: 0.3px;
+  }
+  .hero-subtitle1 {
+    font-size: 1.15rem;
+    color: var(--white);
     font-weight: 500;
     margin-bottom: 1.4rem;
     letter-spacing: 0.3px;
@@ -326,7 +333,7 @@
 
   /* ── SECTIONS SHARED ─────────────────────── */
   section {
-    padding: 80px 2rem;
+    padding: 40px 2rem;
   }
 
   .section-inner {
@@ -775,13 +782,14 @@
   }
 
   /* ── LINKS ───────────────────────────── */
-  #links { background: var(--white); }
+  #links { background: var(--navy); }
 
   .links-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(6, 1fr);
     gap: 1rem;
   }
+ 
 
   .link-card {
     display: flex;
@@ -888,7 +896,7 @@
   <div class="hero-inner">
     <div class="hero-content">
       <div class="hero-badge">Available for opportunities</div>
-      <h1>Hepzibha<br>Sundararaj</h1>
+      <h1>Hepzibha Sundararaj</h1>
       <p class="hero-subtitle">Next.js 16+ &nbsp;·&nbsp; React 19+ &nbsp;·&nbsp;  Angular 19 &nbsp;·&nbsp; FastAPI &nbsp;·&nbsp;  Python Flask &nbsp;·&nbsp;  Java &nbsp;·&nbsp; LangGraph &nbsp;·&nbsp;  Lang Chain &nbsp;·&nbsp; Gen AI &nbsp;·&nbsp; Agentic AI &nbsp;·&nbsp; AWS Bedrock &nbsp;·&nbsp; UI/UX Design &nbsp;·&nbsp; Tableau</p>
       <p class="hero-desc">
         15+ years experience and expertise in UI/UX design, Front-end, Backend, Fullstack developer, AI-GenAI, Agentic AI, AI Agent etc, building enterprise SaaS at Fortune 500 companies — Freddie Mac, State Street Bank, Johnson & Johnson, Alliance Insurance, Commerce Benefit Group, Mepline Technical Services LLC. Deep expertise in Next.js App Router, React 19, TypeScript, Tailwind CSS, FastAPI, and production-grade agentic AI with LangGraph, LangChain, @ag-ui/client, and A2A SDK and more.
@@ -1443,7 +1451,7 @@
 <section id="links">
   <div class="section-inner">
     <p class="section-label">Connect</p>
-    <h2 class="section-title">Find me online</h2>
+    <h2 class="hero-subtitle1">Find me online</h2>
     <div class="section-divider"></div>
     <div class="links-grid">
       <a href="https://hepzibha-portfolio.vercel.app/" target="_blank" class="link-card">
