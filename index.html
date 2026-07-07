@@ -75,6 +75,18 @@
 
   .nav-links a:hover { color: var(--teal); }
 
+  
+  .octocat-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .octocat-icon svg {
+    fill: currentColor;
+  }
+
   /* ── HERO ─────────────────────────────────── */
   .hero {
     background: var(--navy);
@@ -899,13 +911,14 @@
 <!-- NAV -->
 <nav>
   <span class="nav-logo">Hepzibha</span>
+  <span class ="btn-primary">Work in progress.....</span>
   <ul class="nav-links">
     <li><a href="#jd-match">Job Roles</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#links">Projects</a></li>
     <li><a href="#education">Education</a></li>
-    <li><a href="#profile">Portfolio</a></li>
+    <!-- <li><a href="ReactJs.html">Blogs</a></li> -->
   </ul>
 </nav>
 
@@ -918,7 +931,7 @@
       <h1 id="profile">Hepzibha Sundararaj</h1>
       <p class="hero-subtitle">Next.js 16+ &nbsp;·&nbsp; React 19+ &nbsp;·&nbsp;  Angular 19 &nbsp;·&nbsp; FastAPI &nbsp;·&nbsp;  Python Flask &nbsp;·&nbsp;  Java &nbsp;·&nbsp; LangGraph &nbsp;·&nbsp;  Lang Chain &nbsp;·&nbsp; Gen AI &nbsp;·&nbsp; Agentic AI &nbsp;·&nbsp; AWS Bedrock &nbsp;·&nbsp; UI/UX Design &nbsp;·&nbsp; Tableau</p>
       <p class="hero-desc">
-        15+ years experience and expertise in UI/UX design, Front-end, Backend, Fullstack developer, AI-GenAI, Agentic AI, AI Agent etc, building enterprise SaaS at Fortune 500 companies — Freddie Mac, State Street Bank, Johnson & Johnson, Alliance Insurance, Commerce Benefit Group, Mepline Technical Services LLC. Deep expertise in Next.js App Router, React 19, TypeScript, Tailwind CSS, FastAPI, and production-grade agentic AI with LangGraph, LangChain, @ag-ui/client, and A2A SDK and more.
+        15+ years experience and expertise in UI/UX design, Front-end, Backend, Fullstack developer, AI-GenAI, Agentic AI, AI Agent etc, building enterprise SaaS at Fortune 500 companies - Freddie Mac, State Street Bank, Johnson & Johnson, Alliance Insurance, Commerce Benefit Group, Mepline Technical Services LLC. Deep expertise in Next.js App Router, React 19, TypeScript, Tailwind CSS, FastAPI, and production-grade agentic AI with LangGraph, LangChain, @ag-ui/client, and A2A SDK and more.
       </p>
       <div class="hero-stats">
         <div class="stat">
@@ -935,9 +948,9 @@
         </div>
       </div>
       <div class="hero-ctas">
-        <a href="mailto:hepzibha.sundar@gmail.com" class="btn btn-primary">Get in touch</a>
+        <!-- <a href="mailto:hepzibha.sundar@gmail.com" class="btn btn-primary">Get in touch</a> -->
         <a href="Hepzibha_Sundararaj_AI_Resume.docx" class="btn btn-primary">⬇ Download Resume (.docx)</a>
-        <a href="https://hepzibha-portfolio.vercel.app/" target="_blank" class="btn btn-primary">View portfolio ↗</a>
+        <!-- <a href="https://hepzibha-portfolio.vercel.app/" target="_blank" class="btn btn-primary">View portfolio ↗</a> -->
       </div>
     </div>
 
@@ -958,11 +971,13 @@
           <span class="contact-chip-text">(608) 305-4633</span>
         </a>
         <a href="https://github.com/Hepzibha2026" target="_blank" class="contact-chip">
-          <span class="contact-chip-icon">⌥</span>
+          <span class="contact-chip-icon octocat-icon"><svg width="16" height="16" viewBox="0 0 98 96" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M48.854 0C21.839 0 0 22 0 49.217c0 21.756 13.993 40.172 33.405 46.69 2.427.49 3.316-1.059 3.316-2.362 0-1.141-.08-5.052-.08-9.127-13.59 2.934-16.42-5.867-16.42-5.867-2.184-5.704-5.42-7.17-5.42-7.17-4.448-3.015.324-3.015.324-3.015 4.934.326 7.523 5.052 7.523 5.052 4.367 7.496 11.404 5.378 14.235 4.074.404-3.178 1.699-5.378 3.074-6.6-10.839-1.141-22.243-5.378-22.243-24.283 0-5.378 1.94-9.778 5.014-13.2-.485-1.222-2.184-6.275.486-13.038 0 0 4.125-1.304 13.426 5.052a46.97 46.97 0 0 1 12.214-1.63c4.125 0 8.33.571 12.213 1.63 9.302-6.356 13.427-5.052 13.427-5.052 2.67 6.763.97 11.816.485 13.038 3.155 3.422 5.015 7.822 5.015 13.2 0 18.905-11.404 23.06-22.324 24.283 1.78 1.548 3.316 4.481 3.316 9.126 0 6.6-.08 11.897-.08 13.526 0 1.304.89 2.853 3.316 2.364 19.412-6.52 33.405-24.935 33.405-46.691C97.707 22 75.788 0 48.854 0z"/>
+            </svg></span>
           <span class="contact-chip-text">github.com/Hepzibha</span>
         </a>
         <a href="https://partyrock.aws/u/Hepzibha" target="_blank" class="contact-chip">
-          <span class="contact-chip-icon">⌥</span>
+          <span class="contact-chip-icon">☁</span>
           <span class="contact-chip-text">AWS-Bedrock/Partyrock/Hepzibha</span>
         </a>
       </div>
@@ -1068,7 +1083,7 @@
       <div class="jd-row">
         <div class="jd-check">✓</div>
         <div class="jd-row-content">
-          <strong>A2A SDK — External Agent Communication</strong>
+          <strong>A2A SDK-External Agent Communication</strong>
           <span>Implemented A2A SDK agent communication with token-based authentication in FastAPI backend</span>
         </div>
         <!-- <div class="jd-row-years">
@@ -1105,7 +1120,7 @@
         <div class="jd-check">✓</div>
         <div class="jd-row-content">
           <strong>Agile / Scrum environment</strong>
-          <span>Led Agile delivery across Fortune 500 clients — Freddie Mac, State Street, J&J</span>
+          <span>Led Agile delivery across Fortune 500 clients - Freddie Mac, State Street, J&J</span>
         </div>
         <!-- <div class="jd-row-years">
           <span class="has">10+ yrs</span>
@@ -1157,7 +1172,7 @@
         <span class="jd-pill">React Markdown + remark-gfm</span>
         <span class="jd-pill gold">FastAPI + Uvicorn</span>
         <span class="jd-pill gold">Python 3.10–3.12</span>
-        <span class="jd-pill gold">Java-JAva Microservices</span>
+        <span class="jd-pill gold">Java-Java Microservices</span>
         <span class="jd-pill gold">LangGraph</span>
         <span class="jd-pill gold">LangChain</span>
         <span class="jd-pill gold">GenAI / Agentic AI</span>
@@ -1288,18 +1303,18 @@
       <div class="timeline-item">
         <div class="timeline-header">
           <div>
-            <p class="timeline-title">Sr. React / FullStack Developer — React + AI Lead</p>
+            <p class="timeline-title">Sr. React / FullStack Developer - React + AI Lead</p>
             <p class="timeline-company">Freddie Mac / Conduent (Birla Soft)</p>
           </div>
           <span class="timeline-date">Feb 2022 – Present</span>
         </div>
         <ul class="timeline-highlights">
-          <li>Built a full-stack AI Agent interface using Next.js 16 and React 19 with LangGraph-orchestrated agents serving 50K+ users.</li>
-          <li>Architected agentic AI workflows with OpenAI, LangChain, and Claude Code for intelligent text generation, context-aware chat, and AI-assisted code features.</li>
-          <li>Engineered real-time data pipeline using Node.js, WebSockets, and Redis pub/sub — 99.9% uptime for 50K+ simultaneous users.</li>
-          <li>Optimized Node.js performance with worker threads and clustering, cutting API response time from 800ms to 120ms (85% improvement).</li>
-          <li>Led AI-driven development with Cursor and GitHub Copilot, accelerating feature delivery by 35% and reducing boilerplate authoring by 70%.</li>
-          <li>Migrated monolithic app to microservices, reducing deployment time by 60% across 8 independent services.</li>
+          <li>Built a full-stack AI Agent interface using Next.js 16 and React 19 with LangGraph to orchestrate multi-step AI workflows.</li>
+          <li>Architected agentic AI workflows with OpenAI, LangChain, and Claude Code for context-aware conversations, text generation, and AI-assisted coding features.</li>
+          <li>Developed a real-time data pipeline using Node.js, WebSockets, and Redis pub/sub to support live updates and scalable communication.</li>
+          <li>Improved backend performance by implementing Node.js worker threads, clustering, and asynchronous processing for high-concurrency workloads.</li>
+          <li>Leveraged Cursor and GitHub Copilot throughout development to streamline implementation, automate repetitive tasks, and accelerate feature development.</li>
+          <li>Migrated monolithic application to a microservices architecture, separating core services to simplify deployment, maintenance, and scalability.</li>
         </ul>
       </div>
 
@@ -1312,7 +1327,7 @@
           <span class="timeline-date">Aug 2019 – Jan 2022</span>
         </div>
         <ul class="timeline-highlights">
-          <li>Modernized legacy enterprise SaaS by migrating Angular apps to React and Next.js — improved load time and long-term maintainability.</li>
+          <li>Modernized legacy enterprise SaaS by migrating Angular apps to React and Next.js - improved load time and long-term maintainability.</li>
           <li>Integrated Power BI reports within React dashboards on Snowflake data pipelines for real-time self-service analytics.</li>
           <li>Managed serverless deployments on AWS EC2, S3, Lambda, and API Gateway; championed WCAG 508 accessibility compliance.</li>
         </ul>
@@ -1328,7 +1343,7 @@
         </div>
         <ul class="timeline-highlights">
           <li>Technical lead across micro-frontend React applications integrated with Java microservices and Python Flask/FastAPI backends.</li>
-          <li>Built cloud-native full-stack apps on AWS Lambda, ECS, and CodePipeline with TDD — test coverage greater than 90%.</li>
+          <li>Built cloud-native full-stack apps on AWS Lambda, ECS, and CodePipeline with TDD, test coverage greater than 90%.</li>
         </ul>
       </div>
 
@@ -1379,12 +1394,12 @@
         </div>
 
          <div class="edu-item">
-          <p class="edu-degree">MPhil — Computer Science</p>
+          <p class="edu-degree">MPhil - Computer Science</p>
           <p class="edu-institution">Madurai Kamaraj University, India</p>
         </div>
 
         <div class="edu-item">
-          <p class="edu-degree">MCA — Computer Science</p>
+          <p class="edu-degree">MCA - Computer Science</p>
           <p class="edu-institution">Madurai Kamaraj University, India</p>
         </div>
         <div class="edu-item">
@@ -1432,7 +1447,10 @@
         <span class="arrow">→</span>
       </a>
       <a href="https://github.com/Hepzibha2026" target="_blank" class="link-card">
-        <span class="link-card-icon">⌥</span>
+        <span class="link-card-icon octocat-icon">
+           <svg width="30.77" height="38.08" viewBox="0 0 98 96" xmlns="http://www.w3.org/2000/svg">
+              <path fill="#008080" fill-rule="evenodd" clip-rule="evenodd" d="M48.854 0C21.839 0 0 22 0 49.217c0 21.756 13.993 40.172 33.405 46.69 2.427.49 3.316-1.059 3.316-2.362 0-1.141-.08-5.052-.08-9.127-13.59 2.934-16.42-5.867-16.42-5.867-2.184-5.704-5.42-7.17-5.42-7.17-4.448-3.015.324-3.015.324-3.015 4.934.326 7.523 5.052 7.523 5.052 4.367 7.496 11.404 5.378 14.235 4.074.404-3.178 1.699-5.378 3.074-6.6-10.839-1.141-22.243-5.378-22.243-24.283 0-5.378 1.94-9.778 5.014-13.2-.485-1.222-2.184-6.275.486-13.038 0 0 4.125-1.304 13.426 5.052a46.97 46.97 0 0 1 12.214-1.63c4.125 0 8.33.571 12.213 1.63 9.302-6.356 13.427-5.052 13.427-5.052 2.67 6.763.97 11.816.485 13.038 3.155 3.422 5.015 7.822 5.015 13.2 0 18.905-11.404 23.06-22.324 24.283 1.78 1.548 3.316 4.481 3.316 9.126 0 6.6-.08 11.897-.08 13.526 0 1.304.89 2.853 3.316 2.364 19.412-6.52 33.405-24.935 33.405-46.691C97.707 22 75.788 0 48.854 0z"/>
+            </svg></span>
         <div class="link-card-info">
           <strong>GitHub</strong>
           <span>Open source projects</span>
@@ -1455,14 +1473,14 @@
         </div>
         <span class="arrow">→</span>
       </a>
-      <a href="mailto:hepzibha.sundar@gmail.com" class="link-card">
+      <!-- <a href="mailto:hepzibha.sundar@gmail.com" class="link-card">
         <span class="link-card-icon">✉</span>
         <div class="link-card-info">
           <strong>Email</strong>
           <span>hepzibha.sundar@gmail.com</span>
         </div>
         <span class="arrow">→</span>
-      </a>
+      </a> -->
       <a href="https://partyrock.aws/u/Hepzibha" target="_blank" class="link-card">
         <span class="link-card-icon">🤖</span>
         <div class="link-card-info">
@@ -1476,7 +1494,7 @@
 </section>
 
 <footer>
-  <p>Hepzibha Sundararaj &nbsp;·&nbsp; <strong>Sr. Full Stack Developer & AI Lead</strong> &nbsp;·&nbsp; React · Python · Agentic AI</p>
+  <p>Hepzibha Sundararaj &nbsp;·&nbsp; <strong>Sr. Full Stack Developer & AI Lead</strong> &nbsp;·&nbsp; React · Angular · Java · Python · Agentic AI</p>
 </footer>
 
 </body>
