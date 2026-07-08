@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hepzibha Sundararaj – Sr. Full Stack Developer & AI Lead</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0a1628;
+    --navy-mid: #0f2040;
+    --teal: #00c9a7;
+    --teal-dim: #00a788;
+    --gold: #f4a340;
+    --white: #ffffff;
+    --off-white: #f7f9fc;
+    --gray-light: #e8edf4;
+    --gray-mid: #8a97ab;
+    --text-dark: #0a1628;
+    --text-body: #3a4a60;
+    --card-bg: #ffffff;
+    --section-bg: #f7f9fc;
+  }
+
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; color: var(--text-body); background: var(--off-white); line-height: 1.7; }
+
+  /* ── SEARCH OVERLAY ─────────────────────────────────── */
+  .search-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    background: rgba(10,22,40,0.92);
+    backdrop-filter: blur(8px);
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 80px;
+  }
+  .search-overlay.active { display: flex; }
+
+  .search-box {
+    background: #0f2040;
+    border: 1px solid rgba(0,201,167,0.3);
+    border-radius: 16px;
+    width: 100%;
+    max-width: 680px;
+    padding: 1.5rem;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.5);
+  }
+
+  .search-input-wrap {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(255,255,255,0.06);
+    border: 1.5px solid rgba(0,201,167,0.4);
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin-bottom: 1.2rem;
+  }
+
+  .search-input-wrap svg { color: var(--teal); flex-shrink: 0; }
+
+  #skillSearchInput {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--white);
+    font-size: 1.05rem;
+    font-family: 'Inter', sans-serif;
+    width: 100%;
+    caret-color: var(--teal);
+  }
+
+  #skillSearchInput::placeholder { color: rgba(255,255,255,0.35); }
+
+  .search-close {
+    background: rgba(255,255,255,0.08);
+    border: none;
+    color: rgba(255,255,255,0.6);
+    font-size: 1.1rem;
+    width: 32px; height: 32px;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    transition: background 0.2s;
+  }
+  .search-close:hover { background: rgba(255,255,255,0.15); color: white; }
+
+  .search-results {
+    max-height: 420px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .search-results::-webkit-scrollbar { width: 4px; }
+  .search-results::-webkit-scrollbar-track { background: transparent; }
+  .search-results::-webkit-scrollbar-thumb { background: rgba(0,201,167,0.3); border-radius: 4px; }
+
+  .search-result-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 14px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.15s;
+    text-decoration: none;
+  }
+  .search-result-item:hover {
+    background: rgba(0,201,167,0.1);
+    border-color: rgba(0,201,167,0.3);
+  }
+
+  .result-icon {
+    font-size: 1.1rem;
+    margin-top: 1px;
+    flex-shrink: 0;
+  }
+
+  .result-body { flex: 1; min-width: 0; }
+  .result-term {
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--white);
+    display: block;
+    margin-bottom: 2px;
+  }
+  .result-term mark {
+    background: rgba(0,201,167,0.25);
+    color: var(--teal);
+    border-radius: 2px;
+    padding: 0 2px;
+  }
+  .result-context {
+    font-size: 0.76rem;
+    color: rgba(255,255,255,0.45);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .result-section-badge {
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    background: rgba(0,201,167,0.12);
+    color: var(--teal);
+    border: 1px solid rgba(0,201,167,0.2);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .result-section-badge.gold {
+    background: rgba(244,163,64,0.12);
+    color: var(--gold);
+    border-color: rgba(244,163,64,0.2);
+  }
+
+  .search-empty {
+    text-align: center;
+    padding: 2rem;
+    color: rgba(255,255,255,0.35);
+    font-size: 0.88rem;
+  }
+  .search-empty strong { display: block; font-size: 1rem; color: rgba(255,255,255,0.55); margin-bottom: 4px; }
+
+  .search-hint {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    flex-wrap: wrap;
+  }
+  .hint-chip {
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.4);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .hint-key {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 4px;
+    padding: 2px 6px;
+    font-size: 0.68rem;
+    color: rgba(255,255,255,0.55);
+  }
+
+  /* ── NAV ─────────────────────────────────── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(10,22,40,0.96);
+    backdrop-filter: blur(12px);
+    padding: 0 2rem; height: 60px;
+    display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 1px solid rgba(0,201,167,0.15);
+  }
+  .nav-logo { font-family: 'Playfair Display', serif; color: var(--teal); font-size: 1.2rem; letter-spacing: 0.5px; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.8px; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--teal); }
+
+  /* Search trigger button in nav */
+  .nav-search-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0,201,167,0.1);
+    border: 1px solid rgba(0,201,167,0.3);
+    color: rgba(255,255,255,0.75);
+    border-radius: 8px;
+    padding: 6px 14px;
+    font-size: 0.8rem;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .nav-search-btn:hover { background: rgba(0,201,167,0.2); color: var(--teal); }
+  .nav-search-btn .kbd { font-size: 0.65rem; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 3px; padding: 1px 5px; margin-left: 4px; }
+
+  .octocat-icon { display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .octocat-icon svg { fill: currentColor; }
+
+  /* ── HERO ─────────────────────────────────── */
+  .hero {
+    background: var(--navy); min-height: 70vh;
+    display: flex; align-items: center; padding: 40px 2rem;
+    position: relative; overflow: hidden;
+  }
+  .hero::before { content: ''; position: absolute; top: -100px; right: -100px; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(0,201,167,0.08) 0%, transparent 70%); pointer-events: none; }
+  .hero::after { content: ''; position: absolute; bottom: -80px; left: -80px; width: 400px; height: 400px; border-radius: 50%; background: radial-gradient(circle, rgba(244,163,64,0.06) 0%, transparent 70%); pointer-events: none; }
+  .hero-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 320px; gap: 4rem; align-items: center; width: 100%; }
+  .hero-badge { align-items: center; gap: 8px; margin-top: 2.5rem; background: rgba(0,201,167,0.12); border: 1px solid rgba(0,201,167,0.3); color: var(--teal); font-size: 0.78rem; font-weight: 600; letter-spacing: 1.2px; text-transform: uppercase; padding: 6px 14px; border-radius: 20px; margin-bottom: 1.5rem; }
+  .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 3vw, 3rem); color: var(--white); line-height: 1.05; margin-bottom: 0.4rem; }
+  .hero-subtitle { font-size: 1.05rem; color: var(--teal); font-weight: 500; margin-bottom: 1.4rem; letter-spacing: 0.3px; }
+  .hero-subtitle1 { font-size: 1.15rem; color: var(--white); font-weight: 500; margin-bottom: 1.4rem; letter-spacing: 0.3px; }
+  .hero-desc { font-size: 0.97rem; color: rgba(255,255,255,0.65); max-width: 520px; margin-bottom: 2.2rem; line-height: 1.8; }
+  .hero-stats { display: flex; gap: 2.5rem; margin-bottom: 2.5rem; }
+  .stat { text-align: center; }
+  .stat-num { display: block; font-size: 1.9rem; font-weight: 700; color: var(--white); line-height: 1; }
+  .stat-label { font-size: 0.72rem; color: var(--gray-mid); text-transform: uppercase; letter-spacing: 0.8px; margin-top: 4px; display: block; }
+  .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; border-radius: 6px; font-size: 0.88rem; font-weight: 600; text-decoration: none; transition: all 0.2s; cursor: pointer; border: none; }
+  .btn-primary { background: var(--teal); color: var(--navy); }
+  .btn-primary:hover { background: var(--teal-dim); transform: translateY(-1px); }
+
+  .hero-photo-wrap { display: flex; flex-direction: column; align-items: center; gap: 1.2rem; }
+  .photo-frame { border-radius: 60%; position: relative; flex-shrink: 0; height: 100%; width: 100%; }
+  .photo-frame img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; border-color: var(--teal); }
+  .photo-initials { border-radius: 60%; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 3.5rem; color: var(--teal); letter-spacing: 2px; overflow: hidden; }
+  .photo-initials img { width: 100%; height: 100%; border-radius: 70%; object-fit: cover; }
+  .hero-contact-chips { display: flex; flex-direction: column; gap: 8px; width: 100%; }
+  .contact-chip { display: flex; align-items: center; gap: 10px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; padding: 8px 14px; text-decoration: none; transition: background 0.2s; }
+  .contact-chip:hover { background: rgba(0,201,167,0.1); border-color: rgba(0,201,167,0.3); }
+  .contact-chip-icon { font-size: 14px; color: var(--teal); min-width: 16px; text-align: center; }
+  .contact-chip-text { font-size: 0.78rem; color: rgba(255,255,255,0.75); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+  /* ── SECTIONS SHARED ─────────────────────── */
+  section { padding: 40px 2rem; }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+  .section-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--teal); margin-bottom: 0.6rem; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.4rem); color: var(--text-dark); margin-bottom: 0.8rem; line-height: 1.2; }
+  .section-divider { width: 48px; height: 3px; background: var(--teal); border-radius: 2px; margin-bottom: 2.5rem; }
+
+  /* ── JD MATCH ───────────────────────────── */
+  #jd-match { background: var(--navy); }
+  #jd-match .section-label { color: var(--gold); }
+  #jd-match .section-title { color: var(--white); }
+  #jd-match .section-divider { background: var(--gold); }
+  .jd-intro { font-size: 0.92rem; color: rgba(255,255,255,0.65); max-width: 680px; margin-bottom: 2.5rem; line-height: 1.8; }
+  .jd-match-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+  .jd-row { display: flex; align-items: flex-start; gap: 12px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 1rem 1.2rem; transition: border-color 0.2s; }
+  .jd-row:hover { border-color: rgba(0,201,167,0.35); }
+  .jd-check { width: 22px; height: 22px; border-radius: 50%; background: rgba(0,201,167,0.15); border: 1.5px solid var(--teal); display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 11px; color: var(--teal); margin-top: 2px; }
+  .jd-row-content strong { display: block; font-size: 0.88rem; font-weight: 600; color: var(--white); margin-bottom: 2px; }
+  .jd-row-content span { font-size: 0.78rem; color: rgba(255,255,255,0.5); }
+  .jd-stack-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 1rem; }
+  .jd-pill { font-size: 0.75rem; font-weight: 600; padding: 5px 13px; border-radius: 20px; background: rgba(0,201,167,0.12); border: 1px solid rgba(0,201,167,0.3); color: var(--teal); }
+  .jd-pill.gold { background: rgba(244,163,64,0.12); border-color: rgba(244,163,64,0.3); color: var(--gold); }
+
+  /* ── SKILLS ─────────────────────────────── */
+  #skills { background: var(--white); }
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem; }
+  .skill-card { background: var(--off-white); border: 1px solid var(--gray-light); border-radius: 12px; padding: 1.5rem; transition: border-color 0.2s, transform 0.2s; }
+  .skill-card:hover { border-color: var(--teal); transform: translateY(-2px); }
+  .skill-card-icon { font-size: 1.6rem; margin-bottom: 0.8rem; display: block; }
+  .skill-card-title { font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: var(--text-dark); margin-bottom: 0.8rem; }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .skill-tag { font-size: 0.72rem; font-weight: 500; padding: 3px 10px; border-radius: 4px; background: var(--gray-light); color: var(--text-body); transition: all 0.2s; }
+  .skill-tag.highlight { background: rgba(0,201,167,0.12); color: #006b5a; border: 1px solid rgba(0,201,167,0.25); }
+  .skill-tag.search-match { background: rgba(0,201,167,0.25) !important; color: #004d3d !important; border: 1.5px solid var(--teal) !important; transform: scale(1.05); box-shadow: 0 0 0 2px rgba(0,201,167,0.15); }
+  .skill-card.has-match { border-color: var(--teal); box-shadow: 0 0 0 2px rgba(0,201,167,0.15); }
+  .skill-card.no-match { opacity: 0.3; }
+
+  /* ── EXPERIENCE ─────────────────────────── */
+  #experience { background: var(--section-bg); }
+  .timeline { position: relative; padding-left: 2rem; }
+  .timeline::before { content: ''; position: absolute; left: 0; top: 8px; bottom: 8px; width: 2px; background: linear-gradient(to bottom, var(--teal), var(--gray-light)); border-radius: 2px; }
+  .timeline-item { position: relative; margin-bottom: 2.5rem; padding-left: 1.5rem; transition: opacity 0.2s; }
+  .timeline-item::before { content: ''; position: absolute; left: -2.3rem; top: 8px; width: 12px; height: 12px; border-radius: 50%; background: var(--teal); border: 2px solid var(--white); box-shadow: 0 0 0 2px var(--teal); }
+  .timeline-item:not(:first-child)::before { background: var(--gray-mid); box-shadow: 0 0 0 2px var(--gray-mid); }
+  .timeline-header { display: flex; align-items: flex-start; gap: 1rem; flex-wrap: wrap; margin-bottom: 0.8rem; }
+  .timeline-title { font-size: 1.05rem; font-weight: 600; color: var(--text-dark); flex: 1; }
+  .timeline-company { font-size: 0.88rem; color: var(--teal-dim); font-weight: 500; }
+  .timeline-date { font-size: 0.75rem; color: var(--gray-mid); background: var(--gray-light); padding: 3px 10px; border-radius: 20px; white-space: nowrap; font-weight: 500; }
+  .timeline-highlights { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+  .timeline-highlights li { font-size: 0.88rem; color: var(--text-body); padding-left: 1rem; position: relative; }
+  .timeline-highlights li::before { content: '›'; position: absolute; left: 0; color: var(--teal); font-weight: 700; }
+  .timeline-item.no-match { opacity: 0.25; }
+  .timeline-item.has-match .timeline-title { color: var(--teal-dim); }
+
+  /* ── PROJECTS ─────────────────────────── */
+  #projects { background: var(--white); }
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+  .project-card { background: var(--white); border: 1px solid var(--gray-light); border-radius: 14px; padding: 1.75rem; transition: all 0.25s; position: relative; overflow: hidden; }
+  .project-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--teal); transform: scaleX(0); transform-origin: left; transition: transform 0.25s; }
+  .project-card:hover { border-color: rgba(0,201,167,0.3); transform: translateY(-3px); box-shadow: 0 8px 30px rgba(0,201,167,0.08); }
+  .project-card:hover::before { transform: scaleX(1); }
+  .project-icon { font-size: 1.8rem; margin-bottom: 0.9rem; display: block; }
+  .project-title { font-size: 1rem; font-weight: 600; color: var(--text-dark); margin-bottom: 0.5rem; }
+  .project-desc { font-size: 0.86rem; color: var(--text-body); line-height: 1.6; margin-bottom: 1rem; }
+  .project-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 1rem; }
+  .project-tag { font-size: 0.7rem; font-weight: 600; padding: 3px 10px; border-radius: 4px; background: rgba(0,201,167,0.08); color: #006b5a; border: 1px solid rgba(0,201,167,0.2); }
+  .project-link { font-size: 0.82rem; font-weight: 600; color: var(--teal-dim); text-decoration: none; display: inline-flex; align-items: center; gap: 4px; transition: gap 0.2s; }
+  .project-link:hover { gap: 8px; }
+
+  /* ── EDUCATION / CERTS ─────────────────── */
+  #education { background: var(--section-bg); }
+  .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .edu-block h3 { font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--text-dark); margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--teal); display: inline-block; }
+  .edu-item { padding: 0.75rem 0; border-bottom: 1px solid var(--gray-light); }
+  .edu-item:last-child { border-bottom: none; }
+  .edu-degree { font-size: 0.9rem; font-weight: 600; color: var(--text-dark); }
+  .edu-institution { font-size: 0.8rem; color: var(--gray-mid); margin-top: 2px; }
+  .cert-list { display: flex; flex-direction: column; gap: 8px; }
+  .cert-item { display: flex; align-items: flex-start; gap: 10px; font-size: 0.83rem; color: var(--text-body); padding: 8px 12px; background: var(--white); border: 1px solid var(--gray-light); border-radius: 8px; transition: all 0.2s; }
+  .cert-item.search-match { border-color: var(--teal); background: rgba(0,201,167,0.06); }
+  .cert-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--teal); flex-shrink: 0; margin-top: 6px; }
+
+  /* ── LINKS ───────────────────────────── */
+  #links { background: var(--navy); }
+  #links .section-label { color: var(--gold); }
+  #links .section-divider { background: var(--gold); }
+  .links-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; }
+  .link-card { display: flex; align-items: center; gap: 12px; padding: 1.1rem 1.25rem; background: var(--off-white); border: 1px solid var(--gray-light); border-radius: 12px; text-decoration: none; transition: all 0.2s; color: inherit; }
+  .link-card:hover { background: var(--white); border-color: var(--teal); transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0,201,167,0.1); }
+  .link-card-icon { font-size: 1.4rem; flex-shrink: 0; }
+  .link-card-info strong { display: block; font-size: 0.88rem; font-weight: 600; color: var(--text-dark); }
+  .link-card-info span { font-size: 0.75rem; color: var(--gray-mid); }
+  .arrow { margin-left: auto; color: var(--teal); font-size: 1rem; opacity: 0; transition: opacity 0.2s; }
+  .link-card:hover .arrow { opacity: 1; }
+
+  /* ── FOOTER ─────────────────────────── */
+  footer { background: var(--navy); color: rgba(255,255,255,0.5); text-align: center; padding: 2rem; font-size: 0.82rem; border-top: 1px solid rgba(0,201,167,0.1); }
+  footer strong { color: var(--teal); }
+
+  /* ── HIGHLIGHT on page ───────────────── */
+  .page-highlight { background: rgba(0,201,167,0.2); outline: 2px solid var(--teal); border-radius: 3px; }
+
+  @media (max-width: 768px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-photo-wrap { order: -1; }
+    .photo-frame { width: 180px; height: 230px; }
+    .edu-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+    .links-grid { grid-template-columns: repeat(2, 1fr); }
+    .nav-search-btn .kbd { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── SEARCH OVERLAY ─────────────────────────────────── -->
+<div class="search-overlay" id="searchOverlay" role="dialog" aria-label="Skill search">
+  <div class="search-box">
+    <div class="search-input-wrap">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--teal)">
+        <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+      </svg>
+      <input type="text" id="skillSearchInput" placeholder="Search skills, tech, tools, certifications…" autocomplete="off" spellcheck="false">
+      <button class="search-close" id="searchClose" aria-label="Close search">✕</button>
+    </div>
+    <div class="search-results" id="searchResults">
+      <div class="search-empty">
+        <strong>Search anything</strong>
+        Try "React", "LangGraph", "AWS", "FastAPI", "Figma"…
+      </div>
+    </div>
+    <div class="search-hint">
+      <span class="hint-chip"><span class="hint-key">↵</span> to jump</span>
+      <span class="hint-chip"><span class="hint-key">↑↓</span> navigate</span>
+      <span class="hint-chip"><span class="hint-key">Esc</span> close</span>
+      <span class="hint-chip"><span class="hint-key">⌘K</span> open anywhere</span>
+    </div>
+  </div>
+</div>
+
+<!-- ── NAV ─────────────────────────────────── -->
+<nav>
+  <span class="nav-logo">Hepzibha</span>
+  <button class="nav-search-btn" id="navSearchBtn" aria-label="Open skill search">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+    </svg>
+    Search skills
+    <span class="kbd">⌘K</span>
+  </button>
+  <ul class="nav-links">
+    <li><a href="#jd-match">Job Roles</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#links">Projects</a></li>
+    <li><a href="#education">Education</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge">Available for opportunities<br>-Platform Engineer-FrontEnd<span style="color: var(--gold);"> (React JS, Angular)</span><span>-API-Backend-FullStack-AI/ML, Mobile</span><span style="color: var(--gold);">(React Native/iOS/Android)</span><span>,UI/UX design, AI Agent, Agentic AI, LLM, GenAI, LangGraph, LangChain</span></div>
+      <h1 id="profile">Hepzibha Sundararaj</h1>
+      <p class="hero-subtitle">Next.js 16+ &nbsp;·&nbsp; React 19+ &nbsp;·&nbsp; Angular 19 &nbsp;·&nbsp; FastAPI &nbsp;·&nbsp; Python Flask &nbsp;·&nbsp; Java &nbsp;·&nbsp; LangGraph &nbsp;·&nbsp; LangChain &nbsp;·&nbsp; Gen AI &nbsp;·&nbsp; Agentic AI &nbsp;·&nbsp; AWS Bedrock &nbsp;·&nbsp; UI/UX Design &nbsp;·&nbsp; Tableau</p>
+      <p class="hero-desc">15+ years experience and expertise in UI/UX design, Front-end, Backend, Fullstack developer, AI-GenAI, Agentic AI, AI Agent etc, building enterprise SaaS at Fortune 500 companies - Freddie Mac, State Street Bank, Johnson &amp; Johnson, Alliance Insurance, Commerce Benefit Group, Mepline Technical Services LLC. Deep expertise in Next.js App Router, React 19, TypeScript, Tailwind CSS, FastAPI, and production-grade agentic AI with LangGraph, LangChain, @ag-ui/client, and A2A SDK and more.</p>
+      <div class="hero-stats">
+        <div class="stat"><span class="stat-num">15+</span><span class="stat-label">Years exp.</span></div>
+        <div class="stat"><span class="stat-num">50K+</span><span class="stat-label">Users served</span></div>
+        <div class="stat"><span class="stat-num">F500</span><span class="stat-label">Clients</span></div>
+      </div>
+      <div class="hero-ctas">
+        <a href="Hepzibha_Sundararaj_AI_Resume.docx" class="btn btn-primary">⬇ Download Resume (.docx)</a>
+      </div>
+    </div>
+    <div class="hero-photo-wrap">
+      <div class="photo-frame">
+        <div class="photo-initials">
+          <img src="profile.png" alt="Hepzibha Sundararaj" width="100%" height="100%">
+        </div>
+      </div>
+      <div class="hero-contact-chips">
+        <a href="mailto:hepzibha.sundar@gmail.com" class="contact-chip">
+          <span class="contact-chip-icon">✉</span>
+          <span class="contact-chip-text">hepzibha.sundar@gmail.com</span>
+        </a>
+        <a href="tel:6083054633" class="contact-chip">
+          <span class="contact-chip-icon">☎</span>
+          <span class="contact-chip-text">(608) 305-4633</span>
+        </a>
+        <a href="https://github.com/Hepzibha2026" target="_blank" class="contact-chip">
+          <span class="contact-chip-icon octocat-icon">
+            <svg width="16" height="16" viewBox="0 0 98 96" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M48.854 0C21.839 0 0 22 0 49.217c0 21.756 13.993 40.172 33.405 46.69 2.427.49 3.316-1.059 3.316-2.362 0-1.141-.08-5.052-.08-9.127-13.59 2.934-16.42-5.867-16.42-5.867-2.184-5.704-5.42-7.17-5.42-7.17-4.448-3.015.324-3.015.324-3.015 4.934.326 7.523 5.052 7.523 5.052 4.367 7.496 11.404 5.378 14.235 4.074.404-3.178 1.699-5.378 3.074-6.6-10.839-1.141-22.243-5.378-22.243-24.283 0-5.378 1.94-9.778 5.014-13.2-.485-1.222-2.184-6.275.486-13.038 0 0 4.125-1.304 13.426 5.052a46.97 46.97 0 0 1 12.214-1.63c4.125 0 8.33.571 12.213 1.63 9.302-6.356 13.427-5.052 13.427-5.052 2.67 6.763.97 11.816.485 13.038 3.155 3.422 5.015 7.822 5.015 13.2 0 18.905-11.404 23.06-22.324 24.283 1.78 1.548 3.316 4.481 3.316 9.126 0 6.6-.08 11.897-.08 13.526 0 1.304.89 2.853 3.316 2.364 19.412-6.52 33.405-24.935 33.405-46.691C97.707 22 75.788 0 48.854 0z"/>
+            </svg>
+          </span>
+          <span class="contact-chip-text">github.com/Hepzibha</span>
+        </a>
+        <a href="https://www.linkedin.com/in/hepzibha-sundar/" target="_blank" class="contact-chip">
+          <span class="contact-chip-icon">
+            <svg width="16" height="16" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" clip-rule="evenodd" fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+          </span>
+          <span class="contact-chip-text">linkedin.com/in/hepzibha-sundar/</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JD MATCH -->
+<section id="jd-match">
+  <div class="section-inner">
+    <p class="section-label">Role and Technical alignment</p>
+    <h2 class="section-title">Job Roles and Responsibilities</h2>
+    <div class="section-divider"></div>
+    <p class="jd-intro">Every role maps directly to production experience. Below is a point-by-point Hepzibha's verified hands-on work.</p>
+    <div class="jd-match-grid">
+      <div class="jd-row"><div class="jd-check">✓</div><div class="jd-row-content"><strong>Next.js (App Router v16+)</strong><span>Built full-stack AI Agent UI on Next.js 16 App Router at Freddie Mac</span></div></div>
+      <div class="jd-row"><div class="jd-check">✓</div><div class="jd-row-content"><strong>React v19+ + TypeScript</strong><span>React 19 with full TypeScript type-safety across distributed AI systems</span></div></div>
+      <div class="jd-row"><div class="jd-check">✓</div><div class="jd-row-content"><strong>Tailwind CSS 4.x + DaisyUI</strong><span>Engineered type-safe UI in Tailwind CSS 4.x with DaisyUI components at Freddie Mac</span></div></div>
+      <div class="jd-row"><div class="jd-check">✓</div><div class="jd-row-content"><strong>FastAPI (Python 3.10–3.12) + Uvicorn</strong><span>Developed Python FastAPI backend with LangChain/LangGraph for multi-step AI orchestration</span></div></div>
+      <div class="jd-row"><div class="jd-check">✓</div><div class="jd-row-content"><strong>LangGraph + LangChain + OpenAI/Horizon</strong><span>Architected multi-agent LangGraph pipelines with OpenAI/Horizon token-based auth</span></div></div>
+      <div class="jd-row"><div class="jd-check">✓</div><div class="jd-row-content"><strong>@ag-ui/client Agent Integration</strong><span>Integrated @ag-ui/client for real-time bidirectional frontend–LangGraph agent communication</span></div></div>
+      <div class="jd-row"><div class="jd-check">✓</div><div class="jd-row-content"><strong>React Markdown + remark-gfm</strong><span>Implemented markdown rendering via React Markdown with remark-gfm for rich agent responses</span></div></div>
+      <div class="jd-row"><div class="jd-check">✓</div><div class="jd-row-content"><strong>A2A SDK — External Agent Communication</strong><span>Implemented A2A SDK agent communication with token-based authentication in FastAPI backend</span></div></div>
+      <div class="jd-row"><div class="jd-check">✓</div><div class="jd-row-content"><strong>Geist Fonts (Sans + Mono) Typography</strong><span>Applied Geist font system for professional AI-focused UI typography</span></div></div>
+      <div class="jd-row"><div class="jd-check">✓</div><div class="jd-row-content"><strong>Proven AI-focused UI project experience</strong><span>50K+ user AI agent platform at Freddie Mac</span></div></div>
+      <div class="jd-row"><div class="jd-check">✓</div><div class="jd-row-content"><strong>Agile / Scrum environment</strong><span>Led Agile delivery across Fortune 500 clients - Freddie Mac, State Street, J&amp;J</span></div></div>
+      <div class="jd-row"><div class="jd-check">✓</div><div class="jd-row-content"><strong>Mobile App — React Native, iOS, Android</strong><span>Built and deploy cross-platform mobile apps for iOS and Android using React Native.</span></div></div>
+      <div class="jd-row"><div class="jd-check">✓</div><div class="jd-row-content"><strong>UI / UX Design</strong><span>Designed intuitive, visually compelling user interfaces and experiences.</span></div></div>
+      <div class="jd-row"><div class="jd-check">✓</div><div class="jd-row-content"><strong>Generative AI</strong><span>Build intelligent applications powered by large language models, image generation, and AI APIs.</span></div></div>
+      <div class="jd-row"><div class="jd-check">✓</div><div class="jd-row-content"><strong>AI/ML — Agentic AI</strong><span>Developed and deployed agentic AI solutions using LangGraph and LangChain frameworks at Freddie Mac</span></div></div>
+    </div>
+    <div>
+      <p style="font-size:0.8rem; color:rgba(255,255,255,0.4); margin-bottom:0.8rem; text-transform:uppercase; letter-spacing:1px; font-weight:600;">Exact tech stacks from Projects</p>
+      <div class="jd-stack-pills">
+        <span class="jd-pill">Next.js 16.1.6 App Router</span><span class="jd-pill">React 19.2.3</span><span class="jd-pill">TypeScript</span><span class="jd-pill">Tailwind CSS 4.x</span><span class="jd-pill">DaisyUI</span><span class="jd-pill">@ag-ui/client</span><span class="jd-pill">React Markdown + remark-gfm</span>
+        <span class="jd-pill gold">FastAPI + Uvicorn</span><span class="jd-pill gold">Python 3.10–3.12</span><span class="jd-pill gold">Java-Java Microservices</span><span class="jd-pill gold">LangGraph</span><span class="jd-pill gold">LangChain</span><span class="jd-pill gold">GenAI / Agentic AI</span><span class="jd-pill gold">AI Agent / MVC server</span><span class="jd-pill gold">A2A SDK</span><span class="jd-pill gold">OpenAI / Horizon</span><span class="jd-pill gold">Token-based Auth</span>
+        <span class="jd-pill">Geist Fonts</span><span class="jd-pill">Agile / Scrum</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-inner">
+    <p class="section-label">Technical expertise</p>
+    <h2 class="section-title">Core competencies</h2>
+    <div class="section-divider"></div>
+    <div class="skills-grid">
+      <div class="skill-card" data-category="Frontend">
+        <span class="skill-card-icon">⚛</span>
+        <p class="skill-card-title">Frontend</p>
+        <div class="skill-tags">
+          <span class="skill-tag highlight">React 19+</span><span class="skill-tag highlight">Next.js 16 App Router</span><span class="skill-tag highlight">TypeScript</span><span class="skill-tag highlight">Tailwind CSS 4.x</span><span class="skill-tag highlight">DaisyUI</span><span class="skill-tag highlight">@ag-ui/client</span><span class="skill-tag highlight">Angular 19</span><span class="skill-tag">React Markdown + remark-gfm</span><span class="skill-tag">Geist Fonts</span><span class="skill-tag">Redux</span><span class="skill-tag">Material UI</span><span class="skill-tag">Vue.js</span><span class="skill-tag">SASS</span>
+        </div>
+      </div>
+      <div class="skill-card" data-category="Backend">
+        <span class="skill-card-icon">🛠</span>
+        <p class="skill-card-title">Backend</p>
+        <div class="skill-tags">
+          <span class="skill-tag highlight">FastAPI + Uvicorn</span><span class="skill-tag highlight">Python 3.10–3.12</span><span class="skill-tag highlight">Python Flask</span><span class="skill-tag highlight">Java Spring Boot</span><span class="skill-tag">Node.js</span><span class="skill-tag">Express</span><span class="skill-tag">Django</span><span class="skill-tag">GraphQL</span><span class="skill-tag">Microservices</span><span class="skill-tag">Pydantic Schemas</span>
+        </div>
+      </div>
+      <div class="skill-card" data-category="AI">
+        <span class="skill-card-icon">🤖</span>
+        <p class="skill-card-title">Agentic AI &amp; LLM</p>
+        <div class="skill-tags">
+          <span class="skill-tag highlight">LangGraph</span><span class="skill-tag highlight">LangChain</span><span class="skill-tag highlight">OpenAI / Horizon</span><span class="skill-tag highlight">A2A SDK</span><span class="skill-tag highlight">@ag-ui/client</span><span class="skill-tag">RAG Pipelines</span><span class="skill-tag">Function / Tool Calling</span><span class="skill-tag">Token-based Auth</span><span class="skill-tag">Claude Code</span><span class="skill-tag">Codex</span><span class="skill-tag">GitHub Copilot</span>
+        </div>
+      </div>
+      <div class="skill-card" data-category="Cloud">
+        <span class="skill-card-icon">☁</span>
+        <p class="skill-card-title">Cloud &amp; DevOps</p>
+        <div class="skill-tags">
+          <span class="skill-tag highlight">AWS</span><span class="skill-tag highlight">GCP</span><span class="skill-tag highlight">Azure</span><span class="skill-tag">Kubernetes</span><span class="skill-tag">Docker</span><span class="skill-tag">Jenkins</span><span class="skill-tag">GitLab CI/CD</span><span class="skill-tag">SageMaker</span><span class="skill-tag">Lambda</span><span class="skill-tag">Bedrock</span>
+        </div>
+      </div>
+      <div class="skill-card" data-category="Database">
+        <span class="skill-card-icon">🗄</span>
+        <p class="skill-card-title">Databases</p>
+        <div class="skill-tags">
+          <span class="skill-tag">Snowflake</span><span class="skill-tag">MongoDB</span><span class="skill-tag">Oracle</span><span class="skill-tag">MySQL</span><span class="skill-tag">SQL Server</span><span class="skill-tag">SAP HANA</span>
+        </div>
+      </div>
+      <div class="skill-card" data-category="UX">
+        <span class="skill-card-icon">🎨</span>
+        <p class="skill-card-title">UI/UX &amp; Testing</p>
+        <div class="skill-tags">
+          <span class="skill-tag">Figma</span><span class="skill-tag">Adobe XD</span><span class="skill-tag">Jest</span><span class="skill-tag">React Testing Library</span><span class="skill-tag">Cypress</span><span class="skill-tag">Playwright</span><span class="skill-tag">WCAG 2.1</span><span class="skill-tag">Storybook</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-inner">
+    <p class="section-label">Career journey</p>
+    <h2 class="section-title">Professional experience</h2>
+    <div class="section-divider"></div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-header">
+          <div><p class="timeline-title">Sr. React / FullStack Developer — React + AI Lead</p><p class="timeline-company">Freddie Mac / Conduent (Birla Soft)</p></div>
+          <span class="timeline-date">Feb 2022 – Present</span>
+        </div>
+        <ul class="timeline-highlights">
+          <li>Built a full-stack AI Agent interface using Next.js 16 and React 19 with LangGraph to orchestrate multi-step AI workflows.</li>
+          <li>Architected agentic AI workflows with OpenAI, LangChain, and Claude Code for context-aware conversations, text generation, and AI-assisted coding features.</li>
+          <li>Developed a real-time data pipeline using Node.js, WebSockets, and Redis pub/sub to support live updates and scalable communication.</li>
+          <li>Improved backend performance by implementing Node.js worker threads, clustering, and asynchronous processing for high-concurrency workloads.</li>
+          <li>Leveraged Cursor and GitHub Copilot throughout development to streamline implementation, automate repetitive tasks, and accelerate feature development.</li>
+          <li>Migrated monolithic application to a microservices architecture, separating core services to simplify deployment, maintenance, and scalability.</li>
+        </ul>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-header">
+          <div><p class="timeline-title">Sr. React / Full Stack Developer</p><p class="timeline-company">State Street Bank, Boston, MA</p></div>
+          <span class="timeline-date">Aug 2019 – Jan 2022</span>
+        </div>
+        <ul class="timeline-highlights">
+          <li>Modernized legacy enterprise SaaS by migrating Angular apps to React and Next.js.</li>
+          <li>Integrated Power BI reports within React dashboards on Snowflake data pipelines for real-time self-service analytics.</li>
+          <li>Managed serverless deployments on AWS EC2, S3, Lambda, and API Gateway; championed WCAG 508 accessibility compliance.</li>
+        </ul>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-header">
+          <div><p class="timeline-title">UI Developer / React JS Developer</p><p class="timeline-company">Johnson &amp; Johnson, New Brunswick, NJ</p></div>
+          <span class="timeline-date">May 2017 – Jul 2019</span>
+        </div>
+        <ul class="timeline-highlights">
+          <li>Technical lead across micro-frontend React applications integrated with Java microservices and Python Flask/FastAPI backends.</li>
+          <li>Built cloud-native full-stack apps on AWS Lambda, ECS, and CodePipeline with TDD, test coverage greater than 90%.</li>
+        </ul>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-header">
+          <div><p class="timeline-title">UI Developer / React JS Developer</p><p class="timeline-company">Alliance Insurance, Arlington, TX</p></div>
+          <span class="timeline-date">Jan 2016 – Apr 2017</span>
+        </div>
+        <ul class="timeline-highlights">
+          <li>Built SPAs using React, Redux, and Router with JWT auth; created RESTful APIs with Node.js and Flask.</li>
+        </ul>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-header">
+          <div><p class="timeline-title">UI Developer / Oracle PL/SQL Developer</p><p class="timeline-company">Mepline Technical Services LLC, Dubai</p></div>
+          <span class="timeline-date">Nov 2005 – Aug 2012</span>
+        </div>
+        <ul class="timeline-highlights">
+          <li>Built enterprise UIs using Oracle APEX; developed complex PL/SQL models and performed database performance tuning.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-inner">
+    <p class="section-label">Credentials</p>
+    <h2 class="section-title">Education &amp; certifications</h2>
+    <div class="section-divider"></div>
+    <div class="edu-grid">
+      <div class="edu-block">
+        <h3>Education</h3>
+        <div class="edu-item"><p class="edu-degree">MS in Information Technology</p><p class="edu-institution">University of the Cumberlands, Kentucky, USA</p></div>
+        <div class="edu-item"><p class="edu-degree">MPhil — Computer Science</p><p class="edu-institution">Madurai Kamaraj University, India</p></div>
+        <div class="edu-item"><p class="edu-degree">MCA — Computer Science</p><p class="edu-institution">Madurai Kamaraj University, India</p></div>
+        <div class="edu-item"><p class="edu-degree">Web Developer Associate Degree</p><p class="edu-institution">MATC, Madison, WI</p></div>
+        <div class="edu-item"><p class="edu-degree">BSc Physics</p><p class="edu-institution">M S University, Tirunelveli, India</p></div>
+      </div>
+      <div class="edu-block">
+        <h3>Certifications</h3>
+        <div class="cert-list">
+          <div class="cert-item"><span class="cert-dot"></span>AWS Generative AI and AI Agents with Amazon Bedrock</div>
+          <div class="cert-item"><span class="cert-dot"></span>Generative AI Leader – Google Cloud</div>
+          <div class="cert-item"><span class="cert-dot"></span>OCI – Oracle Cloud Infrastructure 2025 Certified AI Foundations Associate</div>
+          <div class="cert-item"><span class="cert-dot"></span>AWS AI &amp; ML Scholars – Udacity</div>
+          <div class="cert-item"><span class="cert-dot"></span>Meta Full Stack Developer – Front-end &amp; Back-end</div>
+          <div class="cert-item"><span class="cert-dot"></span>Google UX Design</div>
+          <div class="cert-item"><span class="cert-dot"></span>Building Smarter Software: GenAI Tools &amp; Practice – Coursera</div>
+          <div class="cert-item"><span class="cert-dot"></span>AI Agents &amp; Context Engineering – O'Reilly</div>
+          <div class="cert-item"><span class="cert-dot"></span>OCP – Oracle 11g Certified Professional, Advanced PL/SQL Developer</div>
+          <div class="cert-item"><span class="cert-dot"></span>Database and Big Data Analytics – UC Santa Cruz</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LINKS -->
+<section id="links">
+  <div class="section-inner">
+    <p class="section-label" style="color:var(--gold)">Connect</p>
+    <h2 class="hero-subtitle1">Find my contributed projects online</h2>
+    <div class="section-divider" style="background:var(--gold)"></div>
+    <div class="links-grid">
+      <a href="https://hepzibha-portfolio.vercel.app/" target="_blank" class="link-card">
+        <span class="link-card-icon">🌐</span>
+        <div class="link-card-info"><strong>Portfolio</strong><span>Live website</span></div>
+        <span class="arrow">→</span>
+      </a>
+      <a href="https://github.com/Hepzibha2026" target="_blank" class="link-card">
+        <span class="link-card-icon octocat-icon">
+          <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+            <rect width="32" height="32" rx="8" fill="#24292f"/>
+            <path fill="#ffffff" fill-rule="evenodd" clip-rule="evenodd" d="M16 2.667C8.636 2.667 2.667 8.636 2.667 16c0 5.891 3.821 10.888 9.118 12.656.667.122.91-.289.91-.642 0-.317-.012-1.368-.018-2.481-3.706.805-4.489-1.59-4.489-1.59-.606-1.54-1.48-1.95-1.48-1.95-1.21-.826.091-.81.091-.81 1.339.094 2.044 1.374 2.044 1.374 1.19 2.039 3.124 1.45 3.885 1.109.12-.861.466-1.45.848-1.784-2.963-.337-6.075-1.48-6.075-6.592 0-1.457.52-2.648 1.373-3.581-.138-.337-.595-1.694.13-3.53 0 0 1.12-.358 3.666 1.368a12.74 12.74 0 0 1 3.334-.449c1.13 0 2.268.153 3.334.449 2.543-1.726 3.66-1.368 3.66-1.368.728 1.836.27 3.193.132 3.53.856.933 1.372 2.124 1.372 3.58 0 5.124-3.117 6.252-6.088 6.582.478.412.904 1.225.904 2.468 0 1.784-.016 3.222-.016 3.661 0 .356.24.771.916.641C26.177 26.882 30 21.888 30 16c0-7.364-5.97-13.333-14-13.333z"/>
+          </svg>
+        </span>
+        <div class="link-card-info"><strong>GitHub</strong><span>Open source projects</span></div>
+        <span class="arrow">→</span>
+      </a>
+      <a href="https://social-prize-54805720.figma.site/" target="_blank" class="link-card">
+        <span class="link-card-icon">🎨</span>
+        <div class="link-card-info"><strong>Figma</strong><span>UI/UX designs</span></div>
+        <span class="arrow">→</span>
+      </a>
+      <a href="https://public.tableau.com/app/profile/hepsi.ss/vizzes" target="_blank" class="link-card">
+        <span class="link-card-icon">📊</span>
+        <div class="link-card-info"><strong>Tableau Public</strong><span>Data dashboards</span></div>
+        <span class="arrow">→</span>
+      </a>
+      <a href="https://partyrock.aws/u/Hepzibha" target="_blank" class="link-card">
+        <span class="link-card-icon">🤖</span>
+        <div class="link-card-info"><strong>AWS Bedrock / PartyRock</strong><span>GenAI Projects</span></div>
+        <span class="arrow">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Hepzibha Sundararaj &nbsp;·&nbsp; <strong>Sr. Full Stack Developer &amp; AI Lead</strong> &nbsp;·&nbsp; React · Angular · Java · Python · Agentic AI</p>
+</footer>
+
+<script>
+// ── Search Data ────────────────────────────────────────────
+const SEARCH_DATA = [
+  // Skills
+  { term: 'React 19+', section: 'Skills', icon: '⚛', anchor: '#skills', badge: 'Frontend', badgeClass: '' },
+  { term: 'Next.js 16 App Router', section: 'Skills', icon: '⚛', anchor: '#skills', badge: 'Frontend', badgeClass: '' },
+  { term: 'TypeScript', section: 'Skills', icon: '⚛', anchor: '#skills', badge: 'Frontend', badgeClass: '' },
+  { term: 'Tailwind CSS 4.x', section: 'Skills', icon: '⚛', anchor: '#skills', badge: 'Frontend', badgeClass: '' },
+  { term: 'DaisyUI', section: 'Skills', icon: '⚛', anchor: '#skills', badge: 'Frontend', badgeClass: '' },
+  { term: '@ag-ui/client', section: 'Skills', icon: '⚛', anchor: '#skills', badge: 'Frontend', badgeClass: '' },
+  { term: 'Angular 19', section: 'Skills', icon: '⚛', anchor: '#skills', badge: 'Frontend', badgeClass: '' },
+  { term: 'React Markdown + remark-gfm', section: 'Skills', icon: '⚛', anchor: '#skills', badge: 'Frontend', badgeClass: '' },
+  { term: 'Geist Fonts', section: 'Skills', icon: '⚛', anchor: '#skills', badge: 'Frontend', badgeClass: '' },
+  { term: 'Redux', section: 'Skills', icon: '⚛', anchor: '#skills', badge: 'Frontend', badgeClass: '' },
+  { term: 'Material UI', section: 'Skills', icon: '⚛', anchor: '#skills', badge: 'Frontend', badgeClass: '' },
+  { term: 'Vue.js', section: 'Skills', icon: '⚛', anchor: '#skills', badge: 'Frontend', badgeClass: '' },
+  { term: 'SASS', section: 'Skills', icon: '⚛', anchor: '#skills', badge: 'Frontend', badgeClass: '' },
+  { term: 'FastAPI + Uvicorn', section: 'Skills', icon: '🛠', anchor: '#skills', badge: 'Backend', badgeClass: 'gold' },
+  { term: 'Python 3.10–3.12', section: 'Skills', icon: '🛠', anchor: '#skills', badge: 'Backend', badgeClass: 'gold' },
+  { term: 'Python Flask', section: 'Skills', icon: '🛠', anchor: '#skills', badge: 'Backend', badgeClass: 'gold' },
+  { term: 'Java Spring Boot', section: 'Skills', icon: '🛠', anchor: '#skills', badge: 'Backend', badgeClass: 'gold' },
+  { term: 'Node.js', section: 'Skills', icon: '🛠', anchor: '#skills', badge: 'Backend', badgeClass: 'gold' },
+  { term: 'Express', section: 'Skills', icon: '🛠', anchor: '#skills', badge: 'Backend', badgeClass: 'gold' },
+  { term: 'Django', section: 'Skills', icon: '🛠', anchor: '#skills', badge: 'Backend', badgeClass: 'gold' },
+  { term: 'GraphQL', section: 'Skills', icon: '🛠', anchor: '#skills', badge: 'Backend', badgeClass: 'gold' },
+  { term: 'Microservices', section: 'Skills', icon: '🛠', anchor: '#skills', badge: 'Backend', badgeClass: 'gold' },
+  { term: 'LangGraph', section: 'Skills', icon: '🤖', anchor: '#skills', badge: 'Agentic AI', badgeClass: 'gold' },
+  { term: 'LangChain', section: 'Skills', icon: '🤖', anchor: '#skills', badge: 'Agentic AI', badgeClass: 'gold' },
+  { term: 'OpenAI / Horizon', section: 'Skills', icon: '🤖', anchor: '#skills', badge: 'Agentic AI', badgeClass: 'gold' },
+  { term: 'A2A SDK', section: 'Skills', icon: '🤖', anchor: '#skills', badge: 'Agentic AI', badgeClass: 'gold' },
+  { term: 'RAG Pipelines', section: 'Skills', icon: '🤖', anchor: '#skills', badge: 'Agentic AI', badgeClass: 'gold' },
+  { term: 'Token-based Auth', section: 'Skills', icon: '🤖', anchor: '#skills', badge: 'Agentic AI', badgeClass: 'gold' },
+  { term: 'Claude Code', section: 'Skills', icon: '🤖', anchor: '#skills', badge: 'Agentic AI', badgeClass: 'gold' },
+  { term: 'GitHub Copilot', section: 'Skills', icon: '🤖', anchor: '#skills', badge: 'Agentic AI', badgeClass: 'gold' },
+  { term: 'AWS', section: 'Skills', icon: '☁', anchor: '#skills', badge: 'Cloud', badgeClass: '' },
+  { term: 'GCP', section: 'Skills', icon: '☁', anchor: '#skills', badge: 'Cloud', badgeClass: '' },
+  { term: 'Azure', section: 'Skills', icon: '☁', anchor: '#skills', badge: 'Cloud', badgeClass: '' },
+  { term: 'Kubernetes', section: 'Skills', icon: '☁', anchor: '#skills', badge: 'Cloud', badgeClass: '' },
+  { term: 'Docker', section: 'Skills', icon: '☁', anchor: '#skills', badge: 'Cloud', badgeClass: '' },
+  { term: 'SageMaker', section: 'Skills', icon: '☁', anchor: '#skills', badge: 'Cloud', badgeClass: '' },
+  { term: 'AWS Bedrock', section: 'Skills', icon: '☁', anchor: '#skills', badge: 'Cloud', badgeClass: '' },
+  { term: 'Snowflake', section: 'Skills', icon: '🗄', anchor: '#skills', badge: 'Database', badgeClass: '' },
+  { term: 'MongoDB', section: 'Skills', icon: '🗄', anchor: '#skills', badge: 'Database', badgeClass: '' },
+  { term: 'Oracle', section: 'Skills', icon: '🗄', anchor: '#skills', badge: 'Database', badgeClass: '' },
+  { term: 'MySQL', section: 'Skills', icon: '🗄', anchor: '#skills', badge: 'Database', badgeClass: '' },
+  { term: 'SQL Server', section: 'Skills', icon: '🗄', anchor: '#skills', badge: 'Database', badgeClass: '' },
+  { term: 'SAP HANA', section: 'Skills', icon: '🗄', anchor: '#skills', badge: 'Database', badgeClass: '' },
+  { term: 'Figma', section: 'Skills', icon: '🎨', anchor: '#skills', badge: 'UI/UX', badgeClass: '' },
+  { term: 'Adobe XD', section: 'Skills', icon: '🎨', anchor: '#skills', badge: 'UI/UX', badgeClass: '' },
+  { term: 'Jest', section: 'Skills', icon: '🎨', anchor: '#skills', badge: 'Testing', badgeClass: '' },
+  { term: 'Cypress', section: 'Skills', icon: '🎨', anchor: '#skills', badge: 'Testing', badgeClass: '' },
+  { term: 'Playwright', section: 'Skills', icon: '🎨', anchor: '#skills', badge: 'Testing', badgeClass: '' },
+  { term: 'Storybook', section: 'Skills', icon: '🎨', anchor: '#skills', badge: 'Testing', badgeClass: '' },
+  // Experience
+  { term: 'Freddie Mac', section: 'Experience', icon: '💼', anchor: '#experience', badge: 'Experience', badgeClass: '' },
+  { term: 'State Street Bank', section: 'Experience', icon: '💼', anchor: '#experience', badge: 'Experience', badgeClass: '' },
+  { term: 'Johnson & Johnson', section: 'Experience', icon: '💼', anchor: '#experience', badge: 'Experience', badgeClass: '' },
+  { term: 'AI Agent interface', section: 'Experience', icon: '💼', anchor: '#experience', badge: 'Experience', badgeClass: 'gold' },
+  { term: 'WebSockets + Redis', section: 'Experience', icon: '💼', anchor: '#experience', badge: 'Experience', badgeClass: '' },
+  { term: 'Power BI', section: 'Experience', icon: '💼', anchor: '#experience', badge: 'Experience', badgeClass: '' },
+  // Certifications
+  { term: 'AWS Generative AI', section: 'Certifications', icon: '🏅', anchor: '#education', badge: 'Cert', badgeClass: 'gold' },
+  { term: 'Google Cloud AI', section: 'Certifications', icon: '🏅', anchor: '#education', badge: 'Cert', badgeClass: 'gold' },
+  { term: 'Oracle Cloud OCI', section: 'Certifications', icon: '🏅', anchor: '#education', badge: 'Cert', badgeClass: '' },
+  { term: 'Meta Full Stack', section: 'Certifications', icon: '🏅', anchor: '#education', badge: 'Cert', badgeClass: '' },
+  { term: 'Google UX Design', section: 'Certifications', icon: '🏅', anchor: '#education', badge: 'Cert', badgeClass: '' },
+  { term: 'AI Agents O\'Reilly', section: 'Certifications', icon: '🏅', anchor: '#education', badge: 'Cert', badgeClass: 'gold' },
+  // JD Match
+  { term: 'Agile / Scrum', section: 'Job Roles', icon: '✓', anchor: '#jd-match', badge: 'JD Match', badgeClass: '' },
+  { term: 'React Native iOS Android', section: 'Job Roles', icon: '✓', anchor: '#jd-match', badge: 'JD Match', badgeClass: '' },
+  { term: 'Agentic AI LangGraph', section: 'Job Roles', icon: '✓', anchor: '#jd-match', badge: 'JD Match', badgeClass: 'gold' },
+];
+
+// ── Search Logic ────────────────────────────────────────────
+const overlay = document.getElementById('searchOverlay');
+const input = document.getElementById('skillSearchInput');
+const results = document.getElementById('searchResults');
+const closeBtn = document.getElementById('searchClose');
+const navBtn = document.getElementById('navSearchBtn');
+let activeIndex = -1;
+
+function openSearch() {
+  overlay.classList.add('active');
+  input.value = '';
+  results.innerHTML = `<div class="search-empty"><strong>Search anything</strong>Try "React", "LangGraph", "AWS", "FastAPI", "Figma"…</div>`;
+  activeIndex = -1;
+  setTimeout(() => input.focus(), 50);
+}
+
+function closeSearch() {
+  overlay.classList.remove('active');
+  clearHighlights();
+}
+
+function highlight(text, query) {
+  if (!query) return text;
+  const escaped = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  return text.replace(new RegExp(`(${escaped})`, 'gi'), '<mark>$1</mark>');
+}
+
+function renderResults(query) {
+  if (!query.trim()) {
+    results.innerHTML = `<div class="search-empty"><strong>Search anything</strong>Try "React", "LangGraph", "AWS", "FastAPI", "Figma"…</div>`;
+    return;
+  }
+  const q = query.toLowerCase();
+  const matched = SEARCH_DATA.filter(d => d.term.toLowerCase().includes(q) || d.section.toLowerCase().includes(q) || d.badge.toLowerCase().includes(q));
+
+  if (!matched.length) {
+    results.innerHTML = `<div class="search-empty"><strong>No results for "${query}"</strong>Try "React", "Python", "LangGraph", "AWS"…</div>`;
+    return;
+  }
+
+  results.innerHTML = matched.slice(0, 12).map((d, i) => `
+    <a class="search-result-item" href="${d.anchor}" data-index="${i}">
+      <span class="result-icon">${d.icon}</span>
+      <div class="result-body">
+        <span class="result-term">${highlight(d.term, query)}</span>
+        <span class="result-context">${d.section}</span>
+      </div>
+      <span class="result-section-badge ${d.badgeClass}">${d.badge}</span>
+    </a>
+  `).join('');
+
+  results.querySelectorAll('.search-result-item').forEach(el => {
+    el.addEventListener('click', (e) => {
+      closeSearch();
+    });
+  });
+  activeIndex = -1;
+}
+
+function clearHighlights() {
+  document.querySelectorAll('.skill-tag.search-match').forEach(el => el.classList.remove('search-match'));
+  document.querySelectorAll('.skill-card.has-match, .skill-card.no-match').forEach(el => { el.classList.remove('has-match', 'no-match'); });
+  document.querySelectorAll('.timeline-item.no-match, .timeline-item.has-match').forEach(el => { el.classList.remove('no-match', 'has-match'); });
+  document.querySelectorAll('.cert-item.search-match').forEach(el => el.classList.remove('search-match'));
+}
+
+function highlightOnPage(query) {
+  clearHighlights();
+  if (!query.trim()) return;
+  const q = query.toLowerCase();
+
+  // Highlight skill tags
+  let anySkillMatch = false;
+  document.querySelectorAll('.skill-card').forEach(card => {
+    let cardMatch = false;
+    card.querySelectorAll('.skill-tag').forEach(tag => {
+      if (tag.textContent.toLowerCase().includes(q)) {
+        tag.classList.add('search-match');
+        cardMatch = true;
+        anySkillMatch = true;
+      }
+    });
+    if (anySkillMatch) {
+      card.classList.toggle('has-match', cardMatch);
+      card.classList.toggle('no-match', !cardMatch);
+    }
+  });
+
+  // Highlight timeline items
+  document.querySelectorAll('.timeline-item').forEach(item => {
+    if (item.textContent.toLowerCase().includes(q)) {
+      item.classList.add('has-match');
+    } else {
+      item.classList.add('no-match');
+    }
+  });
+
+  // Highlight cert items
+  document.querySelectorAll('.cert-item').forEach(item => {
+    if (item.textContent.toLowerCase().includes(q)) {
+      item.classList.add('search-match');
+    }
+  });
+}
+
+// ── Keyboard nav ─────────────────────────────────────────
+input.addEventListener('input', (e) => {
+  renderResults(e.target.value);
+  highlightOnPage(e.target.value);
+});
+
+input.addEventListener('keydown', (e) => {
+  const items = results.querySelectorAll('.search-result-item');
+  if (e.key === 'ArrowDown') { e.preventDefault(); activeIndex = Math.min(activeIndex + 1, items.length - 1); items.forEach((el, i) => el.style.background = i === activeIndex ? 'rgba(0,201,167,0.12)' : ''); items[activeIndex]?.scrollIntoView({ block: 'nearest' }); }
+  if (e.key === 'ArrowUp') { e.preventDefault(); activeIndex = Math.max(activeIndex - 1, 0); items.forEach((el, i) => el.style.background = i === activeIndex ? 'rgba(0,201,167,0.12)' : ''); items[activeIndex]?.scrollIntoView({ block: 'nearest' }); }
+  if (e.key === 'Enter' && activeIndex >= 0) { items[activeIndex]?.click(); }
+  if (e.key === 'Escape') closeSearch();
+});
+
+// ── Open / close ─────────────────────────────────────────
+navBtn.addEventListener('click', openSearch);
+closeBtn.addEventListener('click', closeSearch);
+overlay.addEventListener('click', (e) => { if (e.target === overlay) closeSearch(); });
+
+// ⌘K / Ctrl+K
+document.addEventListener('keydown', (e) => {
+  if ((e.metaKey || e.ctrlKey) && e.key === 'k') { e.preventDefault(); overlay.classList.contains('active') ? closeSearch() : openSearch(); }
+  if (e.key === 'Escape' && overlay.classList.contains('active')) closeSearch();
+});
+</script>
+
+</body>
+</html>
