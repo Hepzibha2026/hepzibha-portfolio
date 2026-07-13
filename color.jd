@@ -1,0 +1,13 @@
+ --navy: #0a1628;
+    --navy-mid: #0f2040;
+    --teal: #00c9a7;
+    --teal-dim: #00a788;
+    --gold: #f4a340;
+    --white: #ffffff;
+    --off-white: #f7f9fc;
+    --gray-light: #e8edf4;
+    --gray-mid: #8a97ab;
+    --text-dark: #0a1628;
+    --text-body: #3a4a60;
+    --card-bg: #ffffff;
+    --section-bg: #f7f9fc;

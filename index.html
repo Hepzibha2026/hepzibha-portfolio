@@ -14,7 +14,8 @@
     --navy-mid: #0f2040;
     --teal: #00c9a7;
     --teal-dim: #00a788;
-    --gold: #f4a340;
+    --cream: #f8f85c;
+    --gold: #f4a340; 
     --white: #ffffff;
     --off-white: #f7f9fc;
     --gray-light: #e8edf4;
@@ -404,9 +405,10 @@
   #jd-match .section-divider { background: var(--gold); }
 
   .jd-intro {
-    font-size: 0.92rem;
-    color: rgba(255,255,255,0.65);
-    max-width: 680px;
+    font-size: 1rem;
+    /* color: rgba(240, 236, 236, 0.65); */
+    color: white;
+    /* max-width: 680px; */
     margin-bottom: 2.5rem;
     line-height: 1.8;
   }
@@ -416,7 +418,31 @@
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1rem;
     margin-bottom: 2rem;
+    max-height: 300px;
+    overflow-y: auto;
+    padding-right: 10px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--teal) rgba(255,255,255,0.08);
   }
+
+   .jd-match-grid::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .jd-match-grid::-webkit-scrollbar-track {
+    background: rgba(255,255,255,0.06);
+    border-radius: 10px;
+  }
+
+  .jd-match-grid::-webkit-scrollbar-thumb {
+    background: var(--teal);
+    border-radius: 10px;
+  }
+
+  .jd-match-grid::-webkit-scrollbar-thumb:hover {
+    background: var(--teal-dim);
+  }
+
 
   .jd-row {
     display: flex;
@@ -489,15 +515,15 @@
     font-weight: 600;
     padding: 5px 13px;
     border-radius: 20px;
-    background: rgba(0,201,167,0.12);
-    border: 1px solid rgba(0,201,167,0.3);
-    color: var(--teal);
+    /* background: rgba(97, 216, 195, 0.12); */
+    /* border: 1px solid rgba(0, 11, 9, 0.3); */
+    color: var(--cream);
   }
 
   .jd-pill.gold {
     background: rgba(244,163,64,0.12);
     border-color: rgba(244,163,64,0.3);
-    color: var(--gold);
+    color: var(--cream);
   }
 
   /* ── SKILLS ─────────────────────────────── */
@@ -1169,27 +1195,34 @@
     </div>
 
     <div>
-      <p style="font-size:0.8rem; color:rgba(255,255,255,0.4); margin-bottom:0.8rem; text-transform:uppercase; letter-spacing:1px; font-weight:600;">Exact tech stacks from Projects</p>
-      <div class="jd-stack-pills">
+      <p style="font-size:0.8rem; color:rgb(255, 255, 255); margin-bottom:0.8rem; text-transform:uppercase; letter-spacing:1px; font-weight:600;">Tech stacks</p>
+      <div style="background:#3a4a60">
         <span class="jd-pill">Next.js 16.1.6 App Router</span>
-        <span class="jd-pill">React 19.2.3</span>
-        <span class="jd-pill">TypeScript</span>
+        <span class="jd-pill">React JS, Angular 19</span>
+        <span class="jd-pill">TypeScript(TSX), JSX</span>
         <span class="jd-pill">Tailwind CSS 4.x</span>
-        <span class="jd-pill">DaisyUI</span>
+        <span class="jd-pill">DaisyUI, MUI-Material UI</span>
         <span class="jd-pill">@ag-ui/client</span>
         <span class="jd-pill">React Markdown + remark-gfm</span>
-        <span class="jd-pill gold">FastAPI + Uvicorn</span>
-        <span class="jd-pill gold">Python 3.10–3.12</span>
-        <span class="jd-pill gold">Java-Java Microservices</span>
-        <span class="jd-pill gold">LangGraph</span>
-        <span class="jd-pill gold">LangChain</span>
-        <span class="jd-pill gold">GenAI / Agentic AI</span>
-        <span class="jd-pill gold">AI Agent / MVC server</span>
-        <span class="jd-pill gold">A2A SDK</span>
-        <span class="jd-pill gold">OpenAI / Horizon</span>
-        <span class="jd-pill gold">Token-based Auth</span>
+        <span class="jd-pill">FastAPI + Uvicorn</span>
+        <span class="jd-pill">Python3, Flask, Django, numpy, pandas</span>
+        <span class="jd-pill">Java-Java Microservices</span>
+        <span class="jd-pill">LangGraph, LangChain</span>
+        <span class="jd-pill">UI/UX Design-Figma,sketch,AdobeXD,Canvas</span>
+        <span class="jd-pill">GenAI, RAG, Python, LLM, AI/ML, Agentic AI, AI Tools</span>
+        <span class="jd-pill">AI Agent / MVC server</span>
+        <span class="jd-pill">A2A SDK</span>
+        <span class="jd-pill">OpenAI / Horizon</span>
+        <span class="jd-pill">Token-based Auth</span>
         <span class="jd-pill">Geist Fonts</span>
         <span class="jd-pill">Agile / Scrum</span>
+        <span class="jd-pill">Azure</span>
+        <span class="jd-pill">AWS</span>
+        <span class="jd-pill">EC2, S3, ALB/NLB, EBS, EFS, FSx, Lambda, EKS, ECS</span>
+        <span class="jd-pill">Docker, Kubernetes</span>
+        <span class="jd-pill">HLD-High Level Design, LLD-Low Level Design, Playbooks</span>
+        <span class="jd-pill">MobX, Zustand, Redux, React Query</span>
+        <span class="jd-pill">React Native, Flutter, Swift, Kotlin(Android), iOS</span>
       </div>
     </div>
   </div>
