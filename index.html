@@ -3,7 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hepzibha Sundararaj – Sr. Full Stack, Mobile Developer & AI Lead</title>
+<!-- <title>Hepzibha Sundararaj – Sr. Full Stack, FrontEnd, Mobile Developer & AI Lead</title> -->
+<!-- <title>Hepzibha Sundararaj</title> -->
+<link rel="icon" type="image/png" href="profile-photo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 <style>
@@ -44,7 +46,7 @@
     backdrop-filter: 
     blur(12px);
     padding: 0 2rem;
-    height: 60px;
+    height: 55px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -133,7 +135,7 @@
     /* display: inline-flex; */
     align-items: center;
     gap: 8px;
-    margin-top: 2.5rem;
+    margin-top: 8.5rem;
     background: rgba(0,201,167,0.12);
     border: 1px solid rgba(0,201,167,0.3);
     color: var(--teal);
@@ -412,35 +414,59 @@
     margin-bottom: 2.5rem;
     line-height: 1.8;
   }
+   .jd-filter-btns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 1.75rem;
+  }
+
+  .jd-filter-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.05);
+    border: 1.5px solid rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.75);
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    padding: 9px 18px;
+    border-radius: 24px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .jd-filter-btn .count {
+    font-size: 0.7rem;
+    font-weight: 700;
+    background: rgba(255,255,255,0.12);
+    color: rgba(255,255,255,0.8);
+    padding: 1px 7px;
+    border-radius: 20px;
+  }
+
+  .jd-filter-btn:hover {
+    border-color: rgba(0,201,167,0.5);
+    color: var(--white);
+  }
+
+  .jd-filter-btn.active {
+    background: var(--teal);
+    border-color: var(--teal);
+    color: var(--navy);
+  }
+
+  .jd-filter-btn.active .count {
+    background: rgba(10,22,40,0.18);
+    color: var(--navy);
+  }
 
   .jd-match-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1rem;
     margin-bottom: 2rem;
-    max-height: 300px;
-    overflow-y: auto;
-    padding-right: 10px;
-    scrollbar-width: thin;
-    scrollbar-color: var(--teal) rgba(255,255,255,0.08);
-  }
-
-   .jd-match-grid::-webkit-scrollbar {
-    width: 8px;
-  }
-
-  .jd-match-grid::-webkit-scrollbar-track {
-    background: rgba(255,255,255,0.06);
-    border-radius: 10px;
-  }
-
-  .jd-match-grid::-webkit-scrollbar-thumb {
-    background: var(--teal);
-    border-radius: 10px;
-  }
-
-  .jd-match-grid::-webkit-scrollbar-thumb:hover {
-    background: var(--teal-dim);
   }
 
 
@@ -452,10 +478,12 @@
     border: 1px solid rgba(255,255,255,0.1);
     border-radius: 10px;
     padding: 1rem 1.2rem;
-    transition: border-color 0.2s;
+    transition: border-color 0.2s, opacity 0.2s;
   }
 
   .jd-row:hover { border-color: rgba(0,201,167,0.35); }
+
+  .jd-row.jd-hidden { display: none; }
 
   .jd-check {
     width: 22px;
@@ -850,8 +878,8 @@
   .link-card {
     display: flex;
     align-items: center;
-    gap: 12px;
-    padding: 1.1rem 1.25rem;
+    /* gap: 12px; */
+    padding: 1rem 1rem;
     background: var(--off-white);
     border: 1px solid var(--gray-light);
     border-radius: 12px;
@@ -887,12 +915,127 @@
   .arrow {
     margin-left: auto;
     color: var(--teal);
-    font-size: 1rem;
+    font-size: 1.85rem;
     opacity: 0;
     transition: opacity 0.2s;
   }
 
   .link-card:hover .arrow { opacity: 1; }
+ /* ── GLOBAL SEARCH ─────────────────────── */
+  .nav-search {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+
+  .nav-search-btn {
+    /* display: flex; */
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.14);
+    color: rgba(255,255,255,0.75);
+    cursor: pointer;
+    transition: all 0.2s;
+    flex-shrink: 0;
+  }
+
+  .nav-search-btn:hover,
+  .nav-search-btn.active {
+    background: rgba(0,201,167,0.14);
+    border-color: rgba(0,201,167,0.5);
+    color: var(--teal);
+  }
+
+  .nav-search-box {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    max-width: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-width 0.28s ease, opacity 0.2s ease, margin 0.28s ease;
+    margin-left: 0;
+  }
+
+  .nav-search.open .nav-search-box {
+    max-width: 340px;
+    opacity: 1;
+    margin-left: 10px;
+  }
+
+  .nav-search-input {
+    width: 190px;
+    max-width: 42vw;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 20px;
+    padding: 7px 14px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.82rem;
+    color: var(--white);
+    outline: none;
+  }
+
+  .nav-search-input::placeholder { color: rgba(255,255,255,0.4); }
+
+  .nav-search-input:focus {
+    border-color: var(--teal);
+    background: rgba(255,255,255,0.1);
+  }
+
+  .nav-search-count {
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.45);
+    white-space: nowrap;
+    min-width: 40px;
+    text-align: center;
+  }
+
+  .nav-search-nav {
+    display: flex;
+    gap: 3px;
+  }
+
+  .nav-search-nav button {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.16);
+    background: rgba(255,255,255,0.05);
+    color: rgba(255,255,255,0.7);
+    font-size: 0.7rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+  }
+
+  .nav-search-nav button:hover {
+    border-color: var(--teal);
+    color: var(--teal);
+  }
+
+  .nav-search-nav button:disabled {
+    opacity: 0.3;
+    cursor: default;
+  }
+
+  mark.global-search-hit {
+    background: rgba(244,163,64,0.35);
+    color: inherit;
+    border-radius: 3px;
+    padding: 0 1px;
+  }
+
+  mark.global-search-hit.current-hit {
+    background: var(--teal);
+    color: var(--navy);
+  }
 
   /* ── FOOTER ─────────────────────────── */
   footer {
@@ -929,6 +1072,12 @@
     .hero-stats {
       gap: 1.5rem;
     }
+    .nav-search.open .nav-search-box {
+      max-width: 200px;
+    }
+    .nav-search-input {
+      width: 120px;
+    }
   }
 </style>
 </head>
@@ -938,9 +1087,27 @@
 <nav>
   <span class="nav-logo">Hepzibha</span>
   <span class ="nav-logo">Work in progress.....</span>
+    <div class="nav-search" id="navSearch">
+    <label style="color: white;">Skill Search</label>
+    <button class="nav-search-btn" id="navSearchToggle" type="button" aria-label="Search page">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/>
+        <line x1="21" y1="21" x2="16.65" y2="16.65" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg> 
+    </button>
+    <div class="nav-search-box" id="navSearchBox">
+      <input type="text" class="nav-search-input" id="navSearchInput" placeholder="Search this page…" autocomplete="off">
+      <span class="nav-search-count" id="navSearchCount"></span>
+      <div class="nav-search-nav">
+        <button type="button" id="navSearchPrev" title="Previous match" disabled>‹</button>
+        <button type="button" id="navSearchNext" title="Next match" disabled>›</button>
+      </div>
+    </div>
+  </div>
+
   <ul class="nav-links">
     <li><a href="#jd-match">Job Roles</a></li>
-    <li><a href="#skills">Skills</a></li>
+    <!-- <li><a href="#skills">Skills</a></li> -->
     <li><a href="#experience">Experience</a></li>
     <li><a href="#links">Projects</a></li>
     <li><a href="#education">Education</a></li>
@@ -955,7 +1122,7 @@
     <div class="hero-content">
       <div class="hero-badge">Available for opportunities<br>-Platform Engineer-FrontEnd<span style="color: var(--gold);"> (React JS, Angular)</span><span>-API-Backend-FullStack-AI /ML, Mobile</span><span style="color: var(--gold);">(React Native /iOS /Android)</span><span>,UI/UX design, AI Agent, Agentic AI, LLM, GenAI, LangGraph, LangChain</span></div>
       <h1 id="profile">Hepzibha Sundararaj</h1>
-      <p class="hero-subtitle">Next.js 16+ &nbsp;·&nbsp; React 19+ &nbsp;·&nbsp; React Native &nbsp;·&nbsp;  Angular 19 &nbsp;·&nbsp; FastAPI &nbsp;·&nbsp;  Python Flask &nbsp;·&nbsp;  Java &nbsp;·&nbsp; LangGraph &nbsp;·&nbsp;  Lang Chain &nbsp;·&nbsp; Gen AI &nbsp;·&nbsp; Agentic AI &nbsp;·&nbsp; AWS Bedrock &nbsp;·&nbsp; UI/UX Design &nbsp;·&nbsp; Tableau</p>
+      <p class="hero-subtitle">Next.js 16+ &nbsp;·&nbsp; React 19+ &nbsp;·&nbsp; React Native &nbsp;·&nbsp;  Angular 19 &nbsp;·&nbsp; FastAPI &nbsp;·&nbsp;  Python Flask &nbsp;·&nbsp;  Java &nbsp;·&nbsp; LangGraph &nbsp;·&nbsp;  Lang Chain &nbsp;·&nbsp; Gen AI &nbsp;·&nbsp; Agentic AI &nbsp;·&nbsp; AWS Bedrock &nbsp;·&nbsp; UI/UX Design - Figma, Sketch, Adobe XD, UX Pilot &nbsp;·&nbsp; Tableau, SAP-BO(Business Objects), Crystal Reports &nbsp;·&nbsp; GCP, Microsoft Azure</p>
       <p class="hero-desc">
         15+ years experience and expertise in UI/UX design, Front-end, Backend, Fullstack, Mobile Developer, AI-GenAI, Agentic AI, AI Agent etc, building enterprise SaaS at Fortune 500 companies - Freddie Mac, State Street Bank, Johnson & Johnson, Alliance Insurance, Commerce Benefit Group, Mepline Technical Services LLC. Deep expertise in Next.js App Router, React 19, React Native, TypeScript, Tailwind CSS, FastAPI, and production-grade agentic AI with LangGraph, LangChain, @ag-ui/client, and A2A SDK and more.
       </p>
@@ -985,6 +1152,7 @@
       <div class="photo-frame">
         <div class="photo-initials">
         <img src="profile.png" alt="Description of the image" width="100%" height="100%">
+        <!-- <img src="hepzibha.png" alt="Description of the image" width="100%" height="100%"> -->
         </div>
       </div>
       <div class="hero-contact-chips">
@@ -1027,142 +1195,339 @@
     <div class="section-divider"></div>
     <p class="jd-intro">
       Every role maps directly to production experience. Below is a point-by-point Hepzibha's verified hands-on work.
-    </p>
-    <div class="jd-match-grid">
+    </p> 
+    
+    <div class="jd-filter-btns" id="jdFilterBtns">
+      <button class="jd-filter-btn active" data-filter="all">All <span class="count">16</span></button>
+      <button class="jd-filter-btn" data-filter="UIUX">UI/UX Design<span class="count">1</span></button>
+      <button class="jd-filter-btn" data-filter="frontend">Frontend<span class="count">6</span></button>
+      <button class="jd-filter-btn" data-filter="mobile">Mobile <span class="count">6</span></button>
+      <button class="jd-filter-btn" data-filter="backend">Backend API<span class="count">2</span></button>
+      <button class="jd-filter-btn" data-filter="database">Database <span class="count">4</span></button>
+      <button class="jd-filter-btn" data-filter="testing">Testing<span class="count">1</span></button>
 
-      <div class="jd-row">
+      <button class="jd-filter-btn" data-filter="ai">AI<span class="count">5</span></button>
+      <button class="jd-filter-btn" data-filter="cloud">Cloud & Infrastructure<span class="count">5</span></button>
+      <button class="jd-filter-btn" data-filter="CICD">CI/CD & Automation<span class="count">2</span></button>
+      <button class="jd-filter-btn" data-filter="monitoring">Monitoring & Security<span class="count">2</span></button>
+      <button class="jd-filter-btn" data-filter="devops">DevOps <span class="count">2</span></button>
+      <button class="jd-filter-btn" data-filter="delivery">Delivery <span class="count">2</span></button>
+
+    </div>
+
+    <div class="jd-match-grid" id="jdMatchGrid">
+
+    <!-- All Roles and Responsibilities-->
+      <div class="jd-row" data-category="UIUX">
+        <div class="jd-check">✓</div>
+        <div class="jd-row-content">
+          <strong>UI/UX Design</strong>
+          <span>Proficient in designing intuitive, user-centered interfaces using industry-standard tools such as Figma, Adobe XD, Sketch, and Canva, combined with a strong understanding of visual hierarchy, accessibility, and modern design principles that shape engaging digital experiences. Experienced across the full design lifecycle, including wireframing, interactive prototyping, responsive design, and building scalable design systems, with a usability-focused workflow that emphasizes user research, iterative feedback, and collaboration with cross-functional teams to deliver polished, high-quality products</span>
+        </div>
+      </div>
+
+      <div class="jd-row" data-category="frontend">
+        <div class="jd-check">✓</div>
+        <div class="jd-row-content">
+          <strong>Front End Technologies</strong>
+          <span>Experienced with a broad range of modern web technologies, including React.js, Next.js, Express.js, Angular, and Vue.js for building dynamic front-end and back-end applications, alongside C#, .NET Core, and ASP.NET Core for developing robust, enterprise-grade Web APIs. Skilled in TypeScript, JavaScript, HTML, and CSS frameworks such as Bootstrap and Tailwind to create responsive, scalable, and high-performance web applications that deliver seamless user experiences across devices and platforms, while maintaining clean, efficient, and well-documented code throughout development.</span>
+        </div>
+      </div>
+
+      <div class="jd-row" data-category="mobile">
+        <div class="jd-check">✓</div>
+        <div class="jd-row-content">
+          <strong>Mobile Technologies</strong>
+          <span>Experienced in mobile application development across both native and cross-platform ecosystems, leveraging Android, iOS, Flutter, React Native, Xamarin, and .NET MAUI to deliver seamless, high-performance applications. Proficient in Kotlin, Java, Swift, Objective-C, and Dart for building robust, platform-specific solutions, with strong expertise in RESTful API integration to enable efficient data exchange. Skilled in designing scalable, user-friendly mobile applications that ensure consistent performance, responsiveness, and functionality across diverse devices and operating systems.</span>
+        </div>
+      </div>
+
+      <div class="jd-row" data-category="backend">
+        <div class="jd-check">✓</div>
+        <div class="jd-row-content">
+          <strong>Backend API Technologies</strong>
+          <span>Experienced in backend development using Node.js, Java Spring Boot, .NET Core, and ASP.NET Core, along with Python frameworks such as Django, Flask, and FastAPI, PHP with Laravel, and Ruby on Rails to build robust server-side applications. Skilled in designing RESTful and GraphQL APIs, implementing microservices architectures, and integrating secure authentication and authorization mechanisms. Proficient in developing scalable, maintainable, and high-performance backend systems that support reliable, efficient, and secure application functionality across diverse platforms and environments.</span>
+        </div>
+      </div>
+
+      <div class="jd-row" data-category="database">
+        <div class="jd-check">✓</div>
+        <div class="jd-row-content">
+          <strong>SQL & NoSQL Databases</strong>
+          <span>Experienced with a wide range of relational and NoSQL databases, including MySQL, PostgreSQL, Microsoft SQL Server, Oracle, and SQLite, along with MongoDB, Cassandra, Redis, DynamoDB, and Firebase Firestore for flexible, high-throughput data storage. Proficient in cloud-native database solutions such as Cosmos DB, Amazon RDS, Amazon Aurora, Google Cloud SQL, BigQuery, and Azure SQL Database, enabling scalable, secure, and high-performance data management across distributed environments while ensuring reliability, consistency, and efficient query performance for diverse application workloads.</span>
+        </div>
+      </div>
+
+      <div class="jd-row" data-category="testing">
+        <div class="jd-check">✓</div>
+        <div class="jd-row-content">
+          <strong>Testing - Unit Test,Integration Test & End-To-End Test</strong>
+          <span>Experienced in comprehensive front-end, back-end, and full-stack testing using frameworks such as Jest, Vitest, Mocha, Jasmine, React Testing Library, and Angular Testing Utilities for unit and component-level validation. Proficient with NUnit, xUnit, MSTest, JUnit, and pytest for backend testing, alongside Cypress, Playwright, Selenium, Puppeteer, and TestCafe for automated end-to-end testing. Skilled in API testing and validation using Postman, Supertest, and Cucumber to ensure reliable integration, functional accuracy, and consistent application behavior across environments.</span>
+        </div>
+      </div>
+
+      <div class="jd-row" data-category="ai">
+        <div class="jd-check">✓</div>
+        <div class="jd-row-content">
+          <strong>AI Full-Stack Development</strong>
+          <span>Experienced with Agentic AI, Generative AI, LLMs, SLMs, RAG, AI agents, multi-agent systems, MCP, prompt engineering, fine-tuning, embeddings, vector databases, semantic search, knowledge graphs, NLP, computer vision, speech AI, multimodal AI, LangChain, LangGraph, LlamaIndex, OpenAI, Anthropic Claude, Google Gemini, Hugging Face, Ollama, vLLM, TensorFlow, PyTorch, ONNX, Python, JavaScript/TypeScript, React, Next.js, Node.js, FastAPI, REST/GraphQL APIs, Docker, Kubernetes, MLflow, Weights & Biases, AWS, Azure, GCP, serverless, CI/CD, MLOps, AI evaluation, guardrails, monitoring, scalable architectures, and production deployment.</span>
+        </div>
+      </div>
+
+      <div class="jd-row" data-category="cloud">
+        <div class="jd-check">✓</div>
+        <div class="jd-row-content">
+          <strong>Cloud</strong>
+          <span>Experienced with multi-cloud architectures across AWS, Microsoft Azure, and Google Cloud Platform (GCP), spanning compute, storage, networking, serverless containers, Kubernetes, and virtual machines. Proficient with object storage (S3, Blob Storage, Cloud Storage), EC2, Lambda, Azure Functions, Cloud Functions, API Gateway, IAM, VPC, Load Balancers, CloudFront/CDN, CloudWatch, CloudFormation, Terraform, Docker, and Kubernetes. Skilled in DevOps, CI/CD, monitoring, security, backup, and disaster recovery, along with databases, messaging, and event-driven architectures for scalable, cloud-native application deployment.</span>
+        </div>
+      </div>
+
+      <div class="jd-row" data-category="ai">
+        <div class="jd-check">✓</div>
+        <div class="jd-row-content">
+          <strong>Generative AI</strong>
+          <span>Design and build intelligent applications powered by large language models, image generation, and AI APIs to automate workflows, create new capabilities, and solve real-world problems, leveraging OpenAI, Anthropic, and Stable Diffusion for end-to-end AI-driven pipelines. Skilled in prompt engineering, fine-tuning, and retrieval-augmented generation to boost model accuracy and relevance for domain-specific applications, turning complex AI capabilities into practical, user-friendly solutions that improve efficiency and drive innovation. Dedicated to advancing generative AI for scalable, impactful, ethically responsible outcomes.</span>
+        </div>
+      </div>
+
+      <div class="jd-row" data-category="CICD">
+        <div class="jd-check">✓</div>
+        <div class="jd-row-content">
+          <strong>CI/CD & Automation</strong>
+          <span>Skilled automating CI/CD with Git, GitHub Actions, GitLab CI/CD, Jenkins, Azure DevOps, Bitbucket Pipelines, CircleCI, GitOps (Argo CD, Helm); Infrastructure as Code (IaC) via Terraform/Ansible; Docker/Kubernetes containerization/orchestration; Maven/Gradle/npm automation across Java/JavaScript; SonarQube/Nexus/Artifactory for code quality/artifact management; automated testing with blue-green/canary deployments cutting downtime; and monitoring via Prometheus, Grafana, ELK Stack (Elasticsearch, Logstash, Kibana), OpenTelemetry, Jaeger, Zipkin, Datadog, New Relic, Splunk, AWS CloudWatch, Azure Monitor, Google Cloud Operations Suite, and PagerDuty for scalable, secure, cloud-native delivery.</span>
+        </div>
+      </div>
+
+      <div class="jd-row" data-category="monitoring">
+        <div class="jd-check">✓</div>
+        <div class="jd-row-content">
+          <strong>Monitoring & Security</strong>
+          <span>Experienced in observability and security using Prometheus, Grafana, ELK Stack (Elasticsearch, Logstash, Kibana), OpenTelemetry, Jaeger, Zipkin, Datadog, New Relic, Splunk, AWS CloudWatch, Azure Monitor, Google Cloud Operations Suite, Sentry, and PagerDuty for tracing, logging, and incident response, reducing MTTR across microservices. Skilled in OAuth 2.0, OpenID Connect (OIDC), JWT, and SAML authentication, plus RBAC, MFA, and IAM for least-privilege access. Proficient managing secrets via AWS Secrets Manager and Azure Key Vault, building resilient, compliant systems with strong visibility into health and threat posture.</span>
+        </div>
+      </div>
+
+      <div class="jd-row" data-category="devops">
+        <div class="jd-check">✓</div>
+        <div class="jd-row-content">
+          <strong>DevOps</strong>
+          <span>Understanding DevOps principles for continuous integration and deployment, with strong Git branching strategies, pull requests, and code review practices supporting CI/CD pipelines. Familiar with Docker for consistent containerization across environments, plus basic Kubernetes knowledge for deploying and scaling containers. Experienced setting up CI/CD pipelines like GitHub Actions, GitLab CI, and Jenkins to automate testing and deployment. Knowledgeable in AWS, Azure, and GCP for provisioning, storage, and networking, and Terraform, Prometheus, Grafana, and ELK Stack for infrastructure as code and monitoring.</span>
+        </div>
+      </div>
+
+      <div class="jd-row" data-category="delivery">
+        <div class="jd-check">✓</div>
+        <div class="jd-row-content">
+          <strong>Delivery</strong>
+          <span>Skilled at shipping features to production reliably, breaking requirements into small, shippable increments that tighten feedback loops and reduce deployment risk. Strong testing habits—unit, integration, and end-to-end—build confidence to ship frequently without breaking functionality, backed by clear communication with product managers, designers, and QA. Disciplined in release management using feature flags, rollback plans, and post-deployment monitoring, with tools including GitHub Actions, GitLab CI, Jenkins, Jira, Trello, Linear, LaunchDarkly, Sentry, Datadog, and New Relic to ship safely and catch issues fast.</span>
+        </div>
+      </div>
+
+      <div class="jd-row" data-category="backend">
+        <div class="jd-check">✓</div>
+        <div class="jd-row-content">
+          <strong>Java</strong>
+          <span>As a full stack developer, I use Java and Spring Boot to build robust, scalable backend systems, designing RESTful APIs and microservices with Hibernate/JPA for efficient database modeling and persistence across MySQL and PostgreSQL. My backend expertise integrates seamlessly with React and Angular for end-to-end feature development from database to UI. I write maintainable, testable code using JUnit and Mockito, building secure authentication flows and deploying containerized services with Docker and Kubernetes as core strengths.</span>
+        </div>
+      </div>
+
+      <div class="jd-row" data-category="backend">
+        <div class="jd-check">✓</div>
+        <div class="jd-row-content">
+          <strong>Python</strong>
+          <span>I use Python to build the backbone of my applications from RESTful APIs to database models and background processing.  I work primarily with Django and Fast API to design clean, scalable backend architectures that pair seamlessly with modern JavaScript frontends, Python's ecosystem, including SQL Alchemy, Pandas, and Pytest, lets me handle everything from data-driven features to automated testing with confidence.  I have used it to build authentication systems, deploy microservices, and integrate third party APIs across full stack projects.  Whether prototyping quickly or scaling for production, Python remains my go-to language for writing reliable, maintainable backend code.</span>
+        </div>
+      </div>
+
+      <!-- UI/ UX Roles -->
+        
+      <div class="jd-row" data-category="UIUX">
+        <div class="jd-check">✓</div>
+        <div class="jd-row-content">
+          <strong>Figma</strong>
+          <span>Passionate UI/UX designer skilled in Figma for crafting intuitive, user-centered digital experiences from concept to high-fidelity prototype. Proficient in wireframing, interactive prototyping, and building scalable design systems with reusable components, auto-layout, and variants. Experienced conducting user research, usability testing, and iterative feedback loops to inform design decisions. Skilled in creating responsive layouts, accessible interfaces, and polished visual designs that balance aesthetics with functionality. Collaborates closely with developers and stakeholders to translate ideas into seamless, engaging, and impactful digital products.</span>
+        </div>
+      </div>
+
+      <div class="jd-row" data-category="UIUX">
+        <div class="jd-check">✓</div>
+        <div class="jd-row-content">
+          <strong>Sketch</strong>
+          <span>Detail-oriented UI/UX designer experienced in Sketch for creating clean, intuitive, and user-centered digital interfaces. Skilled in wireframing, prototyping, and building reusable design systems using symbols, shared styles, and libraries for consistency across projects. Proficient in translating user research and usability insights into polished, accessible designs that balance visual appeal with functionality. Adept at crafting responsive layouts for web and mobile platforms, and collaborating closely with developers and product teams to deliver seamless, engaging digital experiences.</span>
+        </div>
+      </div>
+      
+      <div class="jd-row" data-category="UIUX">
+        <div class="jd-check">✓</div>
+        <div class="jd-row-content">
+          <strong>Adobe XD</strong>
+          <span>Creative UI/UX designer experienced in Adobe XD for designing intuitive, visually engaging digital interfaces across web and mobile platforms. Skilled in wireframing, interactive prototyping, and building consistent design systems using reusable components and design tokens. Proficient in incorporating user research and usability testing to craft accessible, user-centered solutions that balance aesthetics with functionality. Adept at creating responsive layouts and seamless micro-interactions, collaborating closely with developers and stakeholders to deliver polished, high-impact digital products.</span>
+        </div>
+      </div>
+      
+      <div class="jd-row" data-category="UIUX">
+        <div class="jd-check">✓</div>
+        <div class="jd-row-content">
+          <strong>Penpot</strong>
+          <span>UI/UX designer experienced with Penpot, the open-source design and prototyping platform, for creating intuitive, user-centered digital interfaces across web and mobile. Skilled in wireframing, interactive prototyping, and building reusable design systems with components and shared libraries for design consistency. Proficient in leveraging Penpot's collaborative, browser-based workflow alongside user research and usability testing to craft accessible, functional designs. Adept at creating responsive layouts and working closely with developers using open web standards like SVG and CSS.</span>
+        </div>
+      </div>
+      
+      <div class="jd-row" data-category="UIUX">
+        <div class="jd-check">✓</div>
+        <div class="jd-row-content">
+          <strong>Lunacy</strong>
+          <span>UI/UX designer experienced with Lunacy, a free, AI-powered design tool, for creating intuitive, visually engaging digital interfaces across web and mobile platforms. Skilled in wireframing, prototyping, and building consistent design systems using reusable components and vector assets. Proficient in leveraging Lunacy's built-in AI features—like background removal, image upscaling, and smart resizing—to streamline workflows and enhance creative output. Adept at translating user research into accessible, user-centered designs, and collaborating closely with developers to deliver polished, high-quality digital products.</span>
+        </div>
+      </div>
+
+      <div class="jd-row" data-category="UIUX">
+        <div class="jd-check">✓</div>
+        <div class="jd-row-content">
+          <strong>Framer</strong>
+          <span>UI/UX designer experienced with Framer for creating intuitive, high-fidelity interfaces and interactive prototypes that closely mirror real product behavior. Skilled in wireframing, advanced animations, and building responsive designs using Framer's code components and design-to-development capabilities. Proficient in translating user research and usability insights into polished, accessible experiences across web and mobile. Adept at rapid prototyping and publishing production-ready sites directly from design, collaborating closely with developers to bridge the gap between design and functional code.</span>
+        </div>
+      </div>
+
+      <div class="jd-row" data-category="frontend">
         <div class="jd-check">✓</div>
         <div class="jd-row-content">
           <strong>Next.js (App Router v16+)</strong>
-          <span>Built full-stack AI Agent UI on Next.js 16 App Router at Freddie Mac</span>
+          <span>Experienced building modern, high-performance web applications using Next.js's App Router architecture, including server components, streaming, and nested layouts for optimized rendering. Skilled in leveraging server actions, parallel and intercepting routes, and advanced caching strategies to build fast, scalable applications. Proficient in integrating TypeScript, Tailwind CSS, and API routes for full-stack development. Adept at optimizing performance through image and font optimization, edge runtime support, and SEO-friendly metadata handling across dynamic, production-ready applications.</span>
         </div>
-        <!-- <div class="jd-row-years">
-          <span class="has">6+ yrs</span>
-          <span class="req">req: 5+</span>
-        </div> -->
       </div>
 
-      <div class="jd-row">
+      <div class="jd-row" data-category="frontend">
         <div class="jd-check">✓</div>
         <div class="jd-row-content">
           <strong>React v19+ + TypeScript</strong>
-          <span>React 19 with full TypeScript type-safety across distributed AI systems</span>
+          <span>Experienced building type safe, high performance applications using React's latest features, including Server Components, Actions, and the new use hook for streamlined data fetching and state management. Skilled in integrating AI capabilities-LLM-powered chat interfaces, streaming responses, and generative UI directly into React applications using TypeScript for robust type safety. Proficient in building scalable, maintainable component architectures that combine modern React patterns with AI driven features to deliver intelligent, responsive, and production ready user experiences.</span>
         </div>
-        <!-- <div class="jd-row-years">
-          <span class="has">8+ yrs</span>
-          <span class="req">req: 6+</span>
-        </div> -->
       </div>
 
-      <div class="jd-row">
+      <div class="jd-row" data-category="frontend">
         <div class="jd-check">✓</div>
         <div class="jd-row-content">
           <strong>Tailwind CSS 4.x + DaisyUI</strong>
-          <span>Engineered type-safe UI in Tailwind CSS 4.x with DaisyUI components at Freddie Mac</span>
+          <span>Tailwind CSS 4.x & DaisyUI: Experienced building responsive, visually consistent interfaces using Tailwind's utility-first approach, including the new CSS-first configuration, container queries, and improved performance in version 4.x. Skilled in leveraging DaisyUI's pre-built, themeable components to accelerate development while maintaining design flexibility and consistency. Proficient in crafting accessible, mobile-first layouts, custom themes, and dark mode support. Adept at combining utility classes with component-driven design to deliver polished, production-ready user interfaces efficiently.</span>
         </div>
-        <!-- <div class="jd-row-years">
-          <span class="has">5+ yrs</span>
-          <span class="req">req: 4+</span>
-        </div> -->
       </div>
 
-      <div class="jd-row">
+      <div class="jd-row" data-category="frontend">
+        <div class="jd-check">✓</div>
+        <div class="jd-row-content">
+          <strong>Material UI + Chakra UI</strong>
+          <span>Material UI & Chakra UI: Experienced building polished, accessible user interfaces using Material UI's comprehensive component library and Google's Material Design principles for consistent, professional layouts. Skilled in leveraging Chakra UI's composable, theme-driven components for rapid, flexible development with built-in accessibility support. Proficient in customizing themes, responsive breakpoints, and dark mode across both libraries. Adept at combining component-driven design systems with React to deliver clean, consistent, and production-ready user interfaces efficiently.</span>
+        </div>
+      </div>
+
+      <div class="jd-row" data-category="backend">
         <div class="jd-check">✓</div>
         <div class="jd-row-content">
           <strong>FastAPI (Python 3.10–3.12) + Uvicorn</strong>
-          <span>Developed Python FastAPI backend with LangChain/LangGraph for multi-step AI orchestration</span>
+          <span>FastAPI (Python 3.10–3.12) & Uvicorn: Experienced building high-performance, asynchronous APIs using FastAPI's type-hint-driven design, automatic OpenAPI documentation, and built-in data validation via Pydantic. Skilled in leveraging Python 3.10–3.12 features for cleaner, more efficient code, and deploying applications with Uvicorn's ASGI server for fast, production-ready performance. Proficient in building RESTful and async endpoints, dependency injection, and background tasks. Adept at integrating databases, authentication, and third-party services to deliver scalable, well-documented backend systems.</span>
         </div>
-        <!-- <div class="jd-row-years">
-          <span class="has">5+ yrs</span>
-          <span class="req">req: 4+</span>
-        </div> -->
       </div>
 
-      <div class="jd-row">
+      <div class="jd-row" data-category="backend">
+        <div class="jd-check">✓</div>
+        <div class="jd-row-content">
+          <strong>Java (Microservices, Spring Boot)</strong>
+          <span>Experienced designing and building scalable, production-ready microservices using Java and the Spring Boot framework, including RESTful APIs, dependency injection, and Spring Data JPA for efficient database integration. Skilled in implementing service discovery, API gateways, and inter-service communication for distributed systems architecture. Proficient in Spring Security for authentication and authorization, along with unit and integration testing using JUnit and Mockito. Adept at deploying containerized microservices with Docker and Kubernetes for reliable, scalable backend systems.</span>
+        </div>
+      </div>
+
+      <div class="jd-row" data-category="database">
+        <div class="jd-check">✓</div>
+        <div class="jd-row-content">
+          <strong>Oracle Database (PL/SQL)</strong>
+          <span>Developed Oracle Database solutions with PL/SQL for data management in AI systems</span>
+        </div>
+      </div>
+
+      <div class="jd-row" data-category="ai">
         <div class="jd-check">✓</div>
         <div class="jd-row-content">
           <strong>LangGraph + LangChain + OpenAI/Horizon</strong>
           <span>Architected multi-agent LangGraph pipelines with OpenAI/Horizon token-based auth</span>
         </div>
-        <!-- <div class="jd-row-years">
-          <span class="has">3+ yrs</span>
-          <span class="req">req: 3+</span>
-        </div> -->
       </div>
 
-      <div class="jd-row">
+      
+      <div class="jd-row" data-category="database">
+        <div class="jd-check">✓</div>
+        <div class="jd-row-content">
+          <strong>Databricks SQL</strong>
+          <span>Developed Databricks SQL solutions for data management in AI systems</span>
+        </div>
+      </div>
+
+
+      <div class="jd-row" data-category="database">
+        <div class="jd-check">✓</div>
+        <div class="jd-row-content">
+          <strong>Microsoft SQL Server</strong>
+          <span>Developed SQL Server solutions for data management in AI systems</span>
+        </div>
+      </div>    
+      
+
+      <div class="jd-row" data-category="database">
+        <div class="jd-check">✓</div>
+        <div class="jd-row-content">
+          <strong>PostgreSQL</strong>
+          <span>Developed PostgreSQL solutions for data management in AI systems</span>
+        </div>
+      </div>      
+
+      <div class="jd-row" data-category="ai">
         <div class="jd-check">✓</div>
         <div class="jd-row-content">
           <strong>@ag-ui/client Agent Integration</strong>
           <span>Integrated @ag-ui/client for real-time bidirectional frontend–LangGraph agent communication</span>
         </div>
-        <!-- <div class="jd-row-years">
-          <span class="has">2+ yrs</span>
-          <span class="req">req: 2+</span>
-        </div> -->
       </div>
 
-      <div class="jd-row">
+      <div class="jd-row" data-category="frontend">
         <div class="jd-check">✓</div>
         <div class="jd-row-content">
           <strong>React Markdown + remark-gfm</strong>
           <span>Implemented markdown rendering via React Markdown with remark-gfm for rich agent responses</span>
         </div>
-        <!-- <div class="jd-row-years">
-          <span class="has">3+ yrs</span>
-          <span class="req">req: 2+</span>
-        </div> -->
       </div>
 
-      <div class="jd-row">
+      <div class="jd-row" data-category="ai">
         <div class="jd-check">✓</div>
         <div class="jd-row-content">
           <strong>A2A SDK-External Agent Communication</strong>
           <span>Implemented A2A SDK agent communication with token-based authentication in FastAPI backend</span>
         </div>
-        <!-- <div class="jd-row-years">
-          <span class="has">2+ yrs</span>
-          <span class="req">req: 2+</span>
-        </div> -->
       </div>
 
-      <div class="jd-row">
+      <div class="jd-row" data-category="frontend">
         <div class="jd-check">✓</div>
         <div class="jd-row-content">
           <strong>Geist Fonts (Sans + Mono) Typography</strong>
           <span>Applied Geist font system for professional AI-focused UI typography</span>
         </div>
-        <!-- <div class="jd-row-years">
-          <span class="has">2+ yrs</span>
-          <span class="req">req: 1+</span>
-        </div> -->
       </div>
 
-      <div class="jd-row">
+      <div class="jd-row" data-category="delivery">
         <div class="jd-check">✓</div>
         <div class="jd-row-content">
           <strong>Proven AI-focused UI project experience</strong>
           <span>50K+ user AI agent platform at Freddie Mac</span>
         </div>
-        <!-- <div class="jd-row-years">
-          <span class="has">✔ Met</span>
-          <span class="req">mandatory</span>
-        </div> -->
       </div>
 
-      <div class="jd-row">
+      <div class="jd-row" data-category="delivery">
         <div class="jd-check">✓</div>
         <div class="jd-row-content">
           <strong>Agile / Scrum environment</strong>
           <span>Led Agile delivery across Fortune 500 clients - Freddie Mac, State Street, J&J</span>
         </div>
-        <!-- <div class="jd-row-years">
-          <span class="has">10+ yrs</span>
-          <span class="req">req: 4+</span>
-        </div> -->
       </div>
 
-      <div class="jd-row">
+      <div class="jd-row" data-category="frontend">
         <div class="jd-check">✓</div>
         <div class="jd-row-content">
           <strong>Mobile App - React Native, iOS, Android</strong>
@@ -1170,21 +1535,7 @@
         </div>
       </div>
 
-      <div class="jd-row">
-        <div class="jd-check">✓</div>
-        <div class="jd-row-content">
-          <strong>UI / UX Design</strong>
-          <span>Designed intuitive, visually compelling user interfaces and experiences that guide users effortlessly from first click to final action.</span>
-        </div>
-      </div>
-      <div class="jd-row">
-        <div class="jd-check">✓</div>
-        <div class="jd-row-content">
-          <strong>Generative AI</strong>
-          <span>Build intelligent applications powered by large language models, image generation, and AI APIs to automate, create, and solve real-world problems.</span>
-        </div>
-      </div>
-      <div class="jd-row">
+      <div class="jd-row" data-category="ai">
         <div class="jd-check">✓</div>
         <div class="jd-row-content">
           <strong>AI/ML - Agentic AI</strong>
@@ -1229,7 +1580,7 @@
 </section>
 
 <!-- SKILLS -->
-<section id="skills">
+<!-- <section id="skills">
   <div class="section-inner">
     <p class="section-label">Technical expertise</p>
     <h2 class="section-title">Core competencies</h2>
@@ -1331,7 +1682,7 @@
       </div>
     </div>
   </div>
-</section>
+</section> -->
 
 <!-- EXPERIENCE -->
 <section id="experience">
@@ -1514,14 +1865,15 @@
         </div>
         <span class="arrow">→</span>
       </a>
-      <!-- <a href="mailto:hepzibha.sundar@gmail.com" class="link-card">
-        <span class="link-card-icon">✉</span>
+      <a href="https://codesandbox.io/p/sandbox/elastic-shadow-3gp42y" target="_blank" class="link-card">
+        <span class="link-card-icon">💻</span>
         <div class="link-card-info">
-          <strong>Email</strong>
-          <span>hepzibha.sundar@gmail.com</span>
+          <strong>Sandbox</strong>
+          <span>React Applications</span>
         </div>
         <span class="arrow">→</span>
-      </a> -->
+      </a>      
+
       <a href="https://partyrock.aws/u/Hepzibha" target="_blank" class="link-card">
         <span class="link-card-icon">🤖</span>
         <div class="link-card-info">
@@ -1537,6 +1889,178 @@
 <footer>
   <p>Hepzibha Sundararaj &nbsp;·&nbsp; <strong>Sr. Full Stack, Mobile Developer & AI Lead</strong> &nbsp;·&nbsp; React · Angular · · React Native · Java · Python · Agentic AI</p>
 </footer>
+<script>
+  (function () {
+    var buttons = document.querySelectorAll('#jdFilterBtns .jd-filter-btn');
+    var rows = document.querySelectorAll('#jdMatchGrid .jd-row');
 
+    buttons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        buttons.forEach(function (b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+
+        var filter = btn.getAttribute('data-filter');
+        rows.forEach(function (row) {
+          if (filter === 'all' || row.getAttribute('data-category') === filter) {
+            row.classList.remove('jd-hidden');
+          } else {
+            row.classList.add('jd-hidden');
+          }
+        });
+      });
+    });
+  })();
+
+  // ── GLOBAL SEARCH ─────────────────────────
+  (function () {
+    var wrap = document.getElementById('navSearch');
+    var toggleBtn = document.getElementById('navSearchToggle');
+    var input = document.getElementById('navSearchInput');
+    var countEl = document.getElementById('navSearchCount');
+    var prevBtn = document.getElementById('navSearchPrev');
+    var nextBtn = document.getElementById('navSearchNext');
+
+    var matches = [];
+    var currentIndex = -1;
+    var debounceTimer = null;
+
+    // Elements to skip while walking text nodes
+    var SKIP_TAGS = { SCRIPT: 1, STYLE: 1, NAV: 1, NOSCRIPT: 1 };
+
+    function clearHighlights() {
+      var marks = document.querySelectorAll('mark.global-search-hit');
+      marks.forEach(function (mark) {
+        var parent = mark.parentNode;
+        parent.replaceChild(document.createTextNode(mark.textContent), mark);
+        parent.normalize();
+      });
+      matches = [];
+      currentIndex = -1;
+    }
+
+    function walkAndHighlight(root, query) {
+      var lowerQuery = query.toLowerCase();
+      var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+        acceptNode: function (node) {
+          if (!node.nodeValue || !node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+          var el = node.parentElement;
+          while (el) {
+            if (SKIP_TAGS[el.tagName]) return NodeFilter.FILTER_REJECT;
+            el = el.parentElement;
+          }
+          return NodeFilter.FILTER_ACCEPT;
+        }
+      });
+
+      var textNodes = [];
+      var n;
+      while ((n = walker.nextNode())) textNodes.push(n);
+
+      textNodes.forEach(function (node) {
+        var text = node.nodeValue;
+        var lowerText = text.toLowerCase();
+        var idx = lowerText.indexOf(lowerQuery);
+        if (idx === -1) return;
+
+        var frag = document.createDocumentFragment();
+        var lastEnd = 0;
+        var searchFrom = 0;
+        var pos;
+
+        while ((pos = lowerText.indexOf(lowerQuery, searchFrom)) !== -1) {
+          if (pos > lastEnd) {
+            frag.appendChild(document.createTextNode(text.slice(lastEnd, pos)));
+          }
+          var markEl = document.createElement('mark');
+          markEl.className = 'global-search-hit';
+          markEl.textContent = text.slice(pos, pos + query.length);
+          frag.appendChild(markEl);
+          matches.push(markEl);
+          lastEnd = pos + query.length;
+          searchFrom = lastEnd;
+        }
+        if (lastEnd < text.length) {
+          frag.appendChild(document.createTextNode(text.slice(lastEnd)));
+        }
+        node.parentNode.replaceChild(frag, node);
+      });
+    }
+
+    function updateCount() {
+      if (matches.length === 0) {
+        countEl.textContent = input.value.trim() ? 'No results' : '';
+        prevBtn.disabled = true;
+        nextBtn.disabled = true;
+      } else {
+        countEl.textContent = (currentIndex + 1) + ' / ' + matches.length;
+        prevBtn.disabled = false;
+        nextBtn.disabled = false;
+      }
+    }
+
+    function goToMatch(index) {
+      if (matches.length === 0) return;
+      if (currentIndex >= 0 && matches[currentIndex]) {
+        matches[currentIndex].classList.remove('current-hit');
+      }
+      currentIndex = (index + matches.length) % matches.length;
+      var el = matches[currentIndex];
+      el.classList.add('current-hit');
+      el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      updateCount();
+    }
+
+    function runSearch() {
+      clearHighlights();
+      var query = input.value.trim();
+      if (query.length < 2) {
+        updateCount();
+        return;
+      }
+      walkAndHighlight(document.body, query);
+      updateCount();
+      if (matches.length > 0) goToMatch(0);
+    }
+
+    toggleBtn.addEventListener('click', function () {
+      var isOpen = wrap.classList.toggle('open');
+      toggleBtn.classList.toggle('active', isOpen);
+      if (isOpen) {
+        setTimeout(function () { input.focus(); }, 150);
+      } else {
+        input.value = '';
+        clearHighlights();
+        updateCount();
+      }
+    });
+
+    input.addEventListener('input', function () {
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(runSearch, 220);
+    });
+
+    input.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        if (e.shiftKey) {
+          goToMatch(currentIndex - 1);
+        } else if (matches.length > 0 && countEl.textContent) {
+          goToMatch(currentIndex + 1);
+        } else {
+          runSearch();
+        }
+      } else if (e.key === 'Escape') {
+        wrap.classList.remove('open');
+        toggleBtn.classList.remove('active');
+        input.value = '';
+        clearHighlights();
+        updateCount();
+      }
+    });
+
+    prevBtn.addEventListener('click', function () { goToMatch(currentIndex - 1); });
+    nextBtn.addEventListener('click', function () { goToMatch(currentIndex + 1); });
+  })();
+</script>
 </body>
 </html>
