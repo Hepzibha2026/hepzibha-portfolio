@@ -1079,6 +1079,27 @@
       width: 120px;
     }
   }
+
+  #backToTop {
+    display: none;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 99;
+    font-size: 20px;
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    transition: background-color 0.3s;
+  }
+  #backToTop:hover {
+    background-color: #555;
+  }
 </style>
 </head>
 <body>
@@ -1796,11 +1817,15 @@
         </div>
         <div class="edu-item">
           <p class="edu-degree">Web Developer Associate Degree</p>
-          <p class="edu-institution">MATC, Madison, WI</p>
+          <p class="edu-institution">MATC, Madison, WI, USA</p>
         </div>
         <div class="edu-item">
           <p class="edu-degree">BSc Physics</p>
           <p class="edu-institution">M S University, Tirunelveli, India</p>
+        </div>
+        <div class="edu-item">
+          <p class="edu-degree">Certificate Program in Database and Data Analytics</p>
+          <p class="edu-institution">UC Santa Cruz, CA, USA</p>
         </div>
       </div>
 
@@ -1885,7 +1910,7 @@
     </div>
   </div>
 </section>
-
+<button id="backToTop" title="Go to top">↑</button>
 <footer>
   <p>Hepzibha Sundararaj &nbsp;·&nbsp; <strong>Sr. Full Stack, Mobile, AI Developer</strong> &nbsp;·&nbsp; React · Angular · React Native · Java · Python · Agentic AI · GenAI · MCP · RAG</p>
 </footer>
@@ -2061,6 +2086,21 @@
     prevBtn.addEventListener('click', function () { goToMatch(currentIndex - 1); });
     nextBtn.addEventListener('click', function () { goToMatch(currentIndex + 1); });
   })();
+
+  // ── BACK TO TOP BUTTON ─────────────────────────
+  const btn = document.getElementById("backToTop");
+
+  // Show button after scrolling down 300px
+  window.onscroll = function () {
+    btn.style.display = (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) 
+      ? "block" 
+      : "none";
+  };
+
+  // Scroll smoothly to top on click
+  btn.addEventListener("click", function () {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
 </script>
 </body>
 </html>
