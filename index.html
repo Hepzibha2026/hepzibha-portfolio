@@ -132,11 +132,11 @@
 
   .hero-badge {
     /* display: inline-flex; */
-    align-items: center;
+    /* align-items: center; */
     gap: 8px;
-    margin-top: 8.5rem;
+    margin-top: 1.5rem;
     background: rgba(0,201,167,0.12);
-    border: 1px solid rgba(0,201,167,0.3);
+    /* border: 1px solid rgba(0,201,167,0.3); */
     color: var(--teal);
     font-size: 0.78rem;
     font-weight: 600;
@@ -271,8 +271,8 @@
   .hero-photo-wrap {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 1.2rem;
+    align-items: middle;
+    gap: 2.5rem;
   }
 
   .photo-frame {
@@ -312,8 +312,8 @@
     border-radius: 60%;
     /* background: linear-gradient(135deg, #0f2040 0%, #1a3a5c 100%); */
     display: flex;
-    align-items: center;
-    justify-content: center;
+    /* align-items: center; */
+    /* justify-content: center; */
     font-family: 'Playfair Display', serif;
     font-size: 3.5rem;
     color: var(--teal);
@@ -1043,6 +1043,30 @@
     color: var(--navy);
   }
 
+  /* ──Job and roles more button to extend to see the details────────────────────── */
+  .jd-desc {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.jd-desc.expanded {
+  -webkit-line-clamp: unset;
+  overflow: visible;
+}
+
+.jd-toggle {
+  background: none;
+  border: none;
+  color: #007bff;
+  cursor: pointer;
+  padding: 0;
+  font-size: 0.9em;
+  margin-top: 4px;
+  display: block;
+}
+
   /* ── FOOTER ─────────────────────────── */
   footer {
     background: var(--navy);
@@ -1089,12 +1113,12 @@
   #backToTop {
     display: none;
     position: fixed;
-    bottom: 30px;
-    right: 30px;
+    bottom: 50px;
+    right: 50px;
     z-index: 99;
-    font-size: 20px;
-    width: 50px;
-    height: 50px;
+    font-size: 15px;
+    width: 70px;
+    height: 70px;
     border: none;
     border-radius: 50%;
     background-color: #333;
@@ -1113,7 +1137,7 @@
 <!-- NAV -->
 <nav>
   <span class="nav-logo">Hepzibha</span>
-  <span class ="nav-logo">Work in progress.....</span>
+  <!-- <span class ="nav-logo">Work in progress.....</span> -->
     <div class="nav-search" id="navSearch">
     <label style="color: white;">Skill Search</label>
     <button class="nav-search-btn" id="navSearchToggle" type="button" aria-label="Search page">
@@ -1140,21 +1164,23 @@
     <li><a href="#education">Education</a></li>
     <!-- <li><a href="ReactJs.html">Blogs</a></li> -->
   </ul>
+
 </nav>
 
+
 <!-- HERO -->
+
 
 <section class="hero">
   <div class="hero-inner">
     <div class="hero-content">
-      <div class="hero-badge">Available for opportunities<br>-Platform Engineer-FrontEnd<span style="color: var(--gold);"> (React JS, Angular)</span><span>-API-Backend-FullStack-AI /ML, Mobile</span><span style="color: var(--gold);">(React Native /iOS /Android)</span><span>,UI/UX design, AI Agent, Agentic AI, LLM, GenAI, LangGraph, LangChain</span></div>
+      <div class="hero-badge" style="background-color: var(--text-dark); color: var(--gold); font-weight: bold; font-size: 1.2em;">Open to Work </div>
       <h1 id="profile">Hepzibha Sundararaj</h1>
-      <!-- <p class="hero-desc">
-        15+ years experience and expertise in UI/UX design, Front-end, Backend, Fullstack, Mobile Developer, AI-GenAI, Agentic AI, AI Agent etc, building enterprise SaaS at Fortune 500 companies - Freddie Mac, State Street Bank, Johnson & Johnson, Alliance Insurance, Commerce Benefit Group, Mepline Technical Services LLC. Deep expertise in Next.js App Router, React 19, React Native, TypeScript, Tailwind CSS, FastAPI, and production-grade agentic AI with LangGraph, LangChain, @ag-ui/client, and A2A SDK and more.
-      </p> -->
+
       <p class="hero-desc">
-       Results-driven Full Stack Developer and Technical Architect with 15+ years building scalable enterprise SaaS platforms and 5+ years leading engineering teams.  Deep expertise in React, Next.js, TypeScript, Vue.js, Java, Spring Boot, and Node.js, with proven success architecting agentic AI and GenAI workflows using OpenAI, LangChain, and Claude-deployed in production at Fortune 500 companies including Freddie Mac, State Street Bank, and Johnson & Johnson. Skilled in micro-frontend architecture, cloud-native deployment-AWS,Kubernetes,Docker, and building AI-driven, embedded, and real-time applications that deliver measurable business impact. 
-      </p> 
+        15+ years experience and expertise in UI/UX design, Front-end, Backend, Fullstack, Mobile, AI Developer with lead and architect experience.
+      </p>
+        
         <div class="hero-stats">
         <div class="stat">
           <span class="stat-num">15+</span>
@@ -1201,10 +1227,10 @@
     <!-- PHOTO -->
     <div class="hero-photo-wrap">
       <div class="photo-frame">
-        <div class="photo-initials">
+       
         <img src="profile.png" alt="Description of the image" width="100%" height="100%">
         <!-- <img src="hepzibha.png" alt="Description of the image" width="100%" height="100%"> -->
-        </div>
+        
       </div>
       <div class="hero-contact-chips">
         <a href="mailto:hepzibha.sundar@gmail.com" class="contact-chip">
@@ -1357,7 +1383,8 @@
         <div class="jd-check">✓</div>
         <div class="jd-row-content">
           <strong>UI/UX Design</strong>
-          <span>Proficient in designing intuitive, user-centered interfaces using industry-standard tools such as Figma, Adobe XD, Sketch, and Canva, combined with a strong understanding of visual hierarchy, accessibility, and modern design principles that shape engaging digital experiences. Experienced across the full design lifecycle, including wireframing, interactive prototyping, responsive design, and building scalable design systems, with a usability-focused workflow that emphasizes user research, iterative feedback, and collaboration with cross-functional teams to deliver polished, high-quality products</span>
+          <span class="jd-desc">Proficient in designing intuitive, user-centered interfaces using industry-standard tools such as Figma, Adobe XD, Sketch, and Canva, combined with a strong understanding of visual hierarchy, accessibility, and modern design principles that shape engaging digital experiences. Experienced across the full design lifecycle, including wireframing, interactive prototyping, responsive design, and building scalable design systems, with a usability-focused workflow that emphasizes user research, iterative feedback, and collaboration with cross-functional teams to deliver polished, high-quality products</span>
+          <button class="jd-toggle" onclick="toggleText(this)">more...</button>
         </div>
       </div>
 
@@ -1365,15 +1392,17 @@
         <div class="jd-check">✓</div>
         <div class="jd-row-content">
           <strong>Front End Technologies</strong>
-          <span>Experienced with a broad range of modern web technologies, including React.js, Next.js, Express.js, Angular, and Vue.js for building dynamic front-end and back-end applications, alongside C#, .NET Core, and ASP.NET Core for developing robust, enterprise-grade Web APIs. Skilled in TypeScript, JavaScript, HTML, and CSS frameworks such as Bootstrap and Tailwind to create responsive, scalable, and high-performance web applications that deliver seamless user experiences across devices and platforms, while maintaining clean, efficient, and well-documented code throughout development.</span>
-        </div>
+          <span class="jd-desc">Experienced with a broad range of modern web technologies, including React.js, Next.js, Express.js, Angular, and Vue.js for building dynamic front-end and back-end applications, alongside C#, .NET Core, and ASP.NET Core for developing robust, enterprise-grade Web APIs. Skilled in TypeScript, JavaScript, HTML, and CSS frameworks such as Bootstrap and Tailwind to create responsive, scalable, and high-performance web applications that deliver seamless user experiences across devices and platforms, while maintaining clean, efficient, and well-documented code throughout development.</span>
+          <button class="jd-toggle" onclick="toggleText(this)">more...</button>
+  </div>
       </div>
 
       <div class="jd-row" data-category="mobile">
         <div class="jd-check">✓</div>
         <div class="jd-row-content">
           <strong>Mobile Technologies</strong>
-          <span>Experienced in mobile application development across both native and cross-platform ecosystems, leveraging Android, iOS, Flutter, React Native, Xamarin, and .NET MAUI to deliver seamless, high-performance applications. Proficient in Kotlin, Java, Swift, Objective-C, and Dart for building robust, platform-specific solutions, with strong expertise in RESTful API integration to enable efficient data exchange. Skilled in designing scalable, user-friendly mobile applications that ensure consistent performance, responsiveness, and functionality across diverse devices and operating systems.</span>
+          <span class="jd-desc">Experienced in mobile application development across both native and cross-platform ecosystems, leveraging Android, iOS, Flutter, React Native, Xamarin, and .NET MAUI to deliver seamless, high-performance applications. Proficient in Kotlin, Java, Swift, Objective-C, and Dart for building robust, platform-specific solutions, with strong expertise in RESTful API integration to enable efficient data exchange. Skilled in designing scalable, user-friendly mobile applications that ensure consistent performance, responsiveness, and functionality across diverse devices and operating systems.</span>
+          <button class="jd-toggle" onclick="toggleText(this)">more...</button>    
         </div>
       </div>
 
@@ -1381,7 +1410,9 @@
         <div class="jd-check">✓</div>
         <div class="jd-row-content">
           <strong>Backend API Technologies</strong>
-          <span>Experienced in backend development using Node.js, Java Spring Boot, .NET Core, and ASP.NET Core, along with Python frameworks such as Django, Flask, and FastAPI, PHP with Laravel, and Ruby on Rails to build robust server-side applications. Skilled in designing RESTful and GraphQL APIs, implementing microservices architectures, and integrating secure authentication and authorization mechanisms. Proficient in developing scalable, maintainable, and high-performance backend systems that support reliable, efficient, and secure application functionality across diverse platforms and environments.</span>
+          <span class="jd-desc">Experienced in backend development using Node.js, Java Spring Boot, .NET Core, and ASP.NET Core, along with Python frameworks such as Django, Flask, and FastAPI, PHP with Laravel, and Ruby on Rails to build robust server-side applications. Skilled in designing RESTful and GraphQL APIs, implementing microservices architectures, and integrating secure authentication and authorization mechanisms. Proficient in developing scalable, maintainable, and high-performance backend systems that support reliable, efficient, and secure application functionality across diverse platforms and environments.</span>
+          <button class="jd-toggle" onclick="toggleText(this)">more...</button>
+    
         </div>
       </div>
 
@@ -1389,7 +1420,8 @@
         <div class="jd-check">✓</div>
         <div class="jd-row-content">
           <strong>SQL & NoSQL Databases</strong>
-          <span>Experienced with a wide range of relational and NoSQL databases, including MySQL, PostgreSQL, Microsoft SQL Server, Oracle, and SQLite, along with MongoDB, Cassandra, Redis, DynamoDB, and Firebase Firestore for flexible, high-throughput data storage. Proficient in cloud-native database solutions such as Cosmos DB, Amazon RDS, Amazon Aurora, Google Cloud SQL, BigQuery, and Azure SQL Database, enabling scalable, secure, and high-performance data management across distributed environments while ensuring reliability, consistency, and efficient query performance for diverse application workloads.</span>
+          <span class="jd-desc">Experienced with a wide range of relational and NoSQL databases, including MySQL, PostgreSQL, Microsoft SQL Server, Oracle, and SQLite, along with MongoDB, Cassandra, Redis, DynamoDB, and Firebase Firestore for flexible, high-throughput data storage. Proficient in cloud-native database solutions such as Cosmos DB, Amazon RDS, Amazon Aurora, Google Cloud SQL, BigQuery, and Azure SQL Database, enabling scalable, secure, and high-performance data management across distributed environments while ensuring reliability, consistency, and efficient query performance for diverse application workloads.</span>
+          <button class="jd-toggle" onclick="toggleText(this)">more...</button>
         </div>
       </div>
 
@@ -1397,7 +1429,8 @@
         <div class="jd-check">✓</div>
         <div class="jd-row-content">
           <strong>Testing - Unit Test,Integration Test & End-To-End Test</strong>
-          <span>Experienced in comprehensive front-end, back-end, and full-stack testing using frameworks such as Jest, Vitest, Mocha, Jasmine, React Testing Library, and Angular Testing Utilities for unit and component-level validation. Proficient with NUnit, xUnit, MSTest, JUnit, and pytest for backend testing, alongside Cypress, Playwright, Selenium, Puppeteer, and TestCafe for automated end-to-end testing. Skilled in API testing and validation using Postman, Supertest, and Cucumber to ensure reliable integration, functional accuracy, and consistent application behavior across environments.</span>
+          <span class="jd-desc">Experienced in comprehensive front-end, back-end, and full-stack testing using frameworks such as Jest, Vitest, Mocha, Jasmine, React Testing Library, and Angular Testing Utilities for unit and component-level validation. Proficient with NUnit, xUnit, MSTest, JUnit, and pytest for backend testing, alongside Cypress, Playwright, Selenium, Puppeteer, and TestCafe for automated end-to-end testing. Skilled in API testing and validation using Postman, Supertest, and Cucumber to ensure reliable integration, functional accuracy, and consistent application behavior across environments.</span>
+          <button class="jd-toggle" onclick="toggleText(this)">more...</button>
         </div>
       </div>
 
@@ -1405,7 +1438,8 @@
         <div class="jd-check">✓</div>
         <div class="jd-row-content">
           <strong>AI Full-Stack Development</strong>
-          <span>Experienced with Agentic AI, Generative AI, LLMs, SLMs, RAG, AI agents, multi-agent systems, MCP, prompt engineering, fine-tuning, embeddings, vector databases, semantic search, knowledge graphs, NLP, computer vision, speech AI, multimodal AI, LangChain, LangGraph, LlamaIndex, OpenAI, Anthropic Claude, Google Gemini, Hugging Face, Ollama, vLLM, TensorFlow, PyTorch, ONNX, Python, JavaScript/TypeScript, React, Next.js, Node.js, FastAPI, REST/GraphQL APIs, Docker, Kubernetes, MLflow, Weights & Biases, AWS, Azure, GCP, serverless, CI/CD, MLOps, AI evaluation, guardrails, monitoring, scalable architectures, and production deployment.</span>
+          <span class="jd-desc">Experienced with Agentic AI, Generative AI, LLMs, SLMs, RAG, AI agents, multi-agent systems, MCP, prompt engineering, fine-tuning, embeddings, vector databases, semantic search, knowledge graphs, NLP, computer vision, speech AI, multimodal AI, LangChain, LangGraph, LlamaIndex, OpenAI, Anthropic Claude, Google Gemini, Hugging Face, Ollama, vLLM, TensorFlow, PyTorch, ONNX, Python, JavaScript/TypeScript, React, Next.js, Node.js, FastAPI, REST/GraphQL APIs, Docker, Kubernetes, MLflow, Weights & Biases, AWS, Azure, GCP, serverless, CI/CD, MLOps, AI evaluation, guardrails, monitoring, scalable architectures, and production deployment.</span>
+          <button class="jd-toggle" onclick="toggleText(this)">more...</button>
         </div>
       </div>
 
@@ -1413,7 +1447,8 @@
         <div class="jd-check">✓</div>
         <div class="jd-row-content">
           <strong>Cloud</strong>
-          <span>Experienced with multi-cloud architectures across AWS, Microsoft Azure, and Google Cloud Platform (GCP), spanning compute, storage, networking, serverless containers, Kubernetes, and virtual machines. Proficient with object storage (S3, Blob Storage, Cloud Storage), EC2, Lambda, Azure Functions, Cloud Functions, API Gateway, IAM, VPC, Load Balancers, CloudFront/CDN, CloudWatch, CloudFormation, Terraform, Docker, and Kubernetes. Skilled in DevOps, CI/CD, monitoring, security, backup, and disaster recovery, along with databases, messaging, and event-driven architectures for scalable, cloud-native application deployment.</span>
+          <span class="jd-desc">Experienced with multi-cloud architectures across AWS, Microsoft Azure, and Google Cloud Platform (GCP), spanning compute, storage, networking, serverless containers, Kubernetes, and virtual machines. Proficient with object storage (S3, Blob Storage, Cloud Storage), EC2, Lambda, Azure Functions, Cloud Functions, API Gateway, IAM, VPC, Load Balancers, CloudFront/CDN, CloudWatch, CloudFormation, Terraform, Docker, and Kubernetes. Skilled in DevOps, CI/CD, monitoring, security, backup, and disaster recovery, along with databases, messaging, and event-driven architectures for scalable, cloud-native application deployment.</span>
+          <button class="jd-toggle" onclick="toggleText(this)">more...</button>
         </div>
       </div>
 
@@ -1421,7 +1456,8 @@
         <div class="jd-check">✓</div>
         <div class="jd-row-content">
           <strong>Generative AI</strong>
-          <span>Design and build intelligent applications powered by large language models, image generation, and AI APIs to automate workflows, create new capabilities, and solve real-world problems, leveraging OpenAI, Anthropic, and Stable Diffusion for end-to-end AI-driven pipelines. Skilled in prompt engineering, fine-tuning, and retrieval-augmented generation to boost model accuracy and relevance for domain-specific applications, turning complex AI capabilities into practical, user-friendly solutions that improve efficiency and drive innovation. Dedicated to advancing generative AI for scalable, impactful, ethically responsible outcomes.</span>
+          <span class="jd-desc">Design and build intelligent applications powered by large language models, image generation, and AI APIs to automate workflows, create new capabilities, and solve real-world problems, leveraging OpenAI, Anthropic, and Stable Diffusion for end-to-end AI-driven pipelines. Skilled in prompt engineering, fine-tuning, and retrieval-augmented generation to boost model accuracy and relevance for domain-specific applications, turning complex AI capabilities into practical, user-friendly solutions that improve efficiency and drive innovation. Dedicated to advancing generative AI for scalable, impactful, ethically responsible outcomes.</span>
+          <button class="jd-toggle" onclick="toggleText(this)">more...</button>
         </div>
       </div>
 
@@ -1429,7 +1465,8 @@
         <div class="jd-check">✓</div>
         <div class="jd-row-content">
           <strong>CI/CD & Automation</strong>
-          <span>Skilled automating CI/CD with Git, GitHub Actions, GitLab CI/CD, Jenkins, Azure DevOps, Bitbucket Pipelines, CircleCI, GitOps (Argo CD, Helm); Infrastructure as Code (IaC) via Terraform/Ansible; Docker/Kubernetes containerization/orchestration; Maven/Gradle/npm automation across Java/JavaScript; SonarQube/Nexus/Artifactory for code quality/artifact management; automated testing with blue-green/canary deployments cutting downtime; and monitoring via Prometheus, Grafana, ELK Stack (Elasticsearch, Logstash, Kibana), OpenTelemetry, Jaeger, Zipkin, Datadog, New Relic, Splunk, AWS CloudWatch, Azure Monitor, Google Cloud Operations Suite, and PagerDuty for scalable, secure, cloud-native delivery.</span>
+          <span class="jd-desc">Skilled automating CI/CD with Git, GitHub Actions, GitLab CI/CD, Jenkins, Azure DevOps, Bitbucket Pipelines, CircleCI, GitOps (Argo CD, Helm); Infrastructure as Code (IaC) via Terraform/Ansible; Docker/Kubernetes containerization/orchestration; Maven/Gradle/npm automation across Java/JavaScript; SonarQube/Nexus/Artifactory for code quality/artifact management; automated testing with blue-green/canary deployments cutting downtime; and monitoring via Prometheus, Grafana, ELK Stack (Elasticsearch, Logstash, Kibana), OpenTelemetry, Jaeger, Zipkin, Datadog, New Relic, Splunk, AWS CloudWatch, Azure Monitor, Google Cloud Operations Suite, and PagerDuty for scalable, secure, cloud-native delivery.</span>
+          <button class="jd-toggle" onclick="toggleText(this)">more...</button>
         </div>
       </div>
 
@@ -1437,7 +1474,8 @@
         <div class="jd-check">✓</div>
         <div class="jd-row-content">
           <strong>Monitoring & Security</strong>
-          <span>Experienced in observability and security using Prometheus, Grafana, ELK Stack (Elasticsearch, Logstash, Kibana), OpenTelemetry, Jaeger, Zipkin, Datadog, New Relic, Splunk, AWS CloudWatch, Azure Monitor, Google Cloud Operations Suite, Sentry, and PagerDuty for tracing, logging, and incident response, reducing MTTR across microservices. Skilled in OAuth 2.0, OpenID Connect (OIDC), JWT, and SAML authentication, plus RBAC, MFA, and IAM for least-privilege access. Proficient managing secrets via AWS Secrets Manager and Azure Key Vault, building resilient, compliant systems with strong visibility into health and threat posture.</span>
+          <span class="jd-desc">Experienced in observability and security using Prometheus, Grafana, ELK Stack (Elasticsearch, Logstash, Kibana), OpenTelemetry, Jaeger, Zipkin, Datadog, New Relic, Splunk, AWS CloudWatch, Azure Monitor, Google Cloud Operations Suite, Sentry, and PagerDuty for tracing, logging, and incident response, reducing MTTR across microservices. Skilled in OAuth 2.0, OpenID Connect (OIDC), JWT, and SAML authentication, plus RBAC, MFA, and IAM for least-privilege access. Proficient managing secrets via AWS Secrets Manager and Azure Key Vault, building resilient, compliant systems with strong visibility into health and threat posture.</span>
+          <button class="jd-toggle" onclick="toggleText(this)">more...</button>
         </div>
       </div>
 
@@ -1445,7 +1483,8 @@
         <div class="jd-check">✓</div>
         <div class="jd-row-content">
           <strong>DevOps</strong>
-          <span>Understanding DevOps principles for continuous integration and deployment, with strong Git branching strategies, pull requests, and code review practices supporting CI/CD pipelines. Familiar with Docker for consistent containerization across environments, plus basic Kubernetes knowledge for deploying and scaling containers. Experienced setting up CI/CD pipelines like GitHub Actions, GitLab CI, and Jenkins to automate testing and deployment. Knowledgeable in AWS, Azure, and GCP for provisioning, storage, and networking, and Terraform, Prometheus, Grafana, and ELK Stack for infrastructure as code and monitoring.</span>
+          <span class="jd-desc">Understanding DevOps principles for continuous integration and deployment, with strong Git branching strategies, pull requests, and code review practices supporting CI/CD pipelines. Familiar with Docker for consistent containerization across environments, plus basic Kubernetes knowledge for deploying and scaling containers. Experienced setting up CI/CD pipelines like GitHub Actions, GitLab CI, and Jenkins to automate testing and deployment. Knowledgeable in AWS, Azure, and GCP for provisioning, storage, and networking, and Terraform, Prometheus, Grafana, and ELK Stack for infrastructure as code and monitoring.</span>
+          <button class="jd-toggle" onclick="toggleText(this)">more...</button>
         </div>
       </div>
 
@@ -1453,7 +1492,8 @@
         <div class="jd-check">✓</div>
         <div class="jd-row-content">
           <strong>Delivery</strong>
-          <span>Skilled at shipping features to production reliably, breaking requirements into small, shippable increments that tighten feedback loops and reduce deployment risk. Strong testing habits unit, integration, and end-to-end-build confidence to ship frequently without breaking functionality, backed by clear communication with product managers, designers, and QA. Disciplined in release management using feature flags, rollback plans, and post-deployment monitoring, with tools including GitHub Actions, GitLab CI, Jenkins, Jira, Trello, Linear, LaunchDarkly, Sentry, Datadog, and New Relic to ship safely and catch issues fast.</span>
+          <span class="jd-desc">Skilled at shipping features to production reliably, breaking requirements into small, shippable increments that tighten feedback loops and reduce deployment risk. Strong testing habits unit, integration, and end-to-end-build confidence to ship frequently without breaking functionality, backed by clear communication with product managers, designers, and QA. Disciplined in release management using feature flags, rollback plans, and post-deployment monitoring, with tools including GitHub Actions, GitLab CI, Jenkins, Jira, Trello, Linear, LaunchDarkly, Sentry, Datadog, and New Relic to ship safely and catch issues fast.</span>
+          <button class="jd-toggle" onclick="toggleText(this)">more...</button>
         </div>
       </div>
 
@@ -1461,7 +1501,8 @@
         <div class="jd-check">✓</div>
         <div class="jd-row-content">
           <strong>Java</strong>
-          <span>As a full stack developer, I use Java and Spring Boot to build robust, scalable backend systems, designing RESTful APIs and microservices with Hibernate/JPA for efficient database modeling and persistence across MySQL and PostgreSQL. My backend expertise integrates seamlessly with React and Angular for end-to-end feature development from database to UI. I write maintainable, testable code using JUnit and Mockito, building secure authentication flows and deploying containerized services with Docker and Kubernetes as core strengths.</span>
+          <span class="jd-desc">As a full stack developer, I use Java and Spring Boot to build robust, scalable backend systems, designing RESTful APIs and microservices with Hibernate/JPA for efficient database modeling and persistence across MySQL and PostgreSQL. My backend expertise integrates seamlessly with React and Angular for end-to-end feature development from database to UI. I write maintainable, testable code using JUnit and Mockito, building secure authentication flows and deploying containerized services with Docker and Kubernetes as core strengths.</span>
+          <button class="jd-toggle" onclick="toggleText(this)">more...</button>
         </div>
       </div>
 
@@ -1469,7 +1510,8 @@
         <div class="jd-check">✓</div>
         <div class="jd-row-content">
           <strong>Python</strong>
-          <span>I use Python to build the backbone of my applications from RESTful APIs to database models and background processing.  I work primarily with Django and Fast API to design clean, scalable backend architectures that pair seamlessly with modern JavaScript frontends, Python's ecosystem, including SQL Alchemy, Pandas, and Pytest, lets me handle everything from data-driven features to automated testing with confidence.  I have used it to build authentication systems, deploy microservices, and integrate third party APIs across full stack projects.  Whether prototyping quickly or scaling for production, Python remains my go-to language for writing reliable, maintainable backend code.</span>
+          <span class="jd-desc">I use Python to build the backbone of my applications from RESTful APIs to database models and background processing.  I work primarily with Django and Fast API to design clean, scalable backend architectures that pair seamlessly with modern JavaScript frontends, Python's ecosystem, including SQL Alchemy, Pandas, and Pytest, lets me handle everything from data-driven features to automated testing with confidence.  I have used it to build authentication systems, deploy microservices, and integrate third party APIs across full stack projects.  Whether prototyping quickly or scaling for production, Python remains my go-to language for writing reliable, maintainable backend code.</span>
+          <button class="jd-toggle" onclick="toggleText(this)">more...</button>
         </div>
       </div>
 
@@ -1479,7 +1521,8 @@
         <div class="jd-check">✓</div>
         <div class="jd-row-content">
           <strong>Figma</strong>
-          <span>Passionate UI/UX designer skilled in Figma for crafting intuitive, user-centered digital experiences from concept to high-fidelity prototype. Proficient in wireframing, interactive prototyping, and building scalable design systems with reusable components, auto-layout, and variants. Experienced conducting user research, usability testing, and iterative feedback loops to inform design decisions. Skilled in creating responsive layouts, accessible interfaces, and polished visual designs that balance aesthetics with functionality. Collaborates closely with developers and stakeholders to translate ideas into seamless, engaging, and impactful digital products.</span>
+          <span class="jd-desc">Passionate UI/UX designer skilled in Figma for crafting intuitive, user-centered digital experiences from concept to high-fidelity prototype. Proficient in wireframing, interactive prototyping, and building scalable design systems with reusable components, auto-layout, and variants. Experienced conducting user research, usability testing, and iterative feedback loops to inform design decisions. Skilled in creating responsive layouts, accessible interfaces, and polished visual designs that balance aesthetics with functionality. Collaborates closely with developers and stakeholders to translate ideas into seamless, engaging, and impactful digital products.</span>
+          <button class="jd-toggle" onclick="toggleText(this)">more...</button>
         </div>
       </div>
 
@@ -1487,7 +1530,8 @@
         <div class="jd-check">✓</div>
         <div class="jd-row-content">
           <strong>Sketch</strong>
-          <span>Detail-oriented UI/UX designer experienced in Sketch for creating clean, intuitive, and user-centered digital interfaces. Skilled in wireframing, prototyping, and building reusable design systems using symbols, shared styles, and libraries for consistency across projects. Proficient in translating user research and usability insights into polished, accessible designs that balance visual appeal with functionality. Adept at crafting responsive layouts for web and mobile platforms, and collaborating closely with developers and product teams to deliver seamless, engaging digital experiences.</span>
+          <span class="jd-desc">Detail-oriented UI/UX designer experienced in Sketch for creating clean, intuitive, and user-centered digital interfaces. Skilled in wireframing, prototyping, and building reusable design systems using symbols, shared styles, and libraries for consistency across projects. Proficient in translating user research and usability insights into polished, accessible designs that balance visual appeal with functionality. Adept at crafting responsive layouts for web and mobile platforms, and collaborating closely with developers and product teams to deliver seamless, engaging digital experiences.</span>
+          <button class="jd-toggle" onclick="toggleText(this)">more...</button>
         </div>
       </div>
       
@@ -1495,7 +1539,8 @@
         <div class="jd-check">✓</div>
         <div class="jd-row-content">
           <strong>Adobe XD</strong>
-          <span>Creative UI/UX designer experienced in Adobe XD for designing intuitive, visually engaging digital interfaces across web and mobile platforms. Skilled in wireframing, interactive prototyping, and building consistent design systems using reusable components and design tokens. Proficient in incorporating user research and usability testing to craft accessible, user-centered solutions that balance aesthetics with functionality. Adept at creating responsive layouts and seamless micro-interactions, collaborating closely with developers and stakeholders to deliver polished, high-impact digital products.</span>
+          <span class="jd-desc">Creative UI/UX designer experienced in Adobe XD for designing intuitive, visually engaging digital interfaces across web and mobile platforms. Skilled in wireframing, interactive prototyping, and building consistent design systems using reusable components and design tokens. Proficient in incorporating user research and usability testing to craft accessible, user-centered solutions that balance aesthetics with functionality. Adept at creating responsive layouts and seamless micro-interactions, collaborating closely with developers and stakeholders to deliver polished, high-impact digital products.</span>
+          <button class="jd-toggle" onclick="toggleText(this)">more...</button>
         </div>
       </div>
       
@@ -1503,7 +1548,8 @@
         <div class="jd-check">✓</div>
         <div class="jd-row-content">
           <strong>Penpot</strong>
-          <span>UI/UX designer experienced with Penpot, the open-source design and prototyping platform, for creating intuitive, user-centered digital interfaces across web and mobile. Skilled in wireframing, interactive prototyping, and building reusable design systems with components and shared libraries for design consistency. Proficient in leveraging Penpot's collaborative, browser-based workflow alongside user research and usability testing to craft accessible, functional designs. Adept at creating responsive layouts and working closely with developers using open web standards like SVG and CSS.</span>
+          <span class="jd-desc">UI/UX designer experienced with Penpot, the open-source design and prototyping platform, for creating intuitive, user-centered digital interfaces across web and mobile. Skilled in wireframing, interactive prototyping, and building reusable design systems with components and shared libraries for design consistency. Proficient in leveraging Penpot's collaborative, browser-based workflow alongside user research and usability testing to craft accessible, functional designs. Adept at creating responsive layouts and working closely with developers using open web standards like SVG and CSS.</span>
+          <button class="jd-toggle" onclick="toggleText(this)">more...</button>
         </div>
       </div>
       
@@ -1511,7 +1557,8 @@
         <div class="jd-check">✓</div>
         <div class="jd-row-content">
           <strong>Lunacy</strong>
-          <span>UI/UX designer experienced with Lunacy, a free, AI-powered design tool, for creating intuitive, visually engaging digital interfaces across web and mobile platforms. Skilled in wireframing, prototyping, and building consistent design systems using reusable components and vector assets. Proficient in leveraging Lunacy's built-in AI features-like background removal, image upscaling, and smart resizing-to streamline workflows and enhance creative output. Adept at translating user research into accessible, user-centered designs, and collaborating closely with developers to deliver polished, high-quality digital products.</span>
+          <span class="jd-desc">UI/UX designer experienced with Lunacy, a free, AI-powered design tool, for creating intuitive, visually engaging digital interfaces across web and mobile platforms. Skilled in wireframing, prototyping, and building consistent design systems using reusable components and vector assets. Proficient in leveraging Lunacy's built-in AI features-like background removal, image upscaling, and smart resizing-to streamline workflows and enhance creative output. Adept at translating user research into accessible, user-centered designs, and collaborating closely with developers to deliver polished, high-quality digital products.</span>
+          <button class="jd-toggle" onclick="toggleText(this)">more...</button>
         </div>
       </div>
 
@@ -1519,7 +1566,8 @@
         <div class="jd-check">✓</div>
         <div class="jd-row-content">
           <strong>Framer</strong>
-          <span>UI/UX designer experienced with Framer for creating intuitive, high-fidelity interfaces and interactive prototypes that closely mirror real product behavior. Skilled in wireframing, advanced animations, and building responsive designs using Framer's code components and design-to-development capabilities. Proficient in translating user research and usability insights into polished, accessible experiences across web and mobile. Adept at rapid prototyping and publishing production-ready sites directly from design, collaborating closely with developers to bridge the gap between design and functional code.</span>
+          <span class="jd-desc">UI/UX designer experienced with Framer for creating intuitive, high-fidelity interfaces and interactive prototypes that closely mirror real product behavior. Skilled in wireframing, advanced animations, and building responsive designs using Framer's code components and design-to-development capabilities. Proficient in translating user research and usability insights into polished, accessible experiences across web and mobile. Adept at rapid prototyping and publishing production-ready sites directly from design, collaborating closely with developers to bridge the gap between design and functional code.</span>
+          <button class="jd-toggle" onclick="toggleText(this)">more...</button>
         </div>
       </div>
 
@@ -1527,7 +1575,8 @@
         <div class="jd-check">✓</div>
         <div class="jd-row-content">
           <strong>Next.js (App Router v16+)</strong>
-          <span>Experienced building modern, high-performance web applications using Next.js's App Router architecture, including server components, streaming, and nested layouts for optimized rendering. Skilled in leveraging server actions, parallel and intercepting routes, and advanced caching strategies to build fast, scalable applications. Proficient in integrating TypeScript, Tailwind CSS, and API routes for full-stack development. Adept at optimizing performance through image and font optimization, edge runtime support, and SEO-friendly metadata handling across dynamic, production-ready applications.</span>
+          <span class="jd-desc">Experienced building modern, high-performance web applications using Next.js's App Router architecture, including server components, streaming, and nested layouts for optimized rendering. Skilled in leveraging server actions, parallel and intercepting routes, and advanced caching strategies to build fast, scalable applications. Proficient in integrating TypeScript, Tailwind CSS, and API routes for full-stack development. Adept at optimizing performance through image and font optimization, edge runtime support, and SEO-friendly metadata handling across dynamic, production-ready applications.</span>
+          <button class="jd-toggle" onclick="toggleText(this)">more...</button>
         </div>
       </div>
 
@@ -1535,7 +1584,8 @@
         <div class="jd-check">✓</div>
         <div class="jd-row-content">
           <strong>React v19+ + TypeScript</strong>
-          <span>Experienced building type safe, high performance applications using React's latest features, including Server Components, Actions, and the new use hook for streamlined data fetching and state management. Skilled in integrating AI capabilities-LLM-powered chat interfaces, streaming responses, and generative UI directly into React applications using TypeScript for robust type safety. Proficient in building scalable, maintainable component architectures that combine modern React patterns with AI driven features to deliver intelligent, responsive, and production ready user experiences.</span>
+          <span class="jd-desc">Experienced building type safe, high performance applications using React's latest features, including Server Components, Actions, and the new use hook for streamlined data fetching and state management. Skilled in integrating AI capabilities-LLM-powered chat interfaces, streaming responses, and generative UI directly into React applications using TypeScript for robust type safety. Proficient in building scalable, maintainable component architectures that combine modern React patterns with AI driven features to deliver intelligent, responsive, and production ready user experiences.</span>
+          <button class="jd-toggle" onclick="toggleText(this)">more...</button>
         </div>
       </div>
 
@@ -1543,7 +1593,8 @@
         <div class="jd-check">✓</div>
         <div class="jd-row-content">
           <strong>Tailwind CSS 4.x + DaisyUI</strong>
-          <span>Experienced building responsive, visually consistent interfaces using Tailwind's utility-first approach, including the new CSS-first configuration, container queries, and improved performance in version 4.x. Skilled in leveraging DaisyUI's pre-built, themeable components to accelerate development while maintaining design flexibility and consistency. Proficient in crafting accessible, mobile-first layouts, custom themes, and dark mode support. Adept at combining utility classes with component-driven design to deliver polished, production-ready user interfaces efficiently.</span>
+          <span class="jd-desc">Experienced building responsive, visually consistent interfaces using Tailwind's utility-first approach, including the new CSS-first configuration, container queries, and improved performance in version 4.x. Skilled in leveraging DaisyUI's pre-built, themeable components to accelerate development while maintaining design flexibility and consistency. Proficient in crafting accessible, mobile-first layouts, custom themes, and dark mode support. Adept at combining utility classes with component-driven design to deliver polished, production-ready user interfaces efficiently.</span>
+          <button class="jd-toggle" onclick="toggleText(this)">more...</button>
         </div>
       </div>
 
@@ -1551,7 +1602,8 @@
         <div class="jd-check">✓</div>
         <div class="jd-row-content">
           <strong>Material UI + Chakra UI</strong>
-          <span>Experienced building polished, accessible user interfaces using Material UI's comprehensive component library and Google's Material Design principles for consistent, professional layouts. Skilled in leveraging Chakra UI's composable, theme-driven components for rapid, flexible development with built-in accessibility support. Proficient in customizing themes, responsive breakpoints, and dark mode across both libraries. Adept at combining component-driven design systems with React to deliver clean, consistent, and production-ready user interfaces efficiently.</span>
+          <span class="jd-desc">Experienced building polished, accessible user interfaces using Material UI's comprehensive component library and Google's Material Design principles for consistent, professional layouts. Skilled in leveraging Chakra UI's composable, theme-driven components for rapid, flexible development with built-in accessibility support. Proficient in customizing themes, responsive breakpoints, and dark mode across both libraries. Adept at combining component-driven design systems with React to deliver clean, consistent, and production-ready user interfaces efficiently.</span>
+          <button class="jd-toggle" onclick="toggleText(this)">more...</button>
         </div>
       </div>
 
@@ -1559,7 +1611,8 @@
         <div class="jd-check">✓</div>
         <div class="jd-row-content">
           <strong>FastAPI (Python 3.10–3.12) + Uvicorn</strong>
-          <span>Experienced building high-performance, asynchronous APIs using FastAPI's type-hint-driven design, automatic OpenAPI documentation, and built-in data validation via Pydantic. Skilled in leveraging Python 3.10–3.12 features for cleaner, more efficient code, and deploying applications with Uvicorn's ASGI server for fast, production-ready performance. Proficient in building RESTful and async endpoints, dependency injection, and background tasks. Adept at integrating databases, authentication, and third-party services to deliver scalable, well-documented backend systems.</span>
+          <span class="jd-desc">Experienced building high-performance, asynchronous APIs using FastAPI's type-hint-driven design, automatic OpenAPI documentation, and built-in data validation via Pydantic. Skilled in leveraging Python 3.10–3.12 features for cleaner, more efficient code, and deploying applications with Uvicorn's ASGI server for fast, production-ready performance. Proficient in building RESTful and async endpoints, dependency injection, and background tasks. Adept at integrating databases, authentication, and third-party services to deliver scalable, well-documented backend systems.</span>
+          <button class="jd-toggle" onclick="toggleText(this)">more...</button>
         </div>
       </div>
 
@@ -1567,7 +1620,8 @@
         <div class="jd-check">✓</div>
         <div class="jd-row-content">
           <strong>Java (Microservices, Spring Boot)</strong>
-          <span>Experienced designing and building scalable, production-ready microservices using Java and the Spring Boot framework, including RESTful APIs, dependency injection, and Spring Data JPA for efficient database integration. Skilled in implementing service discovery, API gateways, and inter-service communication for distributed systems architecture. Proficient in Spring Security for authentication and authorization, along with unit and integration testing using JUnit and Mockito. Adept at deploying containerized microservices with Docker and Kubernetes for reliable, scalable backend systems.</span>
+          <span class="jd-desc">Experienced designing and building scalable, production-ready microservices using Java and the Spring Boot framework, including RESTful APIs, dependency injection, and Spring Data JPA for efficient database integration. Skilled in implementing service discovery, API gateways, and inter-service communication for distributed systems architecture. Proficient in Spring Security for authentication and authorization, along with unit and integration testing using JUnit and Mockito. Adept at deploying containerized microservices with Docker and Kubernetes for reliable, scalable backend systems.</span>
+          <button class="jd-toggle" onclick="toggleText(this)">more...</button>
         </div>
       </div>
 
@@ -1575,7 +1629,8 @@
         <div class="jd-check">✓</div>
         <div class="jd-row-content">
           <strong>Oracle Database (PL/SQL)</strong>
-          <span>Experienced designing, developing, and optimizing complex database solutions using Oracle Database and PL/SQL for robust data management and business logic implementation.  Skilled in writing efficient stored procedures, functions, triggers, and packages to automate processes and enforce data integrity.  Proficient in query optimization, indexing strategies, and performance tuning for large scale datasets.  Adept at handling trasactions, exception handling, and cursor management, along with integrating Oracle database into enterprise applications for reliable, scalable data solutions.</span>
+          <span class="jd-desc">Experienced designing, developing, and optimizing complex database solutions using Oracle Database and PL/SQL for robust data management and business logic implementation.  Skilled in writing efficient stored procedures, functions, triggers, and packages to automate processes and enforce data integrity.  Proficient in query optimization, indexing strategies, and performance tuning for large scale datasets.  Adept at handling trasactions, exception handling, and cursor management, along with integrating Oracle database into enterprise applications for reliable, scalable data solutions.</span>
+          <button class="jd-toggle" onclick="toggleText(this)">more...</button>
         </div>
       </div>
 
@@ -1583,7 +1638,8 @@
         <div class="jd-check">✓</div>
         <div class="jd-row-content">
           <strong>LangGraph + LangChain + OpenAI/Horizon</strong>
-          <span>Experienced building intelligent, stateful AI applications using LangGraph for orchestrating complex, multi-step agent workflows and LangChain for chaining prompts, tools, and memory.  Skilled in Integrating OpenAI and Horizon models to power conversational agents, retrieval-augmented generation, and autonomous multi-agent systems.  Proficient in designing robust agent architectures with conditional logic, tool calling, and persistent state management.  Adept at building scalable, production ready AI applications that combine reasoning, memory, and real time data integration effectively.</span>
+          <span class="jd-desc">Experienced building intelligent, stateful AI applications using LangGraph for orchestrating complex, multi-step agent workflows and LangChain for chaining prompts, tools, and memory.  Skilled in Integrating OpenAI and Horizon models to power conversational agents, retrieval-augmented generation, and autonomous multi-agent systems.  Proficient in designing robust agent architectures with conditional logic, tool calling, and persistent state management.  Adept at building scalable, production ready AI applications that combine reasoning, memory, and real time data integration effectively.</span>
+          <button class="jd-toggle" onclick="toggleText(this)">more...</button>
         </div>
       </div>
 
@@ -1592,7 +1648,8 @@
         <div class="jd-check">✓</div>
         <div class="jd-row-content">
           <strong>Databricks SQL</strong>
-          <span>Experienced leveraging Databricks SQL for querying, analyzing, and visualizing large-scale data within the Databricks Lakehouse platform, enabling fast, efficient analytics on structured and semi-structured data.  Skilled in writing optimized SQL queries, building interactive dashboards, and managing SQL warehouses for scalable performance.  Proficient in integrating Databricks SQL with Delta lake for reliable, ACID compliant data storage and querying.  Adept at collaborating with data teams to deliver actionable insights, streamline reporting, and support data driven decision making across the organization.</span>
+          <span class="jd-desc">Experienced leveraging Databricks SQL for querying, analyzing, and visualizing large-scale data within the Databricks Lakehouse platform, enabling fast, efficient analytics on structured and semi-structured data.  Skilled in writing optimized SQL queries, building interactive dashboards, and managing SQL warehouses for scalable performance.  Proficient in integrating Databricks SQL with Delta lake for reliable, ACID compliant data storage and querying.  Adept at collaborating with data teams to deliver actionable insights, streamline reporting, and support data driven decision making across the organization.</span>
+          <button class="jd-toggle" onclick="toggleText(this)">more...</button>
         </div>
       </div>
 
@@ -1601,7 +1658,8 @@
         <div class="jd-check">✓</div>
         <div class="jd-row-content">
           <strong>Microsoft SQL Server</strong>
-          <span>Experienced designing, developing, and managing robust relational databases using Microsoft SQL server for enterprise grade data storage and retrieval.  Skilled in writing complex T SQL queries, stored procedures, triggers, and functions to automate processes and enforce data integrity.  Proficient in query optimization, indexing strategies, and performance tuning for large, high volume detasets.  Adept at implementing backup, recovery, and security best practices, along with integrating SQL Server into scalable applications for reliable, efficient data management solutions.</span>
+          <span class="jd-desc">Experienced designing, developing, and managing robust relational databases using Microsoft SQL server for enterprise grade data storage and retrieval.  Skilled in writing complex T SQL queries, stored procedures, triggers, and functions to automate processes and enforce data integrity.  Proficient in query optimization, indexing strategies, and performance tuning for large, high volume detasets.  Adept at implementing backup, recovery, and security best practices, along with integrating SQL Server into scalable applications for reliable, efficient data management solutions.</span>
+          <button class="jd-toggle" onclick="toggleText(this)">more...</button>
         </div>
       </div>    
       
@@ -1610,7 +1668,8 @@
         <div class="jd-check">✓</div>
         <div class="jd-row-content">
           <strong>PostgreSQL</strong>
-          <span>Experienced designing, developing, and managing robust, scalable relational databases using PostgreSQL for high performance data storage and retrieval.  Skilled in writing complex SQL queries, stored procedures, triggers, and functions, along with leveraging advanced features like JSOMB, full text search, and window functions. Proficient in query optimization, indexing strategies, and performance tuning for large scale datasets.  Adept at implementing replication, backup, and security best practices, and integrating PostgreSQL into scalable applications for reliable, efficient data management.</span>
+          <span class="jd-desc">Experienced designing, developing, and managing robust, scalable relational databases using PostgreSQL for high performance data storage and retrieval.  Skilled in writing complex SQL queries, stored procedures, triggers, and functions, along with leveraging advanced features like JSOMB, full text search, and window functions. Proficient in query optimization, indexing strategies, and performance tuning for large scale datasets.  Adept at implementing replication, backup, and security best practices, and integrating PostgreSQL into scalable applications for reliable, efficient data management.</span>
+          <button class="jd-toggle" onclick="toggleText(this)">more...</button>
         </div>
       </div>      
 
@@ -1618,7 +1677,8 @@
         <div class="jd-check">✓</div>
         <div class="jd-row-content">
           <strong>@ag-ui/client Agent Integration</strong>
-          <span>Experienced integrating AI agents into frontend applications using the @ag-ui/client library, enabling real time, event driven communication between UI and backend agent systems.  Skilled in handling streaming agent responses, tool calls, and state synchronization for seamless, interactive user experiences.  Proficient in connecting agentic workflows to React based interfaces, managing conversation state, and rendering dynamic AI generated content.  Adept at building responsive, production ready applications that bridge complex agent architectures with intuitive, user friendly frontend experiences.</span>
+          <span class="jd-desc">Experienced integrating AI agents into frontend applications using the @ag-ui/client library, enabling real time, event driven communication between UI and backend agent systems.  Skilled in handling streaming agent responses, tool calls, and state synchronization for seamless, interactive user experiences.  Proficient in connecting agentic workflows to React based interfaces, managing conversation state, and rendering dynamic AI generated content.  Adept at building responsive, production ready applications that bridge complex agent architectures with intuitive, user friendly frontend experiences.</span>
+          <button class="jd-toggle" onclick="toggleText(this)">more...</button>
         </div>
       </div>
 
@@ -1626,7 +1686,8 @@
         <div class="jd-check">✓</div>
         <div class="jd-row-content">
           <strong>React Markdown + remark-gfm</strong>
-          <span>Experienced rendering rich, formatted content in React applications using React Markdown for parsing and displaying Markdown as native React components.  Skilled in integrating remark-gfm to support GitHub Flavored Markdown features, including tables, task lists, strikethrough, and autolinks.  Proficient in customizing renderers for headings, code blocks, and links to match application design systems.  Adept at safely rendering user-generated or AI-generated content, ensuring accessibility, security, and consistent styling across dynamic, content driven applications.</span>
+          <span class="jd-desc">Experienced rendering rich, formatted content in React applications using React Markdown for parsing and displaying Markdown as native React components.  Skilled in integrating remark-gfm to support GitHub Flavored Markdown features, including tables, task lists, strikethrough, and autolinks.  Proficient in customizing renderers for headings, code blocks, and links to match application design systems.  Adept at safely rendering user-generated or AI-generated content, ensuring accessibility, security, and consistent styling across dynamic, content driven applications.</span>
+          <button class="jd-toggle" onclick="toggleText(this)">more...</button>
         </div>
       </div>
 
@@ -1634,7 +1695,8 @@
         <div class="jd-check">✓</div>
         <div class="jd-row-content">
           <strong>A2A SDK-External Agent Communication</strong>
-          <span>Experienced impplementing Agent to Agent (A2A) protocol using the A2A SDK to enable seamless, standardized communication between autonomous AI agents across different systems and platforms.  Skilled in designing interoperable agent architectures, handling task delegation, and managing structured message exchange between internal and external agents.  Proficient in building secure, scalable multi agent workflows that support discovery, negotiation, and collaboration.  Adept at integrating A2A compliant agents into production systems for robust, cross platform AI orchestration.</span>
+          <span class="jd-desc">Experienced implementing Agent to Agent (A2A) protocol using the A2A SDK to enable seamless, standardized communication between autonomous AI agents across different systems and platforms.  Skilled in designing interoperable agent architectures, handling task delegation, and managing structured message exchange between internal and external agents.  Proficient in building secure, scalable multi agent workflows that support discovery, negotiation, and collaboration.  Adept at integrating A2A compliant agents into production systems for robust, cross platform AI orchestration.</span>
+          <button class="jd-toggle" onclick="toggleText(this)">more...</button>
         </div>
       </div>
 
@@ -1642,7 +1704,8 @@
         <div class="jd-check">✓</div>
         <div class="jd-row-content">
           <strong>Geist Fonts (Sans + Mono) Typography</strong>
-          <span>Experienced implementing Vercel's Geist typeface family, combining Geist Sans for clean, modern UI text with Geist Mono for code and technical content.  Skilled in establishing consistent typographic hierarchies, optimizing font loading performance, and ensuring readability across web and mobile applications.  Proficient in pairing Geist with Tailwind CSS and Next.js for seamless font integration.  Adept at crafting polished, accessible designs where thoughtful typography enhances usability, brand identity, and overall user experience.</span>
+          <span class="jd-desc">Experienced implementing Vercel's Geist typeface family, combining Geist Sans for clean, modern UI text with Geist Mono for code and technical content.  Skilled in establishing consistent typographic hierarchies, optimizing font loading performance, and ensuring readability across web and mobile applications.  Proficient in pairing Geist with Tailwind CSS and Next.js for seamless font integration.  Adept at crafting polished, accessible designs where thoughtful typography enhances usability, brand identity, and overall user experience.</span>
+          <button class="jd-toggle" onclick="toggleText(this)">more...</button>
         </div>
       </div>
 
@@ -1650,7 +1713,8 @@
         <div class="jd-check">✓</div>
         <div class="jd-row-content">
           <strong>Proven AI-focused UI project experience</strong>
-          <span>Proven experience building AI focused user interfaces, integrating GenAI, RAG, and MCP into production ready applications with micro frontend architectures for scalable, modular design.  Skilled in embedding AI directly into interactive UIs using Chainlit and Streamlit, alongside LangChain and LangGraph for orchestrating complex agent workflows.  Proficient in deploying cloud native AI applications across modern platforms, leveraging AI assisted development tools including codex, cursor, and GitHub Copilot to accelerate delivery.  Adept at translating advanced AI capabilities into intuitive, high performance, user centered interfaces.</span>
+          <span class="jd-desc">Proven experience building AI focused user interfaces, integrating GenAI, RAG, and MCP into production ready applications with micro frontend architectures for scalable, modular design.  Skilled in embedding AI directly into interactive UIs using Chainlit and Streamlit, alongside LangChain and LangGraph for orchestrating complex agent workflows.  Proficient in deploying cloud native AI applications across modern platforms, leveraging AI assisted development tools including codex, cursor, and GitHub Copilot to accelerate delivery.  Adept at translating advanced AI capabilities into intuitive, high performance, user centered interfaces.</span>
+          <button class="jd-toggle" onclick="toggleText(this)">more...</button>
         </div>
       </div>
 
@@ -1658,7 +1722,8 @@
         <div class="jd-check">✓</div>
         <div class="jd-row-content">
           <strong>Agile / Scrum environment</strong>
-          <span>Experienced working in Agile and Scrum environments, actively participating in sprint planning, daily standups, backlog grooming, and retrospectives to drive iterative, high quality delivery.  Skilled in breaking down requirements into small, shippable user stories that reduce risk and tighten feedback loops.  Proficient collaborating with product owners, designers, and QA to align priorities and surface blockers early.  Adept at using tools like jira, trellow, and confluence to track progress, manage sprints and support transparent, cross functional team communication and continuous improvement.</span>
+          <span class="jd-desc">Experienced working in Agile and Scrum environments, actively participating in sprint planning, daily standups, backlog grooming, and retrospectives to drive iterative, high quality delivery.  Skilled in breaking down requirements into small, shippable user stories that reduce risk and tighten feedback loops.  Proficient collaborating with product owners, designers, and QA to align priorities and surface blockers early.  Adept at using tools like jira, trellow, and confluence to track progress, manage sprints and support transparent, cross functional team communication and continuous improvement.</span>
+          <button class="jd-toggle" onclick="toggleText(this)">more...</button>
         </div>
       </div>
 
@@ -1666,7 +1731,8 @@
         <div class="jd-check">✓</div>
         <div class="jd-row-content">
           <strong>Mobile App - React Native, iOS, Android</strong>
-          <span>Experienced building cross platform mobile applications using React Native, enabling shared codebases with native performance across iOS and Android.  Skilled in integrating native modules, handling platform specific UI patterns, and optimizing performance for smooth, responsive user experiencess.  Proficient in navigation, state management, and API integration for scalable mobile architectures.  Adept at deploying apps to the App Store and Google Play, ensuring reliable, high quality mobile experiences across diverse devices and operating systems.</span>
+          <span class="jd-desc">Experienced building cross platform mobile applications using React Native, enabling shared codebases with native performance across iOS and Android.  Skilled in integrating native modules, handling platform specific UI patterns, and optimizing performance for smooth, responsive user experiencess.  Proficient in navigation, state management, and API integration for scalable mobile architectures.  Adept at deploying apps to the App Store and Google Play, ensuring reliable, high quality mobile experiences across diverse devices and operating systems.</span>
+          <button class="jd-toggle" onclick="toggleText(this)">more...</button>
         </div>
       </div>
 
@@ -1674,7 +1740,8 @@
         <div class="jd-check">✓</div>
         <div class="jd-row-content">
           <strong>AI/ML - Agentic AI</strong>
-          <span>Experienced designing and deploying intelligent, autonomous AI agents capable of reasoning, planning, and executiong multi step tasks using LLMs and agentic frameworks.  Skilled in building multi agent systems, tool integration, and retrieval augmented generation-RAG to enhance agent accuracy and contextual understanding.  Proficient in prompt engineering, fine tuning, and orchestrating complex workflows using LangChain and LangGraph.  Adept at deploying scalable, production ready AI/ML solutions that combine machine learning models with agentic decision making for real world applications.</span>
+          <span class="jd-desc">Experienced designing and deploying intelligent, autonomous AI agents capable of reasoning, planning, and executiong multi step tasks using LLMs and agentic frameworks.  Skilled in building multi agent systems, tool integration, and retrieval augmented generation-RAG to enhance agent accuracy and contextual understanding.  Proficient in prompt engineering, fine tuning, and orchestrating complex workflows using LangChain and LangGraph.  Adept at deploying scalable, production ready AI/ML solutions that combine machine learning models with agentic decision making for real world applications.</span>
+          <button class="jd-toggle" onclick="toggleText(this)">more...</button>
         </div>
       </div>
 
@@ -1941,7 +2008,7 @@
     </div>
   </div>
 </section>
-<button id="backToTop" title="Go to top">↑</button>
+<button id="backToTop" title="Go to top"> <b>↑ </b>Go to Top</button>
 <footer>
   <p>Hepzibha Sundararaj &nbsp;·&nbsp; <strong>Sr. Full Stack, Mobile, AI Developer</strong> &nbsp;·&nbsp; React · Angular · React Native · Java · Python · Agentic AI · GenAI · MCP · RAG</p>
 </footer>
@@ -2132,6 +2199,13 @@
   btn.addEventListener("click", function () {
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
+
+  // ── JOB AND ROLES MORE BUTTON  ─────────────────────────
+  function toggleText(btn) {
+  const desc = btn.previousElementSibling; // the .jd-desc span
+  desc.classList.toggle("expanded");
+  btn.textContent = desc.classList.contains("expanded") ? "less" : "more...";
+}
 </script>
 </body>
 </html>
