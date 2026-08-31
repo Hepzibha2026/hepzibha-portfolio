@@ -276,7 +276,7 @@
   }
 
   .photo-frame {
-    border-radius: 60%;
+    /* border-radius: 60%; */
     /* border: 5px solid rgba(0,201,167,0.4); */
     /* border-color: var(--teal); */
     /* padding: 3px; */
@@ -927,6 +927,46 @@
   }
 
   .link-card:hover .arrow { opacity: 1; }
+
+/* ── RESPONSIVE BREAKPOINTS ───────────────────────────── */
+
+/* Large tablets / small laptops */
+@media (max-width: 1024px) {
+  .links-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+  /* Tablets */
+@media (max-width: 768px) {
+  .links-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem;
+  }
+}
+
+/* Mobile phones */
+@media (max-width: 480px) {
+  .links-grid {
+    grid-template-columns: 1fr;
+    gap: 0.7rem;
+  }
+
+  .link-card {
+    padding: 0.85rem 1rem;
+  }
+
+  /* on single-column mobile there's plenty of width, so let text wrap instead of clip */
+  .link-card-info strong,
+  .link-card-info span {
+    white-space: normal;
+  }
+
+  .arrow {
+    opacity: 1; /* show arrow by default on touch devices (no hover state) */
+    font-size: 1.4rem;
+  }
+}
  /* ── GLOBAL SEARCH ─────────────────────── */
   .nav-search {
     display: flex;
@@ -1044,14 +1084,16 @@
   }
 
   /* ──Job and roles more button to extend to see the details────────────────────── */
-  .jd-desc {
+.jd-desc {
   display: -webkit-box;
+  line-clamp: 1;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
 
 .jd-desc.expanded {
+  line-clamp: unset;
   -webkit-line-clamp: unset;
   overflow: visible;
 }
